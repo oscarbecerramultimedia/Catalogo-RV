@@ -18,9 +18,11 @@ html, body {
 }
 .contenedor {
     position: relative;
-    width: min(100vw, calc(100vh * 540 / 1200));
-    height: min(100vh, calc(100vw * 1200 / 540));
-    overflow: hidden;
+    width: 100vw;
+    height: calc(100vw * 1200 / 540);
+    max-height: 100dvh;
+    max-width: calc(100dvh * 540 / 1200);
+    overflow: hidden;;
 }
 .fondo {
     position: absolute;
