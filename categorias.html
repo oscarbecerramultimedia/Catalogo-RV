@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -19,26 +19,32 @@ body{
 }
 
 .contenedor{
-    position:relative;
-    width:100vw;
-    height:100dvh;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+
+    width:min(calc(100dvh * 750 / 1542),100vw);
+    height:min(calc(100vw * 1542 / 750),100dvh);
 }
 
 .fondo{
-   width:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
     height:100%;
-    object-fit:contain;
-    display:block;
-    transform:scaleX(1.10);
+    object-fit:fill;
+    z-index:1;
 }
 
 /* BANNER */
 
 .banner{
-    position:relative;
+    position:absolute;
     top:0;
     left:0;
-     width:100vw;
+    width:100%;
     height:23%;
     overflow:hidden;
     z-index:2;
