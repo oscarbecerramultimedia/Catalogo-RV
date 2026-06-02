@@ -11,27 +11,31 @@
 body{
     margin:0;
     padding:0;
-    background-image:url("imagenes/fondos/Imag Portada.webp");
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
+    background:#ffffff;
 }
 
 .contenedor{
+    position:relative;
     width:100%;
     max-width:750px;
     margin:auto;
 }
 
-.boton-catalogo{
+.fondo{
+    width:100%;
     display:block;
-    width:250px;
-    margin:auto;
+}
+
+.boton-catalogo{
+    position:absolute;
+    top:33%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:35%;
 }
 
 .boton-catalogo img{
     width:100%;
-    height:auto;
     display:block;
 }
 
@@ -43,8 +47,13 @@ body{
 
 <div class="contenedor">
 
+    <img class="fondo"
+         src="imagenes/fondos/Imag Portada.webp"
+         alt="Portada">
+
     <a href="categorias.html" class="boton-catalogo">
-        <img src="imagenes/botones/Imag Bot Portada.webp" alt="Catálogo RV">
+        <img src="imagenes/botones/Imag Bot Portada.webp"
+             alt="Catálogo">
     </a>
 
 </div>
