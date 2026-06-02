@@ -11,12 +11,17 @@ html, body {
     width: 100%;
     height: 100dvh;
     overflow: hidden;
-    background: #00aaff;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .contenedor {
     position: relative;
-    width: 100%;
-    height: 100dvh;
+    width: 100vw;
+    height: calc(100vw * 1542 / 750);
+    max-height: 100dvh;
+    max-width: calc(100dvh * 750 / 1542);
     overflow: hidden;
 }
 .fondo {
@@ -25,8 +30,7 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center top;
+    object-fit: fill;
     display: block;
     z-index: 1;
 }
@@ -54,7 +58,7 @@ html, body {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    width: min(80%, 420px);
+    width: 80%;
     z-index: 3;
 }
 .seguridad { top: 31%; }
