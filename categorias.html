@@ -15,13 +15,24 @@ body{
     width:100%;
     height:100%;
     overflow:hidden;
-    font-family:Arial, sans-serif;
 }
 
 .contenedor{
     position:relative;
     width:100vw;
     height:100vh;
+}
+
+/* FONDO */
+
+.fondo{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    z-index:1;
 }
 
 /* BANNER */
@@ -33,119 +44,101 @@ body{
     width:100%;
     height:23%;
     overflow:hidden;
-    z-index:1;
+    z-index:2;
 }
 
 .slide{
     position:absolute;
-    top:0;
-    left:0;
     width:100%;
     height:100%;
     object-fit:cover;
     opacity:0;
-    transition:opacity 1s ease-in-out;
+    transition:opacity 1s;
 }
 
 .slide.active{
     opacity:1;
 }
 
+/* BOTONES */
+
+.boton{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(80%,420px);
+    z-index:3;
+}
+
+.seguridad{ top:31%; }
+.oficina{ top:46%; }
+.marcaje{ top:61%; }
+.escolar{ top:76%; }
+
+.boton img{
+    width:100%;
+    display:block;
+}
+
 /* ENLACES */
 
 .enlaces{
     position:absolute;
-    top:24%;
     left:10px;
-    z-index:10;
+    bottom:10px;
+    z-index:4;
 }
 
 .enlaces a{
     display:block;
-    margin-bottom:5px;
-    color:#000;
+    color:white;
     text-decoration:none;
-    font-size:14px;
-}
-
-/* BOTONES */
-
-.menu-categorias{
-    position:absolute;
-    top:35%;
-    left:50%;
-    transform:translateX(-50%);
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:15px;
-    width:100%;
-    z-index:5;
-}
-
-.menu-categorias img{
-    width:min(80%, 420px);
-    height:auto;
-    display:block;
+    margin-bottom:5px;
 }
 
 </style>
-
 </head>
 
 <body>
 
 <div class="contenedor">
 
-    <!-- BANNER -->
+    <img
+        class="fondo"
+        src="imagenes/fondos/ImagFondoCategorias.webp"
+        alt="Fondo">
 
     <div class="banner">
 
-        <img src="imagenes/banners/ImagBannerCategorias01.webp"
-             class="slide active">
+        <img src="imagenes/banners/ImagBannerCategorias01.webp" class="slide active">
 
-        <img src="imagenes/banners/ImagBannerCategorias02.webp"
-             class="slide">
+        <img src="imagenes/banners/ImagBannerCategorias02.webp" class="slide">
 
-        <img src="imagenes/banners/ImagBannerCategorias03.webp"
-             class="slide">
+        <img src="imagenes/banners/ImagBannerCategorias03.webp" class="slide">
 
-        <img src="imagenes/banners/ImagBannerCategorias04.webp"
-             class="slide">
+        <img src="imagenes/banners/ImagBannerCategorias04.webp" class="slide">
 
     </div>
 
-    <!-- ENLACES -->
+    <a href="seguridad.html" class="boton seguridad">
+        <img src="imagenes/botones/ImagBotLineaSeguridad.webp">
+    </a>
+
+    <a href="oficina.html" class="boton oficina">
+        <img src="imagenes/botones/ImagBotLineaOficina.webp">
+    </a>
+
+    <a href="marcaje.html" class="boton marcaje">
+        <img src="imagenes/botones/ImagBotLineaMarcaje.webp">
+    </a>
+
+    <a href="escolar.html" class="boton escolar">
+        <img src="imagenes/botones/ImagBotLineaEscolar.webp">
+    </a>
 
     <div class="enlaces">
         <a href="index.html">Inicio</a>
         <a href="categorias.html">Productos de Oficina</a>
-    </div>
-
-    <!-- BOTONES -->
-
-    <div class="menu-categorias">
-
-        <a href="seguridad.html">
-            <img src="imagenes/botones/ImagBotLineaSeguridad.webp"
-                 alt="Seguridad">
-        </a>
-
-        <a href="oficina.html">
-            <img src="imagenes/botones/ImagBotLineaOficina.webp"
-                 alt="Oficina">
-        </a>
-
-        <a href="marcaje.html">
-            <img src="imagenes/botones/ImagBotLineaMarcaje.webp"
-                 alt="Marcaje">
-        </a>
-
-        <a href="escolar.html">
-            <img src="imagenes/botones/ImagBotLineaEscolar.webp"
-                 alt="Escolar">
-        </a>
-
     </div>
 
 </div>
@@ -153,18 +146,13 @@ body{
 <script>
 
 let actual = 0;
-
 const slides = document.querySelectorAll('.slide');
 
 setInterval(function(){
 
     slides[actual].classList.remove('active');
 
-    actual++;
-
-    if(actual >= slides.length){
-        actual = 0;
-    }
+    actual = (actual + 1) % slides.length;
 
     slides[actual].classList.add('active');
 
