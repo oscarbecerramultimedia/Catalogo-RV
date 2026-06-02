@@ -13,16 +13,19 @@ body{
     margin:0;
     padding:0;
     width:100%;
-    height:100%;
+    height:100dvh;
     overflow:hidden;
     background:#ffffff;
 }
 
 .contenedor{
-    position:relative;
-    width:min(calc(100vh * 750 / 1542),100vw);
-    height:min(calc(100vw * 1542 / 750),100vh);
-    margin:auto;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+
+    width:min(calc(100dvh * 750 / 1542),100vw);
+    height:min(calc(100vw * 1542 / 750),100dvh);
 }
 
 .fondo{
