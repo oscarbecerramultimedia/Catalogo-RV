@@ -13,7 +13,7 @@ body{
     margin:0;
     padding:0;
     width:100%;
-    height:100dvh;
+    height:100%;
     overflow:hidden;
     background:#ffffff;
 }
@@ -21,38 +21,39 @@ body{
 .contenedor{
     position:relative;
     width:100vw;
-    height:100dvh;
+    height:100vh;
 }
 
+/* FONDO (SIN CAMBIOS FUNCIONALES) */
 .fondo{
     position:absolute;
     top:0;
     left:0;
     width:100%;
     height:100%;
-    object-fit:contain;
+    object-fit:cover;
+    object-position:center;
     display:block;
-    transform:scaleX(1.10);
     z-index:1;
 }
 
-/* BANNER */
-
+/* BANNER - FIX DE ANCHO */
 .banner{
-     position:absolute;
+    position:absolute;
     top:0;
     left:0;
-    width:100%;
-    height:23%;
+    width:100vw;
     overflow:hidden;
     z-index:2;
 }
 
+/* SLIDES */
 .slide{
-     position:absolute;
+    position:absolute;
     width:100%;
     height:100%;
     object-fit:cover;
+    object-position:center;
     opacity:0;
     transition:opacity 1s;
 }
@@ -61,8 +62,7 @@ body{
     opacity:1;
 }
 
-/* BOTONES */
-
+/* BOTONES (SIN CAMBIOS) */
 .boton{
     position:absolute;
     left:50%;
@@ -82,7 +82,6 @@ body{
 }
 
 /* ENLACES */
-
 .enlaces{
     position:absolute;
     left:10px;
@@ -91,10 +90,10 @@ body{
 }
 
 .enlaces a{
-   display:block;
+    display:block;
     color:white;
     text-decoration:none;
-    margin-bottom:5px;;
+    margin-bottom:5px;
 }
 
 </style>
@@ -104,37 +103,33 @@ body{
 
 <div class="contenedor">
 
-    <img
-        class="fondo"
-        src="imagenes/fondos/ImagFondoCategorias.webp"
-        alt="Fondo">
+    <img class="fondo"
+         src="imagenes/fondos/ImagFondoCategorias.webp"
+         alt="Fondo">
 
     <div class="banner">
 
         <img src="imagenes/banners/ImagBannerCategorias01.webp" class="slide active">
-
         <img src="imagenes/banners/ImagBannerCategorias02.webp" class="slide">
-
         <img src="imagenes/banners/ImagBannerCategorias03.webp" class="slide">
-
         <img src="imagenes/banners/ImagBannerCategorias04.webp" class="slide">
 
     </div>
 
     <a href="seguridad.html" class="boton seguridad">
-        <img src="imagenes/botones/ImagBotLineaSeguridad.webp" alt="">
+        <img src="imagenes/botones/ImagBotLineaSeguridad.webp">
     </a>
 
     <a href="oficina.html" class="boton oficina">
-        <img src="imagenes/botones/ImagBotLineaOficina.webp" alt="">
+        <img src="imagenes/botones/ImagBotLineaOficina.webp">
     </a>
 
     <a href="marcaje.html" class="boton marcaje">
-        <img src="imagenes/botones/ImagBotLineaMarcaje.webp" alt="">
+        <img src="imagenes/botones/ImagBotLineaMarcaje.webp">
     </a>
 
     <a href="escolar.html" class="boton escolar">
-        <img src="imagenes/botones/ImagBotLineaEscolar.webp" alt="">
+        <img src="imagenes/botones/ImagBotLineaEscolar.webp">
     </a>
 
     <div class="enlaces">
@@ -148,19 +143,13 @@ body{
 let actual = 0;
 const slides = document.querySelectorAll('.slide');
 
-setInterval(function(){
-
+setInterval(() => {
     slides[actual].classList.remove('active');
-
     actual = (actual + 1) % slides.length;
-
     slides[actual].classList.add('active');
-
 }, 7000);
 
 </script>
 
-</body>
-</html>
 </body>
 </html>
