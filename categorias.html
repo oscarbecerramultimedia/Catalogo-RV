@@ -3,67 +3,118 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Catálogo RV</title>
-
+<title>Productos de Oficina</title>
 <style>
-
-html,
-body{
-    margin:0;
-    padding:0;
-    width:100%;
-    height:100dvh;
-    overflow:hidden;
-    background:#ffffff;
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100dvh;
+    overflow: hidden;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-.contenedor{
-    position:relative;
-    width:100vw;
-    height:100dvh;
+.contenedor {
+    position: relative;
+    width: 100vw;
+    height: calc(100vw * 1200 / 540);
+    max-height: 100dvh;
+    max-width: calc(100dvh * 540 / 1200);
+    overflow: hidden;
 }
-
-.fondo{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    display:block;
-    transform:scaleX(1.10);
+.fondo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    display: block;
 }
-
-.boton-catalogo{
-    position:absolute;
-    top:45%;
-    left:52%;
-    transform:translate(-50%,-50%);
-    width:min(35%,260px);
+.banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 23%;
+    overflow: hidden;
+    z-index: 2;
 }
-
-.boton-catalogo img{
-    width:100%;
-    height:auto;
-    display:block;
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s;
 }
-
+.slide.active {
+    opacity: 1;
+}
+.boton {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    z-index: 3;
+}
+.seguridad { top: 31%; }
+.oficina   { top: 46%; }
+.marcaje   { top: 61%; }
+.escolar   { top: 76%; }
+.boton img {
+    width: 100%;
+    display: block;
+}
+.enlaces {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    z-index: 4;
+}
+.enlaces a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 5px;
+}
 </style>
-
 </head>
-
 <body>
-
 <div class="contenedor">
-
-    <img class="fondo"
-         src="imagenes/fondos/ImagFondoPortada.webp"
-         alt="Portada">
-
-    <a href="categorias.html" class="boton-catalogo">
-        <img src="imagenes/botones/ImagBotPortada.webp"
-             alt="Catálogo">
+    <img class="fondo" src="imagenes/fondos/ImagFondoCategorias.webp" alt="Fondo">
+    <div class="banner">
+        <img src="imagenes/banners/ImagBannerCategorias01.webp" class="slide active">
+        <img src="imagenes/banners/ImagBannerCategorias02.webp" class="slide">
+        <img src="imagenes/banners/ImagBannerCategorias03.webp" class="slide">
+        <img src="imagenes/banners/ImagBannerCategorias04.webp" class="slide">
+    </div>
+    <a href="seguridad.html" class="boton seguridad">
+        <img src="imagenes/botones/ImagBotLineaSeguridad.webp" alt="">
     </a>
-
+    <a href="oficina.html" class="boton oficina">
+        <img src="imagenes/botones/ImagBotLineaOficina.webp" alt="">
+    </a>
+    <a href="marcaje.html" class="boton marcaje">
+        <img src="imagenes/botones/ImagBotLineaMarcaje.webp" alt="">
+    </a>
+    <a href="escolar.html" class="boton escolar">
+        <img src="imagenes/botones/ImagBotLineaEscolar.webp" alt="">
+    </a>
+    <div class="enlaces">
+        <a href="index.html">Inicio</a>
+    </div>
 </div>
-
+<script>
+let actual = 0;
+const slides = document.querySelectorAll('.slide');
+setInterval(function(){
+    slides[actual].classList.remove('active');
+    actual = (actual + 1) % slides.length;
+    slides[actual].classList.add('active');
+}, 7000);
+</script>
 </body>
 </html>
