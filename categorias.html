@@ -1,3 +1,6 @@
+Tienes razón, aquí el código completo y limpio:
+
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,7 +9,6 @@
 <title>Productos de Oficina</title>
 <style>
 html, body {
-   
     margin: 0;
     padding: 0;
     width: 100%;
@@ -17,24 +19,12 @@ html, body {
     justify-content: center;
     align-items: center;
 }
-
-/* WRAPPER con aspect ratio de tu imagen de fondo */
 .contenedor {
     position: relative;
-    /* Ajusta este ratio al de tu imagen ImagFondoCategorias.webp */
-   height: 100dvh;
+    height: 100dvh;
     width: calc(100dvh * 750 / 1542);
     overflow: hidden;
 }
-
-/* Si el ancho limita antes que el alto (pantallas wide como Windows) */
-@media (min-aspect-ratio: 9/16) {
-    .contenedor {
-        height: auto;
-        width: calc(100dvh * 9 / 16);
-    }
-}
-
 .fondo {
     position: absolute;
     top: 0;
@@ -45,8 +35,6 @@ html, body {
     display: block;
     z-index: 1;
 }
-
-/* BANNER */
 .banner {
     position: absolute;
     top: 0;
@@ -67,8 +55,6 @@ html, body {
 .slide.active {
     opacity: 1;
 }
-
-/* BOTONES */
 .boton {
     position: absolute;
     left: 50%;
@@ -84,8 +70,6 @@ html, body {
     width: 100%;
     display: block;
 }
-
-/* ENLACES */
 .enlaces {
     position: absolute;
     left: 10px;
@@ -136,3 +120,4 @@ setInterval(function(){
 </script>
 </body>
 </html>
+```
