@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Productos de Oficina</title>
+<title>Catálogo RV</title>
 
 <style>
 
@@ -20,145 +20,49 @@ body{
 
 .contenedor{
     position:relative;
-    width:min(calc(100vh * 750 / 1542),100vw);
-    height:min(calc(100vw * 1542 / 750),100vh);
-    margin:auto;
+    width:100vw;
+    height:100vh;
 }
 
 .fondo{
-    position:absolute;
-    top:0;
-    left:0;
     width:100%;
     height:100%;
-    object-fit:fill;
-    z-index:1;
-}
-
-/* BANNER */
-
-.banner{
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:23%;
-    overflow:hidden;
-    z-index:2;
-}
-
-.slide{
-    position:absolute;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    opacity:0;
-    transition:opacity 1s;
-}
-
-.slide.active{
-    opacity:1;
-}
-
-/* BOTONES */
-
-.boton{
-    position:absolute;
-    left:50%;
-    transform:translateX(-50%);
-    width:min(80%,420px);
-    z-index:3;
-}
-
-.seguridad{ top:31%; }
-.oficina{ top:46%; }
-.marcaje{ top:61%; }
-.escolar{ top:76%; }
-
-.boton img{
-    width:100%;
+    object-fit:contain;
     display:block;
 }
 
-/* ENLACES */
-
-.enlaces{
+.boton-catalogo{
     position:absolute;
-    left:10px;
-    bottom:10px;
-    z-index:4;
+    top:45%;
+    left:52%;
+    transform:translate(-50%,-50%);
+    width:min(35%, 260px);
 }
 
-.enlaces a{
+.boton-catalogo img{
+    width:100%;
+    height:auto;
     display:block;
-    color:white;
-    text-decoration:none;
-    margin-bottom:5px;
 }
 
 </style>
+
 </head>
 
 <body>
 
 <div class="contenedor">
 
-    <img
-        class="fondo"
-        src="imagenes/fondos/ImagFondoCategorias.webp"
-        alt="Fondo">
+    <img class="fondo"
+         src="imagenes/fondos/ImagFondoPortada.webp"
+         alt="Portada">
 
-    <div class="banner">
-
-        <img src="imagenes/banners/ImagBannerCategorias01.webp" class="slide active">
-
-        <img src="imagenes/banners/ImagBannerCategorias02.webp" class="slide">
-
-        <img src="imagenes/banners/ImagBannerCategorias03.webp" class="slide">
-
-        <img src="imagenes/banners/ImagBannerCategorias04.webp" class="slide">
-
-    </div>
-
-    <a href="seguridad.html" class="boton seguridad">
-        <img src="imagenes/botones/ImagBotLineaSeguridad.webp">
+    <a href="categorias.html" class="boton-catalogo">
+        <img src="imagenes/botones/ImagBotPortada.webp"
+             alt="Catálogo">
     </a>
-
-    <a href="oficina.html" class="boton oficina">
-        <img src="imagenes/botones/ImagBotLineaOficina.webp">
-    </a>
-
-    <a href="marcaje.html" class="boton marcaje">
-        <img src="imagenes/botones/ImagBotLineaMarcaje.webp">
-    </a>
-
-    <a href="escolar.html" class="boton escolar">
-        <img src="imagenes/botones/ImagBotLineaEscolar.webp">
-    </a>
-
-    <div class="enlaces">
-        <a href="index.html">Inicio</a>
-        <a href="categorias.html">Productos de Oficina</a>
-    </div>
 
 </div>
-
-<script>
-
-let actual = 0;
-const slides = document.querySelectorAll('.slide');
-
-setInterval(function(){
-
-    slides[actual].classList.remove('active');
-
-    actual = (actual + 1) % slides.length;
-
-    slides[actual].classList.add('active');
-
-}, 7000);
-
-</script>
 
 </body>
 </html>
