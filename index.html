@@ -8,31 +8,26 @@
 
 <style>
 
-:root{
-    --ratio: 0.486; /* CAMBIE ESTE VALOR */
-}
-
 html,
 body{
     margin:0;
     padding:0;
     width:100%;
-    height:100%;
+    height:100dvh;
     overflow:hidden;
     background:#ffffff;
 }
 
 .contenedor{
     position:relative;
-    width:min(100vw, calc(100vh * var(--ratio)));
-    height:100vh;
-    margin:auto;
+    width:100vw;
+    height:100dvh;
 }
 
 .fondo{
     width:100%;
     height:100%;
-    object-fit:fill;
+    object-fit:contain;
     display:block;
 }
 
