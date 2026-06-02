@@ -1,19 +1,148 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>productos de oficina</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Productos de Oficina</title>
+
+<style>
+
+html,
+body{
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+.contenedor{
+    position:relative;
+    width:100vw;
+    height:100vh;
+}
+
+/* Banner */
+
+.banner{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:23%;
+    overflow:hidden;
+}
+
+.slide{
+    position:absolute;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    opacity:0;
+    transition:opacity 1s;
+}
+
+.slide.active{
+    opacity:1;
+}
+
+/* Botones de categorías */
+
+.menu-categorias{
+    position:absolute;
+    top:30%;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:15px;
+    width:90%;
+}
+
+.menu-categorias img{
+    width:min(80%, 400px);
+    height:auto;
+    display:block;
+}
+
+/* Enlaces superiores */
+
+.enlaces{
+    position:absolute;
+    top:24%;
+    left:10px;
+    z-index:100;
+}
+
+.enlaces a{
+    display:block;
+    margin-bottom:5px;
+}
+
+</style>
+
 </head>
+
 <body>
 
-<h1>PRODUCTOS DE OFICINA</h1>
+<div class="contenedor">
 
-<p><a href="seguridad.html">Línea Seguridad y Biométricos</a></p>
+    <div class="banner">
+        <img src="imagenes/banners/Banner01.webp" class="slide active">
+        <img src="imagenes/banners/Banner02.webp" class="slide">
+        <img src="imagenes/banners/Banner03.webp" class="slide">
+        <img src="imagenes/banners/Banner04.webp" class="slide">
+    </div>
 
-<p><a href="oficina.html">Línea Oficina</a></p>
+    <div class="enlaces">
+        <a href="index.html">Inicio</a>
+        <a href="categorias.html">Productos de Oficina</a>
+    </div>
 
-<p><a href="marcaje.html">Línea Marcaje</a></p>
+    <div class="menu-categorias">
 
-<p><a href="escolar.html">Línea Escolar</a></p>
+        <a href="seguridad.html">
+            <img src="imagenes/botones/ImagBotLineaSeguridad.webp"
+                 alt="Seguridad">
+        </a>
+
+        <a href="oficina.html">
+            <img src="imagenes/botones/ImagBotLineaOficina.webp"
+                 alt="Oficina">
+        </a>
+
+        <a href="marcaje.html">
+            <img src="imagenes/botones/ImagBotLineaMarcaje.webp"
+                 alt="Marcaje">
+        </a>
+
+        <a href="escolar.html">
+            <img src="imagenes/botones/ImagBotLineaEscolar.webp"
+                 alt="Escolar">
+        </a>
+
+    </div>
+
+</div>
+
+<script>
+
+let actual = 0;
+const slides = document.querySelectorAll('.slide');
+
+setInterval(() => {
+
+    slides[actual].classList.remove('active');
+
+    actual = (actual + 1) % slides.length;
+
+    slides[actual].classList.add('active');
+
+}, 7000);
+
+</script>
 
 </body>
 </html>
