@@ -6,22 +6,24 @@
 <title>Productos de Oficina</title>
 <style>
 html, body {
-    margin: 0;
+     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100dvh;
-    overflow: hidden;
-    background: #ffffff;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: #fff;
 }
 .contenedor {
     position: relative;
-    width: 100vw;
-    height: calc(100vw * 1200 / 540);
-    max-height: 100dvh;
-    max-width: calc(100dvh * 540 / 1200);
+    aspect-ratio: 540 / 1200;
+
+    height: 100dvh;      /* siempre toma la altura de la pantalla */
+    width: auto;         /* el ancho se calcula automáticamente */
+
+    max-width: 100vw;    /* nunca se sale de pantalla */
+
+    margin: auto;        /* centra horizontalmente */
     overflow: hidden;
 }
 .fondo {
