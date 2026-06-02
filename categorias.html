@@ -18,19 +18,15 @@ html, body {
 }
 .contenedor {
     position: relative;
-    width: 100vw;
-    height: calc(100vw * 1542 / 750);
-    max-height: 100dvh;
-    max-width: calc(100dvh * 750 / 1542);
+    width: fit-content;
+    height: 100dvh;
+    margin: 0 auto;
     overflow: hidden;
 }
 .fondo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
+    position: relative;
+    height: 100dvh;
+    width: auto;
     display: block;
     z-index: 1;
 }
