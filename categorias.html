@@ -8,41 +8,38 @@
 
 <style>
 
-html,
-body{
+html, body{
     margin:0;
     padding:0;
     width:100%;
     height:100%;
     overflow:hidden;
-    background:#ffffff;
 }
 
+/* CONTENEDOR BASE */
 .contenedor{
     position:relative;
     width:100vw;
     height:100vh;
 }
 
-/* FONDO (SIN CAMBIOS FUNCIONALES) */
+/* FONDO */
 .fondo{
     position:absolute;
-    top:0;
-    left:0;
+    inset:0;
     width:100%;
     height:100%;
     object-fit:cover;
-    object-position:center;
-    display:block;
     z-index:1;
 }
 
-/* BANNER - FIX DE ANCHO */
+/* BANNER (REPARADO) */
 .banner{
     position:absolute;
     top:0;
     left:0;
-    width:100vw;
+    width:100%;
+    height:23%;
     overflow:hidden;
     z-index:2;
 }
@@ -50,10 +47,10 @@ body{
 /* SLIDES */
 .slide{
     position:absolute;
+    inset:0;
     width:100%;
     height:100%;
     object-fit:cover;
-    object-position:center;
     opacity:0;
     transition:opacity 1s;
 }
@@ -62,7 +59,7 @@ body{
     opacity:1;
 }
 
-/* BOTONES (SIN CAMBIOS) */
+/* BOTONES */
 .boton{
     position:absolute;
     left:50%;
@@ -93,7 +90,6 @@ body{
     display:block;
     color:white;
     text-decoration:none;
-    margin-bottom:5px;
 }
 
 </style>
@@ -103,17 +99,13 @@ body{
 
 <div class="contenedor">
 
-    <img class="fondo"
-         src="imagenes/fondos/ImagFondoCategorias.webp"
-         alt="Fondo">
+    <img class="fondo" src="imagenes/fondos/ImagFondoCategorias.webp">
 
     <div class="banner">
-
         <img src="imagenes/banners/ImagBannerCategorias01.webp" class="slide active">
         <img src="imagenes/banners/ImagBannerCategorias02.webp" class="slide">
         <img src="imagenes/banners/ImagBannerCategorias03.webp" class="slide">
         <img src="imagenes/banners/ImagBannerCategorias04.webp" class="slide">
-
     </div>
 
     <a href="seguridad.html" class="boton seguridad">
