@@ -8,6 +8,10 @@
 
 <style>
 
+:root{
+    --ratio: 0.486; /* CAMBIE ESTE VALOR */
+}
+
 html,
 body{
     margin:0;
@@ -20,14 +24,15 @@ body{
 
 .contenedor{
     position:relative;
-    width:100vw;
+    width:min(100vw, calc(100vh * var(--ratio)));
     height:100vh;
+    margin:auto;
 }
 
 .fondo{
     width:100%;
     height:100%;
-    object-fit:contain;
+    object-fit:fill;
     display:block;
 }
 
@@ -36,7 +41,7 @@ body{
     top:45%;
     left:52%;
     transform:translate(-50%,-50%);
-    width:min(35%, 260px);
+    width:min(35%,260px);
 }
 
 .boton-catalogo img{
