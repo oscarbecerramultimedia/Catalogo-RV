@@ -19,13 +19,9 @@ body{
 }
 
 .contenedor{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-
-    width:min(calc(100dvh * 750 / 1542),100vw);
-    height:min(calc(100vw * 1542 / 750),100dvh);
+    position:relative;
+    width:100vw;
+    height:100dvh;
 }
 
 .fondo{
@@ -34,7 +30,9 @@ body{
     left:0;
     width:100%;
     height:100%;
-    object-fit:fill;
+    object-fit:contain;
+    display:block;
+    transform:scaleX(1.10);
     z-index:1;
 }
 
@@ -52,6 +50,8 @@ body{
 
 .slide{
     position:absolute;
+    top:0;
+    left:0;
     width:100%;
     height:100%;
     object-fit:cover;
@@ -124,19 +124,19 @@ body{
     </div>
 
     <a href="seguridad.html" class="boton seguridad">
-        <img src="imagenes/botones/ImagBotLineaSeguridad.webp">
+        <img src="imagenes/botones/ImagBotLineaSeguridad.webp" alt="">
     </a>
 
     <a href="oficina.html" class="boton oficina">
-        <img src="imagenes/botones/ImagBotLineaOficina.webp">
+        <img src="imagenes/botones/ImagBotLineaOficina.webp" alt="">
     </a>
 
     <a href="marcaje.html" class="boton marcaje">
-        <img src="imagenes/botones/ImagBotLineaMarcaje.webp">
+        <img src="imagenes/botones/ImagBotLineaMarcaje.webp" alt="">
     </a>
 
     <a href="escolar.html" class="boton escolar">
-        <img src="imagenes/botones/ImagBotLineaEscolar.webp">
+        <img src="imagenes/botones/ImagBotLineaEscolar.webp" alt="">
     </a>
 
     <div class="enlaces">
@@ -162,5 +162,7 @@ setInterval(function(){
 
 </script>
 
+</body>
+</html>
 </body>
 </html>
