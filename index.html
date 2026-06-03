@@ -7,7 +7,7 @@
 <style>
 /* 1. RESET Y BASE GENERAL */
 html, body {
-     margin: 0;
+    margin: 0;
     padding: 0;
     width: 100%;
     height: 100dvh;
@@ -19,7 +19,7 @@ html, body {
 }
 
 /* 2. REGLA PARA MÓVIL (Por defecto) */
-/* Ocupa toda la pantalla en Android, eliminando franjas blancas */
+/* Ocupa toda la pantalla en Android */
 .contenedor {
     position: relative;
     width: 100vw;
@@ -28,7 +28,7 @@ html, body {
 }
 
 /* 3. REGLA PARA ESCRITORIO (Se activa en monitores) */
-/* Fija el alto y calcula el ancho proporcional estricto del fideo sin recortes */
+/* Mantiene la vista vertical perfecta en Windows, igual que en categorias.html */
 @media (min-width: 768px) {
     .contenedor {
         height: 100dvh;
@@ -45,8 +45,9 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    /* 'fill' estira el fondo para cubrir el contenedor al 100% sin dejar bordes vacíos */
-    object-fit: fill;
+    /* CORRECCIÓN CLAVE: 'cover' en lugar de 'fill'. 
+       Lllena la pantalla sin bordes blancos y SIN DEFORMAR el ratio de tu portada. */
+    object-fit: cover;
     display: block;
 }
 
