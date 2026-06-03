@@ -73,27 +73,35 @@ html, body {
     display: block;
 }
 
-/* 5. LISTADO DE PRODUCTOS (TEXTOS SOBRE EL FONDO) */
+/* 5. LISTADO DE PRODUCTOS */
 .lista-productos {
     position: absolute;
     top: 26%;
-    left: 8%;
-    width: 84%;
+    left: 10%;
+    width: 80%;
     height: 56%; 
     overflow-y: auto; 
     z-index: 3;
-    font-family: sans-serif;
+    font-family: 'Arial', 'Helvetica', sans-serif;
 }
 
 .producto-enlace {
     display: block;
-    padding: 14px 10px;
-    margin-bottom: 8px;
-    color: #333333;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 12px 5px;
+    margin-bottom: 6px;
+    color: #1e293b; 
+    text-decoration: none; 
+    font-size: 15px;
+    font-weight: 700; 
+    text-transform: uppercase; 
+    letter-spacing: 0.5px; 
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08); 
+    transition: color 0.2s ease;
+}
+
+.producto-enlace:active, 
+.producto-enlace:hover {
+    color: #0284c7; 
 }
 
 /* 6. ZONAS ACTIVAS INVISIBLES SOBRE LAS PEGATINAS */
@@ -102,8 +110,7 @@ html, body {
     top: 0;
     height: 100%;
     cursor: pointer;
-    /* Para calibrar los cuadros en color rojo, quite los caracteres /* y */ de la línea siguiente: */
-    /* background: rgba(255, 0, 0, 0.3); */
+    background: rgba(255, 0, 0, 0.3); /* Cuadros rojos visibles para calibración en pantalla */
 }
 
 /* Distribución porcentual de los 4 botones invisibles */
@@ -116,9 +123,9 @@ html, body {
 <body>
 
 <div class="contenedor">
-    <img class="fondo" src="imagenes/fondos/ImagFondoSeguridad.webp" alt="Fondo">
+    <img class="fondo" src="imagFondoSeguridad.webp" alt="Fondo">
     
-    <img class="banner" src="imagenes/banners/ImagBannerSeguridad.webp" alt="Línea Seguridad">
+    <img class="banner" src="imagBannerSeguridad.webp" alt="Línea Seguridad">
     
     <div class="lista-productos">
         <a href="seguridad-ze101.html" class="producto-enlace">Contador De Monedas ZE-101</a>
@@ -128,7 +135,7 @@ html, body {
     </div>
     
     <div class="barra-navegacion-unica">
-        <img src="imagenes/pegatinas/TiraPegatinasCompleta.webp" class="tira-pegatinas-img" alt="Navegación">
+        <img src="tiraPegatinasCompleta.webp" class="tira-pegatinas-img" alt="Navegación">
         
         <a href="categorias.html" class="zona-activa zona-inicio" title="Inicio"></a>
         <a href="oficina.html" class="zona-activa zona-oficina" title="Oficina"></a>
