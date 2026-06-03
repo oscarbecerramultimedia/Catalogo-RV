@@ -12,30 +12,24 @@ html, body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-/* CONTENEDOR CORREGIDO */
 .contenedor {
     position: relative;
-    width: min(100vw, calc(100dvh * 540 / 1200));
+    width: 100vw;
     height: 100dvh;
     overflow: hidden;
 }
 
-/* fondo */
 .fondo {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: fill;
     display: block;
 }
 
-/* banner */
 .banner {
     position: absolute;
     top: 0;
@@ -59,7 +53,6 @@ html, body {
     opacity: 1;
 }
 
-/* botones */
 .boton {
     position: absolute;
     left: 50%;
@@ -78,7 +71,6 @@ html, body {
     display: block;
 }
 
-/* enlaces */
 .enlaces {
     position: absolute;
     left: 10px;
@@ -88,9 +80,10 @@ html, body {
 
 .enlaces a {
     display: block;
-    color: #fff;
+    color: #000;
     text-decoration: none;
     margin-bottom: 5px;
+    font-size: 18px;
 }
 </style>
 </head>
