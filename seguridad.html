@@ -73,36 +73,27 @@ html, body {
     display: block;
 }
 
-/* 5. LISTADO DE PRODUCTOS (FORMATO IDÉNTICO AL ORIGINAL) */
+/* 5. LISTADO DE PRODUCTOS (TEXTOS SOBRE EL FONDO) */
 .lista-productos {
     position: absolute;
     top: 26%;
-    left: 10%;
-    width: 80%;
+    left: 8%;
+    width: 84%;
     height: 56%; 
     overflow-y: auto; 
     z-index: 3;
-    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-family: sans-serif;
 }
 
 .producto-enlace {
     display: block;
-    padding: 12px 5px;
-    margin-bottom: 6px;
-    color: #1e293b; /* Color oscuro corporativo */
-    text-decoration: none; /* Elimina el subrayado azul por defecto de la web */
-    font-size: 15px;
-    font-weight: 700; /* Texto en negrita clara */
-    text-transform: uppercase; /* Convierte automáticamente a mayúsculas como el PDF */
-    letter-spacing: 0.5px; /* Espaciado sutil entre letras */
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08); /* Línea divisoria muy tenue */
-    transition: color 0.2s ease;
-}
-
-/* Efecto visual al presionar o pasar el puntero */
-.producto-enlace:active, 
-.producto-enlace:hover {
-    color: #0284c7; /* Cambia a azul para indicar interactividad al tocarlo */
+    padding: 14px 10px;
+    margin-bottom: 8px;
+    color: #333333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* 6. ZONAS ACTIVAS INVISIBLES SOBRE LAS PEGATINAS */
@@ -111,7 +102,8 @@ html, body {
     top: 0;
     height: 100%;
     cursor: pointer;
-    /* background: rgba(255, 0, 0, 0.3); */ /* Quite los caracteres /* y */ para calibrar visualmente */
+    /* Para calibrar los cuadros en color rojo, quite los caracteres /* y */ de la línea siguiente: */
+    /* background: rgba(255, 0, 0, 0.3); */
 }
 
 /* Distribución porcentual de los 4 botones invisibles */
