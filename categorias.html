@@ -5,24 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Productos de Oficina</title>
 <style>
-/* 1. BASE: Común para ambas plataformas */
+/* 1. RESET Y BASE GENERAL */
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100dvh;
     overflow: hidden;
-    background: #000000; /* Fondo de los laterales en Windows (puedes cambiar el color) */
+    background: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* =======================================================
-   2. REGLA PARA ANDROID (MÓVIL): 
-   Llena la pantalla al 100%, estira la imagen levemente 
-   hacia los lados para matar el borde blanco, sin recortar.
-   ======================================================= */
+/* 2. REGLA PARA MÓVIL (Por defecto) */
+/* Ocupa toda la pantalla, ajusta ancho y alto sin bordes blancos */
 .contenedor {
     position: relative;
     width: 100vw;
@@ -30,30 +27,30 @@ html, body {
     overflow: hidden;
 }
 
+/* 3. REGLA PARA ESCRITORIO (Se activa en monitores) */
+/* Anula el ancho total, fija el alto y calcula el ancho proporcional estricto */
+@media (min-width: 768px) {
+    .contenedor {
+        height: 100dvh;
+        width: calc(100dvh * 540 / 1200); 
+        max-width: 100vw;
+        /* Opcional: una sombra sutil para ver dónde termina el contenedor en PC */
+        box-shadow: 0 0 15px rgba(0,0,0,0.2); 
+    }
+}
+
+/* 4. FONDOS, BANNERS Y BOTONES */
 .fondo {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    /* 'fill' estira la imagen para que coincida 100% con el contenedor, garantizando cero bordes blancos sin recortar la imagen */
     object-fit: fill; 
-    display: block;
+    z-index: 1;
 }
 
-/* =======================================================
-   3. REGLA PARA WINDOWS (ESCRITORIO):
-   Se activa solo si la pantalla es ancha (>768px). 
-   Anula el 100vw, fija el alto al 100% del monitor y 
-   calcula el ancho proporcional (pilar centrado).
-   ======================================================= */
-@media (min-width: 768px), (orientation: landscape) {
-    .contenedor {
-        width: calc(100dvh * 540 / 1200);
-        height: 100dvh;
-    }
-}
-
-/* 4. ELEMENTOS INTERNOS (Intactos, usando porcentajes) */
 .banner {
     position: absolute;
     top: 0;
@@ -68,7 +65,8 @@ html, body {
     position: absolute;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    /* CORRECCIÓN VITAL: 'fill' en lugar de 'cover' para que el logo ORV no se ampute a los lados */
+    object-fit: fill; 
     opacity: 0;
     transition: opacity 1s;
 }
@@ -85,6 +83,7 @@ html, body {
     z-index: 3;
 }
 
+/* Tus porcentajes originales intactos */
 .seguridad { top: 31%; }
 .oficina   { top: 46%; }
 .marcaje   { top: 61%; }
@@ -106,6 +105,7 @@ html, body {
     display: block;
     color: white;
     text-decoration: none;
+    font-family: sans-serif;
     margin-bottom: 5px;
 }
 </style>
