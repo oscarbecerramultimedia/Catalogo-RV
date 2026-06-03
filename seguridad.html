@@ -18,12 +18,13 @@ html, body {
     align-items: center;
 }
 
-/* 2. REGLA PARA MÓVIL (Por defecto) */
+/* 2. CONTENEDOR MAESTRO ESCALABLE */
 .contenedor {
     position: relative;
     width: 100vw;
     height: 100dvh;
     overflow: hidden;
+    container-type: size; /* Permite a los elementos internos calcular el tamaño basado en el contenedor y no en la pantalla */
 }
 
 /* 3. REGLA PARA ESCRITORIO (Monitores) */
@@ -69,16 +70,16 @@ html, body {
 .tira-pegatinas-img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: fill; /* Fuerza el llenado horizontal exacto */
     display: block;
 }
 
-/* 5. LISTADO DE PRODUCTOS (UNIFICADO PARA WINDOWS Y ANDROID) */
+/* 5. LISTADO DE PRODUCTOS CENTRADO */
 .lista-productos {
     position: absolute;
     top: 26%;
-    left: 12%;
-    width: 76%;
+    left: 10%;
+    width: 80%;
     height: 56%; 
     overflow-y: auto !important; 
     z-index: 3;
@@ -87,11 +88,11 @@ html, body {
 
 .producto-enlace {
     display: block;
-    padding: 10px 0;
+    padding: 12px 0;
     margin-bottom: 4px;
     color: #1a253c;
     text-decoration: none;
-    font-size: 2.2vh;    /* Amarrado a la altura de pantalla para unificar escala */
+    font-size: 5.2cqw; /* Escala ligada estrictamente al ancho de la interfaz fija */
     font-weight: bold;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
@@ -104,7 +105,7 @@ html, body {
     cursor: pointer;
 }
 
-/* Distribución porcentual de los 4 botones invisibles */
+/* Distribución de botones invisibles */
 .zona-inicio    { left: 0%;   width: 25%; }
 .zona-oficina   { left: 25%;  width: 25%; }
 .zona-marcaje   { left: 50%;  width: 25%; }
@@ -118,4 +119,27 @@ html, body {
     
     <img class="banner" src="imagenes/banners/ImagBannerSeguridad.webp" alt="Línea Seguridad">
     
-    <div
+    <div class="lista-productos">
+        <a href="seguridad-ze101.html" class="producto-enlace">Contador De Monedas</a>
+        <a href="seguridad-ze102.html" class="producto-enlace">Contador De Billetes</a>
+        <a href="seguridad-ze104.html" class="producto-enlace">Detector De Billetes</a>
+        <a href="seguridad-caja.html" class="producto-enlace">Caja Menor Metalica</a>
+        <a href="seguridad-cajafuerte.html" class="producto-enlace">Caja Fuerte</a>
+        <a href="seguridad-relojpersonal.html" class="producto-enlace">Reloj Control De Personal</a>
+        <a href="seguridad-relojcorresp.html" class="producto-enlace">Reloj Control De Correspondencia</a>
+        <a href="seguridad-protector.html" class="producto-enlace">Protector De Cheques</a>
+        <a href="seguridad-destructora.html" class="producto-enlace">Destructora De Documentos</a>
+    </div>
+    
+    <div class="barra-navegacion-unica">
+        <img src="imagenes/pegatinas/TiraPegatinasCompleta.webp" class="tira-pegatinas-img" alt="Navegación">
+        
+        <a href="categorias.html" class="zona-activa zona-inicio" title="Inicio"></a>
+        <a href="oficina.html" class="zona-activa zona-oficina" title="Oficina"></a>
+        <a href="marcaje.html" class="zona-activa zona-marcaje" title="Marcaje"></a>
+        <a href="escolar.html" class="zona-activa zona-escolar" title="Escolar"></a>
+    </div>
+</div>
+
+</body>
+</html>
