@@ -1,33 +1,141 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Seguridad - Ficha 01</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Línea Seguridad y Biométricos</title>
+<style>
+/* 1. RESET Y BASE GENERAL */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100dvh;
+    overflow: hidden;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 2. REGLA PARA MÓVIL (Por defecto) */
+.contenedor {
+    position: relative;
+    width: 100vw;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+/* 3. REGLA PARA ESCRITORIO (Monitores) */
+@media (min-width: 768px) {
+    .contenedor {
+        height: 100dvh;
+        width: calc(100dvh * 540 / 1200); 
+        max-width: 100vw;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2); 
+    }
+}
+
+/* 4. TRES ELEMENTOS GRÁFICOS ESTRUCTURALES */
+.fondo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill; 
+    z-index: 1;
+}
+
+.banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 23%; 
+    object-fit: fill;
+    z-index: 2;
+}
+
+.barra-navegacion-unica {
+    position: absolute;
+    bottom: 2%;
+    left: 5%;
+    width: 90%;
+    height: 12%; 
+    z-index: 4;
+}
+
+.tira-pegatinas-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* 5. LISTADO DE PRODUCTOS (TEXTOS SOBRE EL FONDO) */
+.lista-productos {
+    position: absolute;
+    top: 26%;
+    left: 8%;
+    width: 84%;
+    height: 56%; 
+    overflow-y: auto; 
+    z-index: 3;
+    font-family: sans-serif;
+}
+
+.producto-enlace {
+    display: block;
+    padding: 14px 10px;
+    margin-bottom: 8px;
+    color: #333333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* 6. ZONAS ACTIVAS INVISIBLES SOBRE LAS PEGATINAS */
+.zona-activa {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    cursor: pointer;
+    /* Para calibrar los cuadros en color rojo, quite los caracteres /* y */ de la línea siguiente: */
+    /* background: rgba(255, 0, 0, 0.3); */
+}
+
+/* Distribución porcentual de los 4 botones invisibles */
+.zona-inicio    { left: 0%;   width: 25%; }
+.zona-oficina   { left: 25%;  width: 25%; }
+.zona-marcaje   { left: 50%;  width: 25%; }
+.zona-escolar   { left: 75%;  width: 25%; }
+</style>
 </head>
 <body>
 
-<h1>CONTADOR DE MONEDAS</h1>
-
-<p>Aquí irá la imagen del producto.</p>
-
-<hr>
-
-<h1>CONTADOR DE BILLETES</h1>
-
-<p>Aquí irá la imagen del producto.</p>
-
-<hr>
-
-<p><a href="index.html">Inicio</a></p>
-
-<p><a href="categorias.html">Productos de Oficina</a></p>
-
-<p><a href="seguridad.html">Seguridad y Biométricos</a></p>
-
-<p><a href="oficina.html">Línea Oficina</a></p>
-
-<p><a href="marcaje.html">Línea Marcaje</a></p>
-
-<p><a href="escolar.html">Línea Escolar</a></p>
+<div class="contenedor">
+    <img class="fondo" src="imagenes/fondos/ImagFondoSeguridad.webp" alt="Fondo">
+    
+    <img class="banner" src="imagenes/banners/ImagBannerSeguridad.webp" alt="Línea Seguridad">
+    
+    <div class="lista-productos">
+        <a href="seguridad-ze101.html" class="producto-enlace">Contador De Monedas ZE-101</a>
+        <a href="seguridad-ze102.html" class="producto-enlace">Contador De Billetes ZE-102</a>
+        <a href="seguridad-ze104.html" class="producto-enlace">Detector De Billetes ZE-104</a>
+        <a href="seguridad-caja.html" class="producto-enlace">Caja Menor Metálica</a>
+    </div>
+    
+    <div class="barra-navegacion-unica">
+        <img src="imagenes/pegatinas/TiraPegatinasCompleta.webp" class="tira-pegatinas-img" alt="Navegación">
+        
+        <a href="categorias.html" class="zona-activa zona-inicio" title="Inicio"></a>
+        <a href="oficina.html" class="zona-activa zona-oficina" title="Oficina"></a>
+        <a href="marcaje.html" class="zona-activa zona-marcaje" title="Marcaje"></a>
+        <a href="escolar.html" class="zona-activa zona-escolar" title="Escolar"></a>
+    </div>
+</div>
 
 </body>
 </html>
