@@ -15,26 +15,23 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #fff;
 }
 
-/* lienzo vertical fijo */
+/* CONTENEDOR CORREGIDO */
 .contenedor {
     position: relative;
-    width: min(100vw, calc(100dvh * 600 / 1200));
+    width: min(100vw, calc(100dvh * 540 / 1200));
     height: 100dvh;
-    aspect-ratio: 600 / 1200;
     overflow: hidden;
 }
 
-/* 🔥 FONDO CORREGIDO */
+/* fondo */
 .fondo {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;   /* clave real */
-    object-position: center;
+    object-fit: contain;
     display: block;
 }
 
@@ -91,7 +88,7 @@ html, body {
 
 .enlaces a {
     display: block;
-    color: #000;
+    color: #fff;
     text-decoration: none;
     margin-bottom: 5px;
 }
@@ -112,19 +109,19 @@ html, body {
     </div>
 
     <a href="seguridad.html" class="boton seguridad">
-        <img src="imagenes/botones/ImagBotLineaSeguridad.webp">
+        <img src="imagenes/botones/ImagBotLineaSeguridad.webp" alt="">
     </a>
 
     <a href="oficina.html" class="boton oficina">
-        <img src="imagenes/botones/ImagBotLineaOficina.webp">
+        <img src="imagenes/botones/ImagBotLineaOficina.webp" alt="">
     </a>
 
     <a href="marcaje.html" class="boton marcaje">
-        <img src="imagenes/botones/ImagBotLineaMarcaje.webp">
+        <img src="imagenes/botones/ImagBotLineaMarcaje.webp" alt="">
     </a>
 
     <a href="escolar.html" class="boton escolar">
-        <img src="imagenes/botones/ImagBotLineaEscolar.webp">
+        <img src="imagenes/botones/ImagBotLineaEscolar.webp" alt="">
     </a>
 
     <div class="enlaces">
