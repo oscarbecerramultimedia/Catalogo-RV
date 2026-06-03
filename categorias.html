@@ -12,32 +12,32 @@ html, body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: #000;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Lienzo vertical estable */
+/* contenedor estable: Windows + Android */
 .contenedor {
     position: relative;
+    width: 100vw;
+    max-width: 540px;
     height: 100dvh;
-    width: calc(100dvh * 540 / 1200);
-    max-width: 100vw;
+    aspect-ratio: 540 / 1200;
     overflow: hidden;
 }
 
-/* Fondo sin deformación */
+/* fondo ajustado sin recorte */
 .fondo {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
 }
 
-/* Banner */
+/* banner */
 .banner {
     position: absolute;
     top: 0;
@@ -61,7 +61,7 @@ html, body {
     opacity: 1;
 }
 
-/* Botones */
+/* botones */
 .boton {
     position: absolute;
     left: 50%;
@@ -80,7 +80,7 @@ html, body {
     display: block;
 }
 
-/* Enlaces */
+/* enlaces */
 .enlaces {
     position: absolute;
     left: 10px;
@@ -90,7 +90,7 @@ html, body {
 
 .enlaces a {
     display: block;
-    color: white;
+    color: #fff;
     text-decoration: none;
     margin-bottom: 5px;
 }
