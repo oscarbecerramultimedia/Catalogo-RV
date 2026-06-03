@@ -17,12 +17,13 @@ html, body {
     align-items: center;
 }
 
-/* SOLO SE ELIMINÓ aspect-ratio */
+/* contenedor estable: Windows + Android */
 .contenedor {
     position: relative;
     width: 100vw;
     max-width: 540px;
     height: 100dvh;
+    aspect-ratio: 540 / 1200;
     overflow: hidden;
 }
 
