@@ -4,44 +4,44 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Productos de Oficina</title>
-
 <style>
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
+    width: 100%;
+    height: 100dvh;
     overflow: hidden;
     background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-/* CONTENEDOR PRINCIPAL */
 .contenedor {
     position: relative;
     width: 100vw;
     height: calc(100vw * 1200 / 540);
-    margin: 0 auto;
+    max-height: 100dvh;
+    max-width: calc(100dvh * 540 / 1200);
     overflow: hidden;
 }
-
-/* FONDO */
 .fondo {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: fill;
+    display: block;
 }
-
-/* BANNER */
 .banner {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 23%;
+    overflow: hidden;
     z-index: 2;
 }
-
 .slide {
     position: absolute;
     width: 100%;
@@ -50,12 +50,9 @@ html, body {
     opacity: 0;
     transition: opacity 1s;
 }
-
 .slide.active {
     opacity: 1;
 }
-
-/* BOTONES */
 .boton {
     position: absolute;
     left: 50%;
@@ -63,25 +60,20 @@ html, body {
     width: 80%;
     z-index: 3;
 }
-
 .seguridad { top: 31%; }
 .oficina   { top: 46%; }
 .marcaje   { top: 61%; }
 .escolar   { top: 76%; }
-
 .boton img {
     width: 100%;
     display: block;
 }
-
-/* ENLACES */
 .enlaces {
     position: absolute;
     left: 10px;
     bottom: 10px;
     z-index: 4;
 }
-
 .enlaces a {
     display: block;
     color: white;
@@ -89,54 +81,40 @@ html, body {
     margin-bottom: 5px;
 }
 </style>
-
 </head>
-
 <body>
-
 <div class="contenedor">
-
     <img class="fondo" src="imagenes/fondos/ImagFondoCategorias.webp" alt="Fondo">
-
     <div class="banner">
         <img src="imagenes/banners/ImagBannerCategorias01.webp" class="slide active">
         <img src="imagenes/banners/ImagBannerCategorias02.webp" class="slide">
         <img src="imagenes/banners/ImagBannerCategorias03.webp" class="slide">
         <img src="imagenes/banners/ImagBannerCategorias04.webp" class="slide">
     </div>
-
     <a href="seguridad.html" class="boton seguridad">
-        <img src="imagenes/botones/ImagBotLineaSeguridad.webp">
+        <img src="imagenes/botones/ImagBotLineaSeguridad.webp" alt="">
     </a>
-
     <a href="oficina.html" class="boton oficina">
-        <img src="imagenes/botones/ImagBotLineaOficina.webp">
+        <img src="imagenes/botones/ImagBotLineaOficina.webp" alt="">
     </a>
-
     <a href="marcaje.html" class="boton marcaje">
-        <img src="imagenes/botones/ImagBotLineaMarcaje.webp">
+        <img src="imagenes/botones/ImagBotLineaMarcaje.webp" alt="">
     </a>
-
     <a href="escolar.html" class="boton escolar">
-        <img src="imagenes/botones/ImagBotLineaEscolar.webp">
+        <img src="imagenes/botones/ImagBotLineaEscolar.webp" alt="">
     </a>
-
     <div class="enlaces">
         <a href="index.html">Inicio</a>
     </div>
-
 </div>
-
 <script>
 let actual = 0;
 const slides = document.querySelectorAll('.slide');
-
-setInterval(() => {
+setInterval(function(){
     slides[actual].classList.remove('active');
     actual = (actual + 1) % slides.length;
     slides[actual].classList.add('active');
 }, 7000);
 </script>
-
 </body>
 </html>
