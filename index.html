@@ -5,29 +5,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Catálogo RV</title>
 <style>
+/* 1. RESET Y BASE GENERAL */
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100dvh;
     overflow: hidden;
-    /* Color de respaldo por si la imagen tarda en cargar */
-    background-color: #000; 
+    background: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* 3. REGLA PARA ESCRITORIO (Se activa en monitores) */
+/* Anula el ancho total, fija el alto y calcula el ancho proporcional estricto */
+@media (min-width: 768px) {
+    .contenedor {
+        height: 100dvh;
+        width: calc(100dvh * 540 / 1200); 
+        max-width: 100vw;
+        /* Opcional: una sombra sutil para ver dónde termina el contenedor en PC */
+        box-shadow: 0 0 15px rgba(0,0,0,0.2); 
+    }
+}
+    
+/* 2. REGLA PARA MÓVIL (Por defecto) */
+/* Ocupa toda la pantalla, ajusta ancho y alto sin bordes blancos */
 .contenedor {
     position: relative;
     width: 100vw;
     height: 100dvh;
-    /* Mantiene la relación de aspecto sin deformar */
-    aspect-ratio: 540 / 1200;
-    /* En pantallas muy anchas, limita el tamaño para que no se deforme */
-    max-width: calc(100dvh * 540 / 1200);
     overflow: hidden;
 }
+
 
 .fondo {
     position: absolute;
