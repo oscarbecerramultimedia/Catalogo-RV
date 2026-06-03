@@ -5,38 +5,55 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Productos de Oficina</title>
 <style>
+/* 1. BASE: Común para ambas plataformas */
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
+    height: 100dvh;
     overflow: hidden;
+    background: #000000; /* Fondo de los laterales en Windows (puedes cambiar el color) */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* contenedor estable: Windows + Android */
+/* =======================================================
+   2. REGLA PARA ANDROID (MÓVIL): 
+   Llena la pantalla al 100%, estira la imagen levemente 
+   hacia los lados para matar el borde blanco, sin recortar.
+   ======================================================= */
 .contenedor {
     position: relative;
     width: 100vw;
-    max-width: 540px;
     height: 100dvh;
-    aspect-ratio: 540 / 1200;
     overflow: hidden;
 }
 
-/* fondo ajustado sin recorte */
 .fondo {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: fill; 
     display: block;
 }
 
-/* banner */
+/* =======================================================
+   3. REGLA PARA WINDOWS (ESCRITORIO):
+   Se activa solo si la pantalla es ancha (>768px). 
+   Anula el 100vw, fija el alto al 100% del monitor y 
+   calcula el ancho proporcional (pilar centrado).
+   ======================================================= */
+@media (min-width: 768px), (orientation: landscape) {
+    .contenedor {
+        width: calc(100dvh * 540 / 1200);
+        height: 100dvh;
+    }
+}
+
+/* 4. ELEMENTOS INTERNOS (Intactos, usando porcentajes) */
 .banner {
     position: absolute;
     top: 0;
@@ -60,7 +77,6 @@ html, body {
     opacity: 1;
 }
 
-/* botones */
 .boton {
     position: absolute;
     left: 50%;
@@ -79,7 +95,6 @@ html, body {
     display: block;
 }
 
-/* enlaces */
 .enlaces {
     position: absolute;
     left: 10px;
@@ -89,53 +104,47 @@ html, body {
 
 .enlaces a {
     display: block;
-    color: #fff;
+    color: white;
     text-decoration: none;
     margin-bottom: 5px;
 }
 </style>
 </head>
-
 <body>
 
 <div class="contenedor">
-
     <img class="fondo" src="imagenes/fondos/ImagFondoCategorias.webp" alt="Fondo">
-
+    
     <div class="banner">
         <img src="imagenes/banners/ImagBannerCategorias01.webp" class="slide active">
         <img src="imagenes/banners/ImagBannerCategorias02.webp" class="slide">
         <img src="imagenes/banners/ImagBannerCategorias03.webp" class="slide">
         <img src="imagenes/banners/ImagBannerCategorias04.webp" class="slide">
     </div>
-
+    
     <a href="seguridad.html" class="boton seguridad">
         <img src="imagenes/botones/ImagBotLineaSeguridad.webp" alt="">
     </a>
-
     <a href="oficina.html" class="boton oficina">
         <img src="imagenes/botones/ImagBotLineaOficina.webp" alt="">
     </a>
-
     <a href="marcaje.html" class="boton marcaje">
         <img src="imagenes/botones/ImagBotLineaMarcaje.webp" alt="">
     </a>
-
     <a href="escolar.html" class="boton escolar">
         <img src="imagenes/botones/ImagBotLineaEscolar.webp" alt="">
     </a>
-
+    
     <div class="enlaces">
         <a href="index.html">Inicio</a>
     </div>
-
 </div>
 
 <script>
 let actual = 0;
 const slides = document.querySelectorAll('.slide');
 
-setInterval(() => {
+setInterval(function(){
     slides[actual].classList.remove('active');
     actual = (actual + 1) % slides.length;
     slides[actual].classList.add('active');
