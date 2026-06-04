@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Productos de Oficina</title>
+<title>Categorías de Productos</title>
 <style>
 /* 1. RESET Y BASE GENERAL */
 html, body {
@@ -18,35 +18,32 @@ html, body {
     align-items: center;
 }
 
-/* 2. REGLA PARA MÓVIL (Por defecto) */
-/* Ocupa toda la pantalla, ajusta ancho y alto sin bordes blancos */
+/* 2. CONTENEDOR MAESTRO ESCALABLE */
 .contenedor {
     position: relative;
     width: 100vw;
     height: 100dvh;
     overflow: hidden;
+    container-type: size;
 }
 
-/* 3. REGLA PARA ESCRITORIO (Se activa en monitores) */
-/* Anula el ancho total, fija el alto y calcula el ancho proporcional estricto */
+/* 3. REGLA PARA ESCRITORIO (Monitores) */
 @media (min-width: 768px) {
     .contenedor {
         height: 100dvh;
         width: calc(100dvh * 540 / 1200); 
         max-width: 100vw;
-        /* Opcional: una sombra sutil para ver dónde termina el contenedor en PC */
         box-shadow: 0 0 15px rgba(0,0,0,0.2); 
     }
 }
 
-/* 4. FONDOS, BANNERS Y BOTONES */
+/* 4. FONDOS Y BANNERS */
 .fondo {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* 'fill' estira la imagen para que coincida 100% con el contenedor, garantizando cero bordes blancos sin recortar la imagen */
     object-fit: fill; 
     z-index: 1;
 }
@@ -65,7 +62,6 @@ html, body {
     position: absolute;
     width: 100%;
     height: 100%;
-    /* CORRECCIÓN VITAL: 'fill' en lugar de 'cover' para que el logo ORV no se ampute a los lados */
     object-fit: fill; 
     opacity: 0;
     transition: opacity 1s;
@@ -75,7 +71,8 @@ html, body {
     opacity: 1;
 }
 
-.boton {
+/* 5. BOTONES DE LÍNEAS PRINCIPALES */
+.boton-linea {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -83,30 +80,56 @@ html, body {
     z-index: 3;
 }
 
-/* Tus porcentajes originales intactos */
 .seguridad { top: 31%; }
 .oficina   { top: 46%; }
 .marcaje   { top: 61%; }
 .escolar   { top: 76%; }
 
-.boton img {
+.boton-linea img {
     width: 100%;
     display: block;
 }
 
-.enlaces {
+/* 6. NUEVOS BOTONES PERIFÉRICOS CON CONTROL DE PROPORCIÓN */
+.btn-periferico {
     position: absolute;
-    left: 10px;
-    bottom: 10px;
     z-index: 4;
 }
 
-.enlaces a {
+.btn-periferico img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     display: block;
-    color: white;
-    text-decoration: none;
-    font-family: sans-serif;
-    margin-bottom: 5px;
+}
+
+/* Posición y dimensiones basadas estrictamente en píxeles y ubicación de captura */
+.ayuda {
+    top: 24.5%;
+    left: 4%;
+    width: 14%;
+    aspect-ratio: 182 / 178;
+}
+
+.inicio {
+    bottom: 2%;
+    left: 4%;
+    width: 13%;
+    aspect-ratio: 168 / 168;
+}
+
+.logo-obm {
+    bottom: 1.5%;
+    left: 28%;
+    width: 44%;
+    aspect-ratio: 836 / 213;
+}
+
+.lo-nuevo {
+    bottom: 2%;
+    right: 4%;
+    width: 20%;
+    aspect-ratio: 260 / 148;
 }
 </style>
 </head>
@@ -122,22 +145,34 @@ html, body {
         <img src="imagenes/banners/ImagBannerCategorias04.webp" class="slide">
     </div>
     
-    <a href="seguridad.html" class="boton seguridad">
-        <img src="imagenes/botones/ImagBotLineaSeguridad.webp" alt="">
+    <a href="seguridad.html" class="boton-linea seguridad">
+        <img src="imagenes/botones/ImagBotLineaSeguridad.webp" alt="Línea Seguridad">
     </a>
-    <a href="oficina.html" class="boton oficina">
-        <img src="imagenes/botones/ImagBotLineaOficina.webp" alt="">
+    <a href="oficina.html" class="boton-linea oficina">
+        <img src="imagenes/botones/ImagBotLineaOficina.webp" alt="Línea Oficina">
     </a>
-    <a href="marcaje.html" class="boton marcaje">
-        <img src="imagenes/botones/ImagBotLineaMarcaje.webp" alt="">
+    <a href="marcaje.html" class="boton-linea marcaje">
+        <img src="imagenes/botones/ImagBotLineaMarcaje.webp" alt="Línea Marcaje">
     </a>
-    <a href="escolar.html" class="boton escolar">
-        <img src="imagenes/botones/ImagBotLineaEscolar.webp" alt="">
+    <a href="escolar.html" class="boton-linea escolar">
+        <img src="imagenes/botones/ImagBotLineaEscolar.webp" alt="Línea Escolar">
     </a>
     
-    <div class="enlaces">
-        <a href="index.html">Inicio</a>
-    </div>
+    <a href="ImagInfoAyuda.html" class="btn-periferico ayuda" title="Ayuda">
+        <img src="imagenes/botones/ImagBtnAyuda.webp" alt="Ayuda">
+    </a>
+    
+    <a href="index.html" class="btn-periferico inicio" title="Inicio">
+        <img src="imagenes/botones/ImagBtnInicio.webp" alt="Inicio">
+    </a>
+    
+    <a href="https://oscarbecerramultimedia.github.io/Business-Card-Smart/" class="btn-periferico logo-obm" target="_blank" title="OBM Multimedia">
+        <img src="imagenes/botones/ImagBotLogoOBM.webp" alt="Logo OBM">
+    </a>
+    
+    <a href="index.html" class="btn-periferico lo-nuevo" title="Lo Nuevo">
+        <img src="imagenes/botones/ImagBtnLoNuevo.webp" alt="Lo Nuevo">
+    </a>
 </div>
 
 <script>
