@@ -116,4 +116,63 @@ html, body {
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-/* MÁSCARA DE DESVANEC
+/* MÁSCARA DE DESVANECIMIENTO VISUAL DISCRETA */
+.contenedor::after {
+    content: "";
+    position: absolute;
+    bottom: 17%; /* Se ubica exactamente sobre el límite de las pegatinas */
+    left: 10%;
+    width: 80%;
+    height: 45px; /* Altura de la transición de transparencia */
+    /* Degradado que pasa de transparente al azul degradado de la base del fondo */
+    background: linear-gradient(to bottom, rgba(74, 145, 210, 0) 0%, rgba(57, 117, 186, 0.9) 100%);
+    pointer-events: none; /* Evita bloquear las pulsaciones táctiles del usuario */
+    z-index: 3;
+}
+
+/* 6. ZONAS ACTIVAS INVISIBLES SOBRE LAS PEGATINAS */
+.zona-activa {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    cursor: pointer;
+}
+
+/* Distribución de botones invisibles */
+.zona-inicio    { left: 0%;   width: 25%; }
+.zona-oficina   { left: 25%;  width: 25%; }
+.zona-marcaje   { left: 50%;  width: 25%; }
+.zona-escolar   { left: 75%;  width: 25%; }
+</style>
+</head>
+<body>
+
+<div class="contenedor">
+    <img class="fondo" src="imagenes/fondos/ImagFondoSeguridad.webp" alt="Fondo">
+    
+    <img class="banner" src="imagenes/banners/ImagBannerSeguridad.webp" alt="Línea Seguridad">
+    
+    <div class="lista-productos">
+        <a href="seguridad-ze101.html" class="producto-enlace">Contador De Monedas</a>
+        <a href="seguridad-ze102.html" class="producto-enlace">Contador De Billetes</a>
+        <a href="seguridad-ze104.html" class="producto-enlace">Detector De Billetes</a>
+        <a href="seguridad-caja.html" class="producto-enlace">Caja Menor Metalica</a>
+        <a href="seguridad-cajafuerte.html" class="producto-enlace">Caja Fuerte</a>
+        <a href="seguridad-relojpersonal.html" class="producto-enlace">Reloj Control De Personal</a>
+        <a href="seguridad-relojcorresp.html" class="producto-enlace">Reloj Control De Correspondencia</a>
+        <a href="seguridad-protector.html" class="producto-enlace">Protector De Cheques</a>
+        <a href="seguridad-destructora.html" class="producto-enlace">Destructora De Documentos</a>
+    </div>
+    
+    <div class="barra-navegacion-unica">
+        <img src="imagenes/botones/TiraPegatinasCompleta.webp" class="tira-pegatinas-img" alt="Navegación">
+        
+        <a href="categorias.html" class="zona-activa zona-inicio" title="Inicio"></a>
+        <a href="oficina.html" class="zona-activa zona-oficina" title="Oficina"></a>
+        <a href="marcaje.html" class="zona-activa zona-marcaje" title="Marcaje"></a>
+        <a href="escolar.html" class="zona-activa zona-escolar" title="Escolar"></a>
+    </div>
+</div>
+
+</body>
+</html>
