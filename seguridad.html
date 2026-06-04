@@ -79,55 +79,27 @@ html, body {
     display: block;
 }
 
-/* 5. LISTADO DE PRODUCTOS (CON SCROLL DISCRETO) */
+/* 5. LISTADO DE PRODUCTOS (EXTENDIDO Y COMPACTO) */
 .lista-productos {
     position: absolute;
-    top: 23%;            
+    top: 23%;            /* Subido hasta el borde de la línea roja */
     left: 10%;
     width: 80%;
-    height: 60%;         
+    height: 60%;         /* Extensión vertical hacia arriba */
     overflow-y: auto !important; 
     z-index: 3;
     font-family: sans-serif;
-
-    /* Oculta barra estándar en Firefox manteniendo funcionalidad */
-    scrollbar-width: thin;
-    scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
-}
-
-/* Barra de scroll de 4px para Android/Chrome */
-.lista-productos::-webkit-scrollbar {
-    width: 4px;
-}
-
-.lista-productos::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.15); 
-    border-radius: 4px;
 }
 
 .producto-enlace {
     display: block;
-    padding: 6px 0;      
-    margin-bottom: 2px;  
+    padding: 6px 0;      /* Interlineado reducido para compactar la lista */
+    margin-bottom: 2px;  /* Distancia minimizada entre textos */
     color: #1a253c;
     text-decoration: none;
-    font-size: 6.5cqw;   
+    font-size: 6.5cqw;   /* Tamaño grande en Android */
     font-weight: bold;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-/* MÁSCARA DE DESVANECIMIENTO VISUAL DISCRETA */
-.contenedor::after {
-    content: "";
-    position: absolute;
-    bottom: 17%; /* Se ubica exactamente sobre el límite de las pegatinas */
-    left: 10%;
-    width: 80%;
-    height: 45px; /* Altura de la transición de transparencia */
-    /* Degradado que pasa de transparente al azul degradado de la base del fondo */
-    background: linear-gradient(to bottom, rgba(74, 145, 210, 0) 0%, rgba(57, 117, 186, 0.9) 100%);
-    pointer-events: none; /* Evita bloquear las pulsaciones táctiles del usuario */
-    z-index: 3;
 }
 
 /* 6. ZONAS ACTIVAS INVISIBLES SOBRE LAS PEGATINAS */
