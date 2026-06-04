@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Información de Ayuda</title>
+<style>
+/* 1. RESET Y BASE GENERAL */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100dvh;
+    overflow: hidden;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 2. CONTENEDOR MAESTRO ESCALABLE */
+.contenedor {
+    position: relative;
+    width: 100vw;
+    height: 100dvh;
+    overflow: hidden;
+    container-type: size;
+}
+
+/* 3. REGLA PARA ESCRITORIO (Monitores) */
+@media (min-width: 768px) {
+    .contenedor {
+        height: 100dvh;
+        width: calc(100dvh * 540 / 1200); 
+        max-width: 100vw;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2); 
+    }
+}
+
+/* 4. IMAGEN DE FONDO ARTÍSTICO */
+.fondo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill; 
+    z-index: 1;
+}
+
+/* 5. BOTÓN VOLVER (Posicionado sobre el gráfico "Volver") */
+.btn-volver {
+    position: absolute;
+    top: 2%;                /* Ubicación vertical en la zona superior derecha */
+    right: 4%;              /* Alineación con el margen derecho */
+    width: 20%;             /* Ancho inicial para ajuste manual */
+    z-index: 2;
+}
+
+.btn-volver img {
+    width: 100%;
+    display: block;
+}
+</style>
+</head>
+<body>
+
+<div class="contenedor">
+    <img class="fondo" src="imagenes/botones/ImagInfoAyuda.webp" alt="Información de Ayuda">
+    
+    <a href="categorias.html" class="btn-volver" title="Volver">
+        <img src="imagenes/botones/ImagBtnVolver.webp" alt="Volver">
+    </a>
+</div>
+
+</body>
+</html>
