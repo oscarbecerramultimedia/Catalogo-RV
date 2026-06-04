@@ -24,6 +24,7 @@ html, body {
     width: 100vw;
     height: 100dvh;
     overflow: hidden;
+    container-type: size;
 }
 
 /* 3. REGLA PARA ESCRITORIO (Se activa en monitores) */
@@ -43,9 +44,9 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    /* LA CORRECCIÓN EXACTA: 'fill' mete toda la gráfica en la pantalla sin recortes */
     object-fit: fill;
     display: block;
+    z-index: 1;
 }
 
 .boton-catalogo {
@@ -62,14 +63,39 @@ html, body {
     height: auto;
     display: block;
 }
+
+/* 5. NUEVO BOTÓN PERIFÉRICO (Logo OBM idéntico a categorias.html) */
+.btn-periferico {
+    position: absolute;
+    z-index: 4;
+}
+
+.btn-periferico img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.logo-obm {
+    bottom: 0%;
+    left: 24%;
+    width: 60%;
+    aspect-ratio: 836 / 213;
+}
 </style>
 </head>
 <body>
 
 <div class="contenedor">
     <img class="fondo" src="imagenes/fondos/ImagFondoPortada.webp" alt="Portada">
+    
     <a href="categorias.html" class="boton-catalogo">
         <img src="imagenes/botones/ImagBotPortada.webp" alt="Catálogo">
+    </a>
+
+    <a href="https://oscarbecerramultimedia.github.io/Business-Card-Smart/" class="btn-periferico logo-obm" target="_blank" title="OBM Multimedia">
+        <img src="imagenes/botones/ImagBotLogoOBM.webp" alt="Logo OBM">
     </a>
 </div>
 
