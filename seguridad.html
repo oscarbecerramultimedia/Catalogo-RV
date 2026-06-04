@@ -79,7 +79,7 @@ html, body {
     display: block;
 }
 
-/* 5. LISTADO DE PRODUCTOS (EXTENDIDO Y COMPACTO) */
+/* 5. LISTADO DE PRODUCTOS (CON SCROLLBAR CIAN PERMANENTE) */
 .lista-productos {
     position: absolute;
     top: 23%;            /* Subido hasta el borde de la línea roja */
@@ -89,6 +89,25 @@ html, body {
     overflow-y: auto !important; 
     z-index: 3;
     font-family: sans-serif;
+
+    /* Forzar visibilidad sutil en Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 255, 255, 0.35) transparent;
+}
+
+/* Configuración de barra permanente y sutil con color #00ffff para Android/WebKit */
+.lista-productos::-webkit-scrollbar {
+    width: 4px;
+    display: block !important;
+}
+
+.lista-productos::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.lista-productos::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 255, 255, 0.35);
+    border-radius: 4px;
 }
 
 .producto-enlace {
