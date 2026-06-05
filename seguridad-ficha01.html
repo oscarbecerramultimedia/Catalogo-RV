@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Línea Seguridad y Biométricos</title>
+<title>Contador de Monedas y Billetes</title>
+
 <style>
-/* 1. RESET Y BASE GENERAL */
 html, body {
     margin: 0;
     padding: 0;
@@ -18,167 +18,157 @@ html, body {
     align-items: center;
 }
 
-/* 2. CONTENEDOR MAESTRO ESCALABLE */
 .contenedor {
     position: relative;
     width: 100vw;
     height: 100dvh;
     overflow: hidden;
-    container-type: size;
 }
 
-/* 3. REGLA PARA ESCRITORIO */
 @media (min-width: 768px) {
     .contenedor {
         height: 100dvh;
-        width: calc(100dvh * 540 / 1200); 
+        width: calc(100dvh * 540 / 1200);
         max-width: 100vw;
-        box-shadow: 0 0 15px rgba(0,0,0,0.2); 
-    }
-    
-    .producto-enlace {
-        font-size: 22px !important; 
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
     }
 }
 
-/* 4. ELEMENTOS GRÁFICOS ESTRUCTURALES */
 .fondo {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: fill; 
+    object-fit: fill;
     z-index: 1;
 }
 
-.banner {
+.indice {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 1%;
+    left: 1%;
+    width: 12%;
+    z-index: 5;
+}
+
+.ayuda {
+    position: absolute;
+    top: 1%;
+    right: 1%;
+    width: 5%;
+    z-index: 5;
+}
+
+.whatsapp {
+    position: absolute;
+    top: 37%;
+    left: 1%;
+    width: 8%;
+    z-index: 5;
+}
+
+.indice img,
+.ayuda img,
+.whatsapp img {
     width: 100%;
-    height: 23%; 
-    object-fit: fill;
-    z-index: 2;
+    display: block;
+}
+
+.monedas {
+    position: absolute;
+    top: 16%;
+    left: 8%;
+    width: 84%;
+    z-index: 3;
+}
+
+.billetes {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    width: 90%;
+    z-index: 3;
+}
+
+.monedas img,
+.billetes img {
+    width: 100%;
+    display: block;
 }
 
 .barra-navegacion-unica {
     position: absolute;
-    bottom: 0%;        
-    left: 0%;          
-    width: 100%;       
-    height: 17%;       
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 17%;
     z-index: 4;
 }
 
 .tira-pegatinas-img {
     width: 100%;
     height: 100%;
-    object-fit: fill; 
+    object-fit: fill;
     display: block;
 }
 
-/* 5. LISTADO DE PRODUCTOS */
-.lista-productos {
-    position: absolute;
-    top: 23%;            
-    left: 10%;
-    width: 80%;
-    height: 60%;         
-    overflow-y: auto !important; 
-    z-index: 3;
-    font-family: sans-serif;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(0, 255, 255, 0.35) transparent;
-}
-
-.lista-productos::-webkit-scrollbar {
-    width: 4px;
-    display: block !important;
-}
-
-.lista-productos::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.lista-productos::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 255, 255, 0.35);
-    border-radius: 4px;
-}
-
-.producto-enlace {
-    display: block;
-    padding: 6px 0;      
-    margin-bottom: 2px;  
-    color: #1a253c;
-    text-decoration: none;
-    font-size: 6.5cqw;   
-    font-weight: bold;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-/* 6. BOTÓN VOLVER */
-.btn-volver {
-    position: absolute;
-    top: 24%;
-    left: 2%;
-    width: 8%;           
-    z-index: 4;
-}
-
-.btn-volver img {
-    width: 100%;
-    display: block;
-}
-
-/* 7. ZONAS ACTIVAS */
 .zona-activa {
     position: absolute;
     top: 0;
     height: 100%;
-    cursor: pointer;
 }
 
-.zona-inicio    { left: 0%;   width: 25%; }
-.zona-oficina   { left: 25%;  width: 25%; }
-.zona-marcaje   { left: 50%;  width: 25%; }
-.zona-escolar   { left: 75%;  width: 25%; }
+.zona-inicio   { left: 0%;  width: 25%; }
+.zona-oficina  { left: 25%; width: 25%; }
+.zona-marcaje  { left: 50%; width: 25%; }
+.zona-escolar  { left: 75%; width: 25%; }
+
 </style>
 </head>
+
 <body>
 
 <div class="contenedor">
-    <img class="fondo" src="imagenes/fondos/ImagFondoSeguridad.webp" alt="Fondo">
-    
-    <img class="banner" src="imagenes/banners/ImagBannerSeguridad.webp" alt="Línea Seguridad">
-    
-    <div class="lista-productos">
-        <!-- ENLACES CORREGIDOS DIRECTOS HACIA SEGURIDAD-FICHA01.HTML -->
-        <a href="seguridad-ficha01.html" class="producto-enlace">Contador De Monedas</a>
-        <a href="seguridad-ficha01.html" class="producto-enlace">Contador De Billetes</a>
-        
-        <!-- Resto del listado de la línea -->
-        <a href="seguridad-ficha02.html" class="producto-enlace">Detector De Billetes</a>
-        <a href="seguridad-ficha03.html" class="producto-enlace">Caja Menor Metalica</a>
-        <a href="seguridad-ficha04.html" class="producto-enlace">Caja Fuerte</a>
-        <a href="seguridad-ficha05.html" class="producto-enlace">Reloj Control De Personal</a>
-        <a href="seguridad-ficha06.html" class="producto-enlace">Reloj Control De Correspondencia</a>
-        <a href="seguridad-ficha07.html" class="producto-enlace">Protector De Cheques</a>
-        <a href="seguridad-ficha08.html" class="producto-enlace">Destructora De Documentos</a>
+
+    <img class="fondo"
+         src="imagenes/fondos/FondoSegrFich01.webp"
+         alt="Fondo">
+
+    <a href="seguridad.html" class="indice">
+        <img src="imagenes/botones/BtnIndice.webp" alt="Índice">
+    </a>
+
+    <a href="ImagInfoAyuda.html" class="ayuda">
+        <img src="imagenes/botones/BtnAyuda.webp" alt="Ayuda">
+    </a>
+
+    <a href="https://wa.me/573124899581" class="whatsapp" target="_blank">
+        <img src="imagenes/botones/BtnWts.webp" alt="WhatsApp">
+    </a>
+
+    <div class="monedas">
+        <img src="imagenes/productos/ConDeMndsZE-101.webp"
+             alt="Contador de Monedas">
     </div>
 
-    <a href="categorias.html" class="btn-volver" title="Volver">
-        <img src="imagenes/botones/ImagBtnVolver.webp" alt="Volver">
-    </a>
-    
-    <div class="barra-navegacion-unica">
-        <img src="imagenes/botones/TiraPegatinasCompleta.webp" class="tira-pegatinas-img" alt="Navegación">
-        
-        <a href="categorias.html" class="zona-activa zona-inicio" title="Inicio"></a>
-        <a href="oficina.html" class="zona-activa zona-oficina" title="Oficina"></a>
-        <a href="marcaje.html" class="zona-activa zona-marcaje" title="Marcaje"></a>
-        <a href="escolar.html" class="zona-activa zona-escolar" title="Escolar"></a>
+    <div class="billetes">
+        <img src="imagenes/productos/ConDeBlitsZE-102.webp"
+             alt="Contador de Billetes">
     </div>
+
+    <div class="barra-navegacion-unica">
+
+        <img src="imagenes/botones/TiraPegatinasCompleta.webp"
+             class="tira-pegatinas-img"
+             alt="Navegación">
+
+        <a href="categorias.html" class="zona-activa zona-inicio"></a>
+        <a href="oficina.html" class="zona-activa zona-oficina"></a>
+        <a href="marcaje.html" class="zona-activa zona-marcaje"></a>
+        <a href="escolar.html" class="zona-activa zona-escolar"></a>
+
+    </div>
+
 </div>
 
 </body>
