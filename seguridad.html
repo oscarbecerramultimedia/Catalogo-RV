@@ -42,7 +42,7 @@ html, body {
     }
 }
 
-/* 4. TRES ELEMENTOS GRÁFICOS ESTRUCTURALES */
+/* 4. ELEMENTOS GRÁFICOS ESTRUCTURALES */
 .fondo {
     position: absolute;
     top: 0;
@@ -121,7 +121,21 @@ html, body {
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-/* 6. ZONAS ACTIVAS INVISIBLES SOBRE LAS PEGATINAS */
+/* 6. NUEVO BOTÓN VOLVER PERIFÉRICO */
+.btn-volver {
+    position: absolute;
+    top: 24%;
+    left: 2%;
+    width: 8%;           /* Mismo ancho proporcional que el botón de ayuda */
+    z-index: 4;
+}
+
+.btn-volver img {
+    width: 100%;
+    display: block;
+}
+
+/* 7. ZONAS ACTIVAS INVISIBLES SOBRE LAS PEGATINAS */
 .zona-activa {
     position: absolute;
     top: 0;
@@ -154,6 +168,10 @@ html, body {
         <a href="seguridad-protector.html" class="producto-enlace">Protector De Cheques</a>
         <a href="seguridad-destructora.html" class="producto-enlace">Destructora De Documentos</a>
     </div>
+
+    <a href="categorias.html" class="btn-volver" title="Volver">
+        <img src="imagenes/botones/ImagBtnVolver.webp" alt="Volver">
+    </a>
     
     <div class="barra-navegacion-unica">
         <img src="imagenes/botones/TiraPegatinasCompleta.webp" class="tira-pegatinas-img" alt="Navegación">
