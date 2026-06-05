@@ -23,6 +23,7 @@ html, body {
     width: 100vw;
     height: 100dvh;
     overflow: hidden;
+    container-type: size;
 }
 
 @media (min-width: 768px) {
@@ -36,7 +37,8 @@ html, body {
 
 .fondo {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: fill;
@@ -116,13 +118,13 @@ html, body {
     position: absolute;
     top: 0;
     height: 100%;
+    cursor: pointer;
 }
 
-.zona-inicio   { left: 0%;  width: 25%; }
-.zona-oficina  { left: 25%; width: 25%; }
-.zona-marcaje  { left: 50%; width: 25%; }
-.zona-escolar  { left: 75%; width: 25%; }
-
+.zona-inicio { left: 0%; width: 25%; }
+.zona-oficina { left: 25%; width: 25%; }
+.zona-marcaje { left: 50%; width: 25%; }
+.zona-escolar { left: 75%; width: 25%; }
 </style>
 </head>
 
@@ -130,43 +132,35 @@ html, body {
 
 <div class="contenedor">
 
-    <img class="fondo"
-         src="imagenes/fondos/FondoSegrFich01.webp"
-         alt="Fondo">
+    <img class="fondo" src="imagenes/fondos/FondoSegrFich01.webp" alt="Fondo">
 
-    <a href="seguridad.html" class="indice">
+    <a href="seguridad.html" class="indice" title="Índice">
         <img src="imagenes/botones/BtnIndice.webp" alt="Índice">
     </a>
 
-    <a href="ImagInfoAyuda.html" class="ayuda">
+    <a href="ImagInfoAyuda.html" class="ayuda" title="Ayuda">
         <img src="imagenes/botones/BtnAyuda.webp" alt="Ayuda">
     </a>
 
-    <a href="https://wa.me/573124899581" class="whatsapp" target="_blank">
+    <a href="https://wa.me/573124899581" class="whatsapp" target="_blank" title="WhatsApp">
         <img src="imagenes/botones/BtnWts.webp" alt="WhatsApp">
     </a>
 
     <div class="monedas">
-        <img src="imagenes/productos/ConDeMndsZE-101.webp"
-             alt="Contador de Monedas">
+        <img src="imagenes/productos/ConDeMndsZE-101.webp" alt="Contador de Monedas">
     </div>
 
     <div class="billetes">
-        <img src="imagenes/productos/ConDeBlitsZE-102.webp"
-             alt="Contador de Billetes">
+        <img src="imagenes/productos/ConDeBlitsZE-102.webp" alt="Contador de Billetes">
     </div>
 
     <div class="barra-navegacion-unica">
+        <img src="imagenes/botones/TiraPegatinasCompleta.webp" class="tira-pegatinas-img" alt="Navegación">
 
-        <img src="imagenes/botones/TiraPegatinasCompleta.webp"
-             class="tira-pegatinas-img"
-             alt="Navegación">
-
-        <a href="categorias.html" class="zona-activa zona-inicio"></a>
-        <a href="oficina.html" class="zona-activa zona-oficina"></a>
-        <a href="marcaje.html" class="zona-activa zona-marcaje"></a>
-        <a href="escolar.html" class="zona-activa zona-escolar"></a>
-
+        <a href="categorias.html" class="zona-activa zona-inicio" title="Inicio"></a>
+        <a href="oficina.html" class="zona-activa zona-oficina" title="Oficina"></a>
+        <a href="marcaje.html" class="zona-activa zona-marcaje" title="Marcaje"></a>
+        <a href="escolar.html" class="zona-activa zona-escolar" title="Escolar"></a>
     </div>
 
 </div>
