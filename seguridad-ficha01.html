@@ -6,6 +6,7 @@
 <title>Contador de Monedas y Billetes</title>
 
 <style>
+/* 1. RESET Y BASE GENERAL */
 html, body {
     margin: 0;
     padding: 0;
@@ -18,6 +19,7 @@ html, body {
     align-items: center;
 }
 
+/* 2. CONTENEDOR MAESTRO ESCALABLE (540x1200) */
 .contenedor {
     position: relative;
     width: 100vw;
@@ -35,6 +37,7 @@ html, body {
     }
 }
 
+/* 3. FONDO */
 .fondo {
     position: absolute;
     top: 0;
@@ -45,27 +48,31 @@ html, body {
     z-index: 1;
 }
 
+/* 4. BOTONES PERIFÉRICOS (Ajuste estricto de aspecto) */
 .indice {
     position: absolute;
-    top: 1%;
-    left: 1%;
-    width: 12%;
+    top: 1.5%;
+    left: 3%;
+    width: 16%;
+    aspect-ratio: 600 / 596;
     z-index: 5;
 }
 
 .ayuda {
     position: absolute;
-    top: 1%;
-    right: 1%;
+    top: 4.5%;
+    right: 4%;
     width: 5%;
+    aspect-ratio: 100 / 142;
     z-index: 5;
 }
 
 .whatsapp {
     position: absolute;
-    top: 37%;
-    left: 1%;
-    width: 8%;
+    top: 34%;
+    left: 2%;
+    width: 16%;
+    aspect-ratio: 700 / 1040;
     z-index: 5;
 }
 
@@ -73,31 +80,39 @@ html, body {
 .ayuda img,
 .whatsapp img {
     width: 100%;
+    height: 100%;
+    object-fit: contain;
     display: block;
 }
 
+/* 5. IMÁGENES DE PRODUCTOS (Ubicación centralizada) */
 .monedas {
     position: absolute;
-    top: 16%;
-    left: 8%;
-    width: 84%;
+    top: 9%;
+    left: 6%;
+    width: 82%;
+    aspect-ratio: 501 / 236;
     z-index: 3;
 }
 
 .billetes {
     position: absolute;
-    top: 50%;
+    top: 47%;
     left: 5%;
-    width: 90%;
+    width: 88%;
+    aspect-ratio: 510 / 296;
     z-index: 3;
 }
 
 .monedas img,
 .billetes img {
     width: 100%;
+    height: 100%;
+    object-fit: contain;
     display: block;
 }
 
+/* 6. BARRA DE NAVEGACIÓN INFERIOR COINCIDENTE */
 .barra-navegacion-unica {
     position: absolute;
     bottom: 0;
