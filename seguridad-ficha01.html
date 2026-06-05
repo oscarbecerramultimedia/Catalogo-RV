@@ -27,7 +27,7 @@ html, body {
     container-type: size;
 }
 
-/* 3. REGLA PARA ESCRITORIO (Monitores) */
+/* 3. REGLA PARA ESCRITORIO */
 @media (min-width: 768px) {
     .contenedor {
         height: 100dvh;
@@ -78,7 +78,7 @@ html, body {
     display: block;
 }
 
-/* 5. LISTADO DE PRODUCTOS (CON SCROLLBAR CIAN PERMANENTE) */
+/* 5. LISTADO DE PRODUCTOS */
 .lista-productos {
     position: absolute;
     top: 23%;            
@@ -88,7 +88,6 @@ html, body {
     overflow-y: auto !important; 
     z-index: 3;
     font-family: sans-serif;
-
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 255, 255, 0.35) transparent;
 }
@@ -118,7 +117,7 @@ html, body {
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-/* 6. BOTÓN VOLVER PERIFÉRICO */
+/* 6. BOTÓN VOLVER */
 .btn-volver {
     position: absolute;
     top: 24%;
@@ -132,7 +131,7 @@ html, body {
     display: block;
 }
 
-/* 7. ZONAS ACTIVAS INVISIBLES SOBRE LAS PEGATINAS */
+/* 7. ZONAS ACTIVAS */
 .zona-activa {
     position: absolute;
     top: 0;
@@ -154,8 +153,11 @@ html, body {
     <img class="banner" src="imagenes/banners/ImagBannerSeguridad.webp" alt="Línea Seguridad">
     
     <div class="lista-productos">
+        <!-- ENLACES CORREGIDOS DIRECTOS HACIA SEGURIDAD-FICHA01.HTML -->
         <a href="seguridad-ficha01.html" class="producto-enlace">Contador De Monedas</a>
         <a href="seguridad-ficha01.html" class="producto-enlace">Contador De Billetes</a>
+        
+        <!-- Resto del listado de la línea -->
         <a href="seguridad-ficha02.html" class="producto-enlace">Detector De Billetes</a>
         <a href="seguridad-ficha03.html" class="producto-enlace">Caja Menor Metalica</a>
         <a href="seguridad-ficha04.html" class="producto-enlace">Caja Fuerte</a>
