@@ -1,32 +1,182 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Seguridad - Ficha 04</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caja Menor y Caja Fuerte</title>
+
+<style>
+/* 1. RESET Y BASE GENERAL */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100dvh;
+    overflow: hidden;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 2. CONTENEDOR MAESTRO ESCALABLE */
+.contenedor {
+    position: relative;
+    width: 100vw;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+/* REGLA PARA ESCRITORIO (Monitores) */
+@media (min-width: 768px) {
+    .contenedor {
+        height: 100dvh;
+        width: calc(100dvh * 540 / 1200);
+        max-width: 100vw;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+}
+
+/* 3. FONDO */
+.fondo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    z-index: 1;
+}
+
+/* 4. BOTONES PERIFÉRICOS CON Z-INDEX ALTO */
+.indice {
+    position: absolute;
+    top: 1%;
+    left: 1%;
+    width: 14%;
+    z-index: 5;
+}
+
+.ayuda {
+    position: absolute;
+    top: 5.5%;
+    right: 1.5%;
+    width: 4.5%;
+    z-index: 5;
+}
+
+.whatsapp {
+    position: absolute;
+    top: 34.5%;
+    right: 1%;
+    width: 24%;
+    z-index: 5;
+}
+
+.indice img,
+.ayuda img,
+.whatsapp img {
+    width: 100%;
+    display: block;
+}
+
+/* 5. BLOQUES DE PRODUCTOS ESTÁTICOS (2 PRODUCTOS) */
+.caja-menor {
+    position: absolute;
+    top: 12%;
+    left: 5%;
+    width: 90%;
+    z-index: 3;
+}
+
+.caja-fuerte {
+    position: absolute;
+    top: 49.5%;
+    left: 5%;
+    width: 89%;
+    z-index: 3;
+}
+
+.caja-menor img,
+.caja-fuerte img {
+    width: 100%;
+    display: block;
+}
+
+/* 6. BARRA DE NAVEGACIÓN ÚNICA */
+.barra-navegacion-unica {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 17%;
+    z-index: 4;
+}
+
+.tira-pegatinas-img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    display: block;
+}
+
+.zona-activa {
+    position: absolute;
+    top: 0;
+    height: 100%;
+}
+
+.zona-inicio   { left: 0%;  width: 25%; }
+.zona-oficina  { left: 25%; width: 25%; }
+.zona-marcaje  { left: 50%; width: 25%; }
+.zona-escolar  { left: 75%; width: 25%; }
+
+</style>
 </head>
+
 <body>
 
-<h1>RELOJ CONTROL DE PERSONAL</h1>
-<p>Aquí irá la imagen del producto.</p>
+<div class="contenedor">
 
-<hr>
+    <img class="fondo"
+         src="imagenes/fondos/FondoSegrFich04.webp"
+         alt="Fondo">
 
-<h1>RELOJ CONTROL DE CORRESPONDENCIA</h1>
-<p>Aquí irá la imagen del producto.</p>
+    <a href="seguridad.html" class="indice" title="Volver al índice">
+        <img src="imagenes/botones/BtnVerLista.webp" alt="Índice">
+    </a>
 
-<hr>
+    <a href="ImagInfoAyuda.html" class="ayuda" title="Ayuda">
+        <img src="imagenes/botones/BtnAyuda.webp" alt="Ayuda">
+    </a>
 
-<p><a href="index.html">Inicio</a></p>
+    <a href="https://wa.me/573124899581" class="whatsapp" target="_blank" title="Contacto WhatsApp">
+        <img src="imagenes/botones/BtnWtsDerecha.webp" alt="WhatsApp">
+    </a>
 
-<p><a href="categorias.html">Productos de Oficina</a></p>
+    <div class="caja-menor">
+        <img src="imagenes/productos/CajaMenorZE-108.webp"
+             alt="Caja Menor Metálica ZE-108">
+    </div>
 
-<p><a href="seguridad.html">Seguridad y Biométricos</a></p>
+    <div class="caja-fuerte">
+        <img src="imagenes/productos/CajaFuerte-ZE109.webp"
+             alt="Caja Fuerte ZE-109">
+    </div>
 
-<p><a href="oficina.html">Línea Oficina</a></p>
+    <div class="barra-navegacion-unica">
 
-<p><a href="marcaje.html">Línea Marcaje</a></p>
+        <img src="imagenes/botones/TiraPegatinasCompleta.webp"
+             class="tira-pegatinas-img"
+             alt="Navegación">
 
-<p><a href="escolar.html">Línea Escolar</a></p>
+        <a href="seguridad.html" class="zona-activa zona-inicio" title="Inicio"></a>
+        <a href="oficina.html" class="zona-activa zona-oficina" title="Oficina"></a>
+        <a href="marcaje.html" class="zona-activa zona-marcaje" title="Marcaje"></a>
+        <a href="escolar.html" class="zona-activa zona-escolar" title="Escolar"></a>
 
+    </div>
+
+</div>
 
 </body>
 </html>
