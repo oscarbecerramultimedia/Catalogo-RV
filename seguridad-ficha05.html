@@ -1,22 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Seguridad - Ficha 05</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reloj de Control</title>
+    <style>
+        /* RESET Y ESTRUCTURA BASE */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100dvh;
+            overflow: hidden;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* CONTENEDOR MAESTRO (540x1200px proporcional) */
+        .contenedor-canvas {
+            position: relative;
+            width: 100vw;
+            height: 100dvh;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .contenedor-canvas {
+                height: 100dvh;
+                width: calc(100dvh * 540 / 1200); 
+                max-width: 100vw;
+                box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            }
+        }
+
+        /* FONDO GENERAL DE LA FICHA */
+        .fondo-ficha {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+            z-index: 1;
+        }
+
+        /* ELEMENTOS POSICIONADOS EN PORCENTAJES */
+        .elemento-grafico {
+            position: absolute;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        /* Producto 1: Reloj Biométrico ZE-110 (477px x 221px) */
+        .reloj-biometrico {
+            width: 88.33%;   
+            height: 18.41%;  
+            left: 5.83%;     
+            top: 11.5%;      
+        }
+
+        /* Producto 2: Contador Correspondencia ZE-111 (478px x 286px) */
+        .contador-correspondencia {
+            width: 88.51%;   
+            height: 23.83%;  
+            left: 5.74%;     
+            top: 52.5%;      
+        }
+
+        /* BOTONES INTERACTIVOS */
+        .btn-interactivo {
+            position: absolute;
+            z-index: 10;
+            cursor: pointer;
+        }
+
+        .btn-interactivo img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* Botón Regresar / Índice */
+        .btn-regresar {
+            top: 2%;
+            left: 3%;
+            width: 14%;
+            height: 6.3%;
+        }
+
+        /* Botón WhatsApp */
+        .btn-whatsapp {
+            top: 37%;
+            left: 1%;
+            width: 24%;
+            height: 10.8%; 
+        }
+    </style>
 </head>
 <body>
 
-<h1>PROTECTOR DE CHEQUES</h1>
+    <div class="contenedor-canvas">
+        
+        <img class="fondo-ficha" src="imagenes/fichas/FondoSegrFich05.webp" alt="Fondo Reloj de Control">
 
-<p>Aquí irá la imagen del producto.</p>
+        <img class="elemento-grafico reloj-biometrico" src="imagenes/productos/RelojBiometricoZE-110.webp" alt="Reloj Biométrico ZE-110">
 
-<hr>
+        <img class="elemento-grafico contador-correspondencia" src="imagenes/productos/ContadorCorrespondenciaZE-111.webp" alt="Contador Correspondencia ZE-111">
 
-<p><a href="index.html">Inicio</a></p>
-<p><a href="categorias.html">Productos de Oficina</a></p>
-<p><a href="seguridad.html">Seguridad y Biométricos</a></p>
-<p><a href="oficina.html">Línea Oficina</a></p>
-<p><a href="marcaje.html">Línea Marcaje</a></p>
-<p><a href="escolar.html">Línea Escolar</a></p>
+        <a href="seguridad.html" class="btn-interactivo btn-regresar" title="Volver al menú">
+            <img src="imagenes/botones/Btn-indice.webp" alt="Índice">
+        </a>
+
+        <a href="https://wa.me/tuNumeroDeWhatsApp" target="_blank" class="btn-interactivo btn-whatsapp" title="Consultar por WhatsApp">
+            <img src="imagenes/botones/BtnWhatsaap.webp" alt="WhatsApp">
+        </a>
+
+    </div>
 
 </body>
 </html>
