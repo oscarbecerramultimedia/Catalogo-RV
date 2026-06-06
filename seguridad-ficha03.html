@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contador de Monedas y Billetes</title>
+<title>Caja Menor y Caja Fuerte</title>
 
 <style>
+/* 1. RESET Y BASE GENERAL */
 html, body {
     margin: 0;
     padding: 0;
@@ -18,6 +19,7 @@ html, body {
     align-items: center;
 }
 
+/* 2. CONTENEDOR MAESTRO ESCALABLE */
 .contenedor {
     position: relative;
     width: 100vw;
@@ -25,6 +27,7 @@ html, body {
     overflow: hidden;
 }
 
+/* REGLA PARA ESCRITORIO (Monitores) */
 @media (min-width: 768px) {
     .contenedor {
         height: 100dvh;
@@ -34,6 +37,7 @@ html, body {
     }
 }
 
+/* 3. FONDO */
 .fondo {
     position: absolute;
     inset: 0;
@@ -43,6 +47,7 @@ html, body {
     z-index: 1;
 }
 
+/* 4. BOTONES PERIFÉRICOS CON Z-INDEX ALTO */
 .indice {
     position: absolute;
     top: 1%;
@@ -61,8 +66,8 @@ html, body {
 
 .whatsapp {
     position: absolute;
-    top: 37%;
-    left: 1%;
+    top: 21.5%;
+    right: 1%;
     width: 24%;
     z-index: 5;
 }
@@ -74,28 +79,30 @@ html, body {
     display: block;
 }
 
-.monedas {
+/* 5. BLOQUES DE PRODUCTOS ESTÁTICOS (2 PRODUCTOS) */
+.caja-menor {
     position: absolute;
-    top: 14%;
-    left: 8%;
-    width: 84%;
-    z-index: 3;
-}
-
-.billetes {
-    position: absolute;
-    top: 52%;
+    top: 10.5%;
     left: 5%;
     width: 90%;
     z-index: 3;
 }
 
-.monedas img,
-.billetes img {
+.caja-fuerte {
+    position: absolute;
+    top: 49.5%;
+    left: 5%;
+    width: 89%;
+    z-index: 3;
+}
+
+.caja-menor img,
+.caja-fuerte img {
     width: 100%;
     display: block;
 }
 
+/* 6. BARRA DE NAVEGACIÓN ÚNICA */
 .barra-navegacion-unica {
     position: absolute;
     bottom: 0;
@@ -131,29 +138,29 @@ html, body {
 <div class="contenedor">
 
     <img class="fondo"
-         src="imagenes/fondos/FondoSegrFich01.webp"
+         src="imagenes/fondos/FondoSegrFich04.webp"
          alt="Fondo">
 
-    <a href="seguridad.html" class="indice">
+    <a href="seguridad.html" class="indice" title="Volver al índice">
         <img src="imagenes/botones/BtnVerLista.webp" alt="Índice">
     </a>
 
-    <a href="ImagInfoAyuda.html" class="ayuda">
+    <a href="ImagInfoAyuda.html" class="ayuda" title="Ayuda">
         <img src="imagenes/botones/BtnAyuda.webp" alt="Ayuda">
     </a>
 
-    <a href="https://wa.me/573124899581" class="whatsapp" target="_blank">
-        <img src="imagenes/botones/BtnWts.webp" alt="WhatsApp">
+    <a href="https://wa.me/573124899581" class="whatsapp" target="_blank" title="Contacto WhatsApp">
+        <img src="imagenes/botones/BtnWtsDerecha.webp" alt="WhatsApp">
     </a>
 
-    <div class="monedas">
-        <img src="imagenes/productos/ConDeMndsZE-101.webp"
-             alt="Contador de Monedas">
+    <div class="caja-menor">
+        <img src="imagenes/productos/CajaMenorZE-108.webp"
+             alt="Caja Menor Metálica ZE-108">
     </div>
 
-    <div class="billetes">
-        <img src="imagenes/productos/ConDeBlltsZE-102.webp"
-             alt="Contador de Billetes">
+    <div class="caja-fuerte">
+        <img src="imagenes/productos/CajaFuerte-ZE109.webp"
+             alt="Caja Fuerte ZE-109">
     </div>
 
     <div class="barra-navegacion-unica">
@@ -162,10 +169,10 @@ html, body {
              class="tira-pegatinas-img"
              alt="Navegación">
 
-        <a href="seguridad.html" class="zona-activa zona-inicio"></a>
-        <a href="oficina.html" class="zona-activa zona-oficina"></a>
-        <a href="marcaje.html" class="zona-activa zona-marcaje"></a>
-        <a href="escolar.html" class="zona-activa zona-escolar"></a>
+        <a href="seguridad.html" class="zona-activa zona-inicio" title="Inicio"></a>
+        <a href="oficina.html" class="zona-activa zona-oficina" title="Oficina"></a>
+        <a href="marcaje.html" class="zona-activa zona-marcaje" title="Marcaje"></a>
+        <a href="escolar.html" class="zona-activa zona-escolar" title="Escolar"></a>
 
     </div>
 
