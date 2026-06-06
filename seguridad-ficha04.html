@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Detector de Billetes</title>
+<title>Reloj de Control</title>
 
 <style>
-/* 1. RESET Y BASE GENERAL */
 html, body {
     margin: 0;
     padding: 0;
@@ -19,7 +18,6 @@ html, body {
     align-items: center;
 }
 
-/* 2. CONTENEDOR MAESTRO ESCALABLE */
 .contenedor {
     position: relative;
     width: 100vw;
@@ -27,7 +25,6 @@ html, body {
     overflow: hidden;
 }
 
-/* REGLA PARA ESCRITORIO (Monitores) */
 @media (min-width: 768px) {
     .contenedor {
         height: 100dvh;
@@ -37,7 +34,6 @@ html, body {
     }
 }
 
-/* 3. FONDO */
 .fondo {
     position: absolute;
     inset: 0;
@@ -47,7 +43,6 @@ html, body {
     z-index: 1;
 }
 
-/* 4. BOTONES PERIFÉRICOS CON Z-INDEX ALTO */
 .indice {
     position: absolute;
     top: 1%;
@@ -66,8 +61,8 @@ html, body {
 
 .whatsapp {
     position: absolute;
-    top: 42%;
-    right: 1%;
+    top: 37%;
+    left: 1%;
     width: 24%;
     z-index: 5;
 }
@@ -79,39 +74,30 @@ html, body {
     display: block;
 }
 
-/* 5. BLOQUES DE PRODUCTOS ESTÁTICOS */
-.det-ze104 {
+/* Producto 1: Reloj Biométrico ZE-110 (477px / 540px = 88.33%) */
+.monedas {
     position: absolute;
-    top: 9.5%;
-    left: 5%;
-    width: 88%;
+    top: 11.5%;
+    left: 5.83%;
+    width: 88.33%;
     z-index: 3;
 }
 
-.det-ze105 {
+/* Producto 2: Contador Correspondencia ZE-111 (478px / 540px = 88.51%) */
+.billetes {
     position: absolute;
-    top: 28.5%;
-    left: 4.5%;
-    width: 88%;
+    top: 52.5%;
+    left: 5.74%;
+    width: 88.51%;
     z-index: 3;
 }
 
-.det-ze106 {
-    position: absolute;
-    top: 55%;
-    left: 5%;
-    width: 88%;
-    z-index: 3;
-}
-
-.det-ze104 img,
-.det-ze105 img,
-.det-ze106 img {
+.monedas img,
+.billetes img {
     width: 100%;
     display: block;
 }
 
-/* 6. BARRA DE NAVEGACIÓN ÚNICA */
 .barra-navegacion-unica {
     position: absolute;
     bottom: 0;
@@ -147,34 +133,29 @@ html, body {
 <div class="contenedor">
 
     <img class="fondo"
-         src="imagenes/fondos/FondoSegrFich03.webp"
+         src="imagenes/fondos/FondoSegrFich05.webp"
          alt="Fondo">
 
-    <a href="seguridad.html" class="indice" title="Volver al índice">
+    <a href="seguridad.html" class="indice">
         <img src="imagenes/botones/BtnVerLista.webp" alt="Índice">
     </a>
 
-    <a href="ImagInfoAyuda.html" class="ayuda" title="Ayuda">
+    <a href="ImagInfoAyuda.html" class="ayuda">
         <img src="imagenes/botones/BtnAyuda.webp" alt="Ayuda">
     </a>
 
-    <a href="https://wa.me/573124899581" class="whatsapp" target="_blank" title="Contacto WhatsApp">
-        <img src="imagenes/botones/BtnWtsDerecha.webp" alt="WhatsApp">
+    <a href="https://wa.me/573124899581" class="whatsapp" target="_blank">
+        <img src="imagenes/botones/BtnWts.webp" alt="WhatsApp">
     </a>
 
-    <div class="det-ze104">
-        <img src="imagenes/productos/DetBilletesZE-104.webp"
-             alt="Detector de Billetes ZE-104">
+    <div class="monedas">
+        <img src="imagenes/productos/RelojBiometricoZE-110.webp"
+             alt="Reloj Biométrico ZE-110">
     </div>
 
-    <div class="det-ze105">
-        <img src="imagenes/productos/DetBilletesZE-105.webp"
-             alt="Detector de Billetes ZE-105">
-    </div>
-
-    <div class="det-ze106">
-        <img src="imagenes/productos/DetBilletesZE-106.webp"
-             alt="Detector de Billetes ZE-106">
+    <div class="billetes">
+        <img src="imagenes/productos/ContadorCorrespondenciaZE-111.webp"
+             alt="Contador Correspondencia ZE-111">
     </div>
 
     <div class="barra-navegacion-unica">
@@ -183,10 +164,10 @@ html, body {
              class="tira-pegatinas-img"
              alt="Navegación">
 
-        <a href="seguridad.html" class="zona-activa zona-inicio" title="Inicio"></a>
-        <a href="oficina.html" class="zona-activa zona-oficina" title="Oficina"></a>
-        <a href="marcaje.html" class="zona-activa zona-marcaje" title="Marcaje"></a>
-        <a href="escolar.html" class="zona-activa zona-escolar" title="Escolar"></a>
+        <a href="seguridad.html" class="zona-activa zona-inicio"></a>
+        <a href="oficina.html" class="zona-activa zona-oficina"></a>
+        <a href="marcaje.html" class="zona-activa zona-marcaje"></a>
+        <a href="escolar.html" class="zona-activa zona-escolar"></a>
 
     </div>
 
