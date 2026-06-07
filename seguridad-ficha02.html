@@ -57,7 +57,7 @@ html, body {
 }
 
 /* ==========================================
-   COORDENADAS DE BOTONES SUPERIORES PERIFÉRICOS
+   COORDENADAS DE BOTONES SUPERIORES
    ========================================== */
 .indice { 
     position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
@@ -109,13 +109,6 @@ html, body {
     width: 88%;                    /* Ajusta el ancho del dibujo de la máquina */
     z-index: 3;                    /* Capa 3: Plano intermedio del dibujo */
 }
-    
-.det-ze104 img,
-.det-ze105 img,
-.det-ze106 img {
-    width: 100%;                   /* Fija el ancho de la imagen interna al 100% de su contenedor */
-    display: block;                /* Quita rebabas e imperfecciones de alineación en el bloque */
-}
 
 /* ==========================================
    MARCOS Y DIVISIONES DECORATIVAS
@@ -129,7 +122,7 @@ html, body {
 }
 
 .borde-top { 
-    top: 0%;                       /* Clava Borde azul en el extremo superior */
+    top: 0%;                       /* Clava la línea azul en el extremo superior */
 }
 
 .separador-azul { 
@@ -141,15 +134,15 @@ html, body {
 }
    
 .separador-top { 
-    top: 33%;                      /* Clava la línea azul en la sección superior del lienzo */
+    top: 27%;                      /* Clava la línea azul en la sección superior del lienzo */
 }
    
 .separador-mid { 
-    top: 60%;                      /* Clava la línea azul en la sección media del lienzo */
+    top: 50%;                      /* Clava la línea azul en la sección media del lienzo */
 }
 
 .separador-bot { 
-    top: 90%;                      /* Clava la línea azul en la sección inferior del lienzo */
+    top: 80%;                      /* Clava la línea azul en la sección inferior del lienzo */
 }
 
 /* ==========================================
@@ -166,9 +159,15 @@ html, body {
     text-align: right;             /* Justifica o alinea la rotulación hacia el lado derecho */
     white-space: nowrap;           /* Prohíbe el salto de renglón; mantiene el texto en una sola línea */
     transform-origin: right center; /* Clava el punto de anclaje en el extremo derecho antes de deformar */
-    top: 0.5%;                     /* Distancia vertical desde el techo del lienzo en Android */
+}
+
+/* ==========================================
+   AJUSTES Y GRADUACIÓN PARA ANCHOS EN ANDROID
+   ========================================== */
+.texto-detector { 
+    top: 0.5%;                     /* Distancia vertical desde el techo del lienzo */
     right: 2%;                     /* Distancia horizontal desde el marco derecho */
-    transform: scaleX(0.67);       /* Gradúa el ancho: comprime horizontalmente al 67% en Android */
+    transform: scaleX(0.68);       /* Gradúa el ancho: comprime horizontalmente al 67% en Android */
 }
 
 /* ==========================================
@@ -178,10 +177,10 @@ html, body {
     .texto-detector {
         top: 0.5%;                 /* Mantiene la distancia vertical en el escritorio de Windows */
         right: 2%;                 /* Mantiene la distancia horizontal en el escritorio de Windows */
-        transform: scaleX(0.57);   /* Ajusta ancho en Windows: comprime más horizontalmente (al 57%) */
+        transform: scaleX(0.58);   /* Ajusta ancho en Windows: comprime más horizontalmente (al 57%) */
     }
 }
-   
+
 /* ==========================================
    BARRA DE NAVEGACIÓN INFERIOR Y DIVISIONES
    ========================================== */
@@ -214,7 +213,7 @@ html, body {
 .zona-escolar { left: 75%; width: 25%; }  /* Cuadrante 4: Ocupa del 75% al 100% del ancho */
 
 /* Restringe que los dibujos internos de los botones no deformen o desborden sus marcos */
-.indice img, .ayuda img, .whatsapp img { 
+.indice img, .ayuda img, .whatsapp img, .det-ze104 img, .det-ze105 img, .det-ze106 img { 
     width: 100%;                   /* Fija el ancho de la imagen interna al 100% de su contenedor */
     display: block;                /* Quita rebabas e imperfecciones de alineación en el bloque */
 }
@@ -249,5 +248,6 @@ html, body {
         <a href="escolar.html" class="zona-activa zona-escolar"></a>
     </div>
 </div>
+
 </body>
 </html>
