@@ -6,6 +6,9 @@
 <title>Reloj de Ctrl Persl y Corr</title>
 
 <style>
+/* ==========================================
+   CONFIGURACIÓN GENERAL DEL ESCRITORIO
+   ========================================== */
 html, body {
     margin: 0;
     padding: 0;
@@ -17,14 +20,21 @@ html, body {
     justify-content: center;
     align-items: center;
 }
-        
+
+/* ==========================================
+   EL LIENZO PRINCIPAL
+   ========================================== */
 .contenedor {
     position: relative;
     width: 100vw;
     height: 100dvh;
     overflow: hidden;
+    container-type: inline-size;
 }
 
+/* ==========================================
+   AJUSTE DE PROPORCIÓN PARA ESCRITORIO (WINDOWS)
+   ========================================== */
 @media (min-width: 768px) {
     .contenedor {
         height: 100dvh;
@@ -34,6 +44,9 @@ html, body {
     }
 }
 
+/* ==========================================
+   CAPA DE FONDO
+   ========================================== */
 .fondo {
     position: absolute;
     inset: 0;
@@ -43,6 +56,9 @@ html, body {
     z-index: 1;
 }
 
+/* ==========================================
+   COORDENADAS DE BOTONES SUPERIORES
+   ========================================== */
 .indice {
     position: absolute;
     top: 1%;
@@ -67,23 +83,17 @@ html, body {
     z-index: 5;
 }
 
-.indice img,
-.ayuda img,
-.whatsapp img {
-    width: 100%;
-    display: block;
-}
-
-/* Producto 1: Reloj Biométrico ZE-110 (477px / 540px = 88.33%) */
+/* ==========================================
+   COORDENADAS DE LAS IMÁGENES DE PRODUCTOS
+   ========================================== */
 .monedas {
     position: absolute;
-    top: 11.5%;
+    top: 13%;
     left: 5.83%;
     width: 88.33%;
     z-index: 3;
 }
 
-/* Producto 2: Contador Correspondencia ZE-111 (478px / 540px = 88.51%) */
 .billetes {
     position: absolute;
     top: 52.5%;
@@ -92,12 +102,72 @@ html, body {
     z-index: 3;
 }
 
-.monedas img,
-.billetes img {
+/* ==========================================
+   MARCOS Y DIVISIONES DECORATIVAS
+   ========================================== */
+.borde-azul {
+    position: absolute;
     width: 100%;
-    display: block;
+    height: auto;
+    z-index: 4;
+    left: 0;
 }
 
+.borde-top {
+    top: 0%;
+}
+
+.borde-mid {
+    top: 39%;
+}
+
+/* ==========================================
+   REGLAS GRÁFICAS BASE PARA AMBOS TEXTOS
+   ========================================== */
+.texto-reloj-personal, .texto-reloj-correspondencia {
+    position: absolute;
+    color: #1a4d8c;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 6.5cqw;
+    z-index: 5;
+    pointer-events: none;
+    text-align: right;
+    line-height: 1.1;
+    transform-origin: right center;
+}
+
+/* ==========================================
+   AJUSTES Y GRADUACIÓN PARA ANCHOS EN ANDROID
+   ========================================== */
+.texto-reloj-personal {
+    top: 0.5%;
+    right: 2%;
+    transform: scaleX(0.70);
+}
+
+.texto-reloj-correspondencia {
+    top: 39.5%;
+    right: 2%;
+    transform: scaleX(0.70);
+}
+
+/* ==========================================
+   AJUSTES Y GRADUACIÓN PARA ANCHOS EN WINDOWS
+   ========================================== */
+@media (min-width: 768px) {
+    .texto-reloj-personal {
+        transform: scaleX(0.60);
+    }
+    
+    .texto-reloj-correspondencia {
+        transform: scaleX(0.60);
+    }
+}
+
+/* ==========================================
+   BARRA DE NAVEGACIÓN INFERIOR Y DIVISIONES
+   ========================================== */
 .barra-navegacion-unica {
     position: absolute;
     bottom: 0;
@@ -125,16 +195,17 @@ html, body {
 .zona-marcaje  { left: 50%; width: 25%; }
 .zona-escolar  { left: 75%; width: 25%; }
 
+.indice img, .ayuda img, .whatsapp img, .monedas img, .billetes img {
+    width: 100%;
+    display: block;
+}
 </style>
 </head>
 
 <body>
 
 <div class="contenedor">
-
-    <img class="fondo"
-         src="imagenes/fondos/FondoSegrFich04.webp"
-         alt="Fondo">
+    <img class="fondo" src="imagenes/fondos/fondo-linea-seguridad.webp" alt="Fondo">
 
     <a href="seguridad.html" class="indice">
         <img src="imagenes/botones/BtnVerLista.webp" alt="Índice">
@@ -148,29 +219,27 @@ html, body {
         <img src="imagenes/botones/BtnWts.webp" alt="WhatsApp">
     </a>
 
+    <img src="imagenes/fondos/borde-azul3.webp" class="borde-azul borde-top" alt="Borde Superior">
+    <img src="imagenes/fondos/borde-azul3.webp" class="borde-azul borde-mid" alt="Separador Medio">
+
+    <div class="texto-reloj-personal">RELOJ DE CONTROL<br>DE PERSONAL</div>
+    <div class="texto-reloj-correspondencia">RELOJ CONTROL DE<br>CORRESPONDENCIA</div>
+
     <div class="monedas">
-        <img src="imagenes/productos/RelojBiometricoZE-110.webp"
-             alt="Reloj Biométrico ZE-110">
+        <img src="imagenes/productos/RelojBiometricoZE-110.webp" alt="Reloj Biométrico ZE-110">
     </div>
 
     <div class="billetes">
-        <img src="imagenes/productos/ContadorCorrespondenciaZE-111.webp"
-             alt="Contador Correspondencia ZE-111">
+        <img src="imagenes/productos/ContadorCorrespondenciaZE-111.webp" alt="Contador Correspondencia ZE-111">
     </div>
 
     <div class="barra-navegacion-unica">
-
-        <img src="imagenes/botones/TiraPegatinasCompleta.webp"
-             class="tira-pegatinas-img"
-             alt="Navegación">
-
+        <img src="imagenes/botones/TiraPegatinasCompleta.webp" class="tira-pegatinas-img" alt="Navegación">
         <a href="seguridad.html" class="zona-activa zona-inicio"></a>
         <a href="oficina.html" class="zona-activa zona-oficina"></a>
         <a href="marcaje.html" class="zona-activa zona-marcaje"></a>
         <a href="escolar.html" class="zona-activa zona-escolar"></a>
-
     </div>
-
 </div>
 
 </body>
