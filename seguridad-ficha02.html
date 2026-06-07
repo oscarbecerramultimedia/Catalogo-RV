@@ -137,36 +137,45 @@ html, body {
 }
 
     
-    
 
-
-/* 6. BARRA DE NAVEGACIÓN ÚNICA */
-.barra-navegacion-unica {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 17%;
-    z-index: 4;
+/* ==========================================
+   BARRA DE NAVEGACIÓN INFERIOR Y DIVISIONES
+   ========================================== */
+.barra-navegacion-unica { 
+    position: absolute;            /* Clava la barra en coordenadas fijas dentro del lienzo */
+    bottom: 0;                     /* Alínea y clava la base del dibujo con el suelo del lienzo */
+    left: 0;                       /* Alínea el inicio con la pared izquierda del lienzo */
+    width: 100%;                   /* Extiende el ancho al 100% del lienzo */
+    height: 17%;                   /* Ajusta el alto ocupando el 17% inferior del espacio */
+    z-index: 4;                    /* Capa 4: Plano intermedio-alto */
 }
 
-.tira-pegatinas-img {
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
-    display: block;
+.tira-pegatinas-img { 
+    width: 100%;                   /* Ajusta la imagen al ancho total de su caja */
+    height: 100%;                  /* Ajusta la imagen a la altura total de su caja */
+    object-fit: fill;              /* Adapta el dibujo de la tira sin dejar márgenes vacíos */
+    display: block;                /* Elimina espacios vacíos o rebabas en la base del dibujo */
 }
 
-.zona-activa {
-    position: absolute;
-    top: 0;
-    height: 100%;
+.zona-activa { 
+    position: absolute;            /* Clava el recuadro de clic en coordenadas fijas */
+    top: 0;                        /* Alínea el recuadro con el techo de la barra inferior */
+    height: 100%;                  /* Extiende el recuadro al alto total de la barra */
 }
 
-.zona-inicio   { left: 0%;  width: 25%; }
-.zona-oficina  { left: 25%; width: 25%; }
-.zona-marcaje  { left: 50%; width: 25%; }
-.zona-escolar  { left: 75%; width: 25%; }
+/* Ajustes de posición horizontal para los 4 cuadrantes del menú */
+.zona-inicio { left: 0%; width: 25%; }   /* Cuadrante 1: Ocupa del 0% al 25% del ancho */
+.zona-oficina { left: 25%; width: 25%; }  /* Cuadrante 2: Ocupa del 25% al 50% del ancho */
+.zona-marcaje { left: 50%; width: 25%; }  /* Cuadrante 3: Ocupa del 50% al 75% del ancho */
+.zona-escolar { left: 75%; width: 25%; }  /* Cuadrante 4: Ocupa del 75% al 100% del ancho */
+
+/* Restringe que los dibujos internos de los botones no deformen o desborden sus marcos */
+.indice img, .ayuda img, .whatsapp img, .monedas img, .billetes img { 
+    width: 100%;                   /* Fija el ancho de la imagen interna al 100% de su contenedor */
+    display: block;                /* Quita rebabas e imperfecciones de alineación en el bloque */
+}
+
+
 
 </style>
 </head>
@@ -174,52 +183,29 @@ html, body {
 <body>
 
 <div class="contenedor">
+    <img class="fondo" src="imagenes/fondos/fondo-linea-seguridad.webp" alt="Fondo">
 
-    <img class="fondo"
-         src="imagenes/fondos/FondoSegrFich02.webp"
-         alt="Fondo">
+    <a href="seguridad.html" class="indice"><img src="imagenes/botones/BtnVerLista.webp" alt="Índice"></a>
+    <a href="ImagInfoAyuda.html" class="ayuda"><img src="imagenes/botones/BtnAyuda.webp" alt="Ayuda"></a>
+    <a href="https://wa.me/573124899581" class="whatsapp" target="_blank"><img src="imagenes/botones/BtnWts.webp" alt="WhatsApp"></a>
 
-    <a href="seguridad.html" class="indice" title="Volver al índice">
-        <img src="imagenes/botones/BtnVerLista.webp" alt="Índice">
-    </a>
+    <img src="imagenes/fondos/borde-azul2.webp" class="borde-azul borde-top" alt="Borde Superior">
+    <img src="imagenes/fondos/borde-azul2.webp" class="borde-azul borde-mid" alt="Borde Medio">
 
-    <a href="ImagInfoAyuda.html" class="ayuda" title="Ayuda">
-        <img src="imagenes/botones/BtnAyuda.webp" alt="Ayuda">
-    </a>
+    <div class="texto-monedas">DETECTOR DE BILLETES</div>
 
-    <a href="https://wa.me/573124899581" class="whatsapp" target="_blank" title="Contacto WhatsApp">
-        <img src="imagenes/botones/BtnWtsDerecha.webp" alt="WhatsApp">
-    </a>
+    <div class="det-ze104"><img src="imagenes/productos/DetBilletesZE-104.webp"alt="Detector de Billetes ZE-104"></div>
+    <div class="det-ze105"><img src="imagenes/productos/DetBilletesZE-105.webp"alt="Detector de Billetes ZE-105"></div>
+    <div class="det-ze106"><img src="imagenes/productos/DetBilletesZE-106.webp"alt="Detector de Billetes ZE-106"></div>
 
-    <div class="det-ze104">
-        <img src="imagenes/productos/DetBilletesZE-104.webp"
-             alt="Detector de Billetes ZE-104">
-    </div>
-
-    <div class="det-ze105">
-        <img src="imagenes/productos/DetBilletesZE-105.webp"
-             alt="Detector de Billetes ZE-105">
-    </div>
-
-    <div class="det-ze106">
-        <img src="imagenes/productos/DetBilletesZE-106.webp"
-             alt="Detector de Billetes ZE-106">
-    </div>
 
     <div class="barra-navegacion-unica">
-
-        <img src="imagenes/botones/TiraPegatinasCompleta.webp"
-             class="tira-pegatinas-img"
-             alt="Navegación">
-
-        <a href="seguridad.html" class="zona-activa zona-inicio" title="Inicio"></a>
-        <a href="oficina.html" class="zona-activa zona-oficina" title="Oficina"></a>
-        <a href="marcaje.html" class="zona-activa zona-marcaje" title="Marcaje"></a>
-        <a href="escolar.html" class="zona-activa zona-escolar" title="Escolar"></a>
-
+        <img src="imagenes/botones/TiraPegatinasCompleta.webp" class="tira-pegatinas-img" alt="Navegación">
+        <a href="seguridad.html" class="zona-activa zona-inicio"></a>
+        <a href="oficina.html" class="zona-activa zona-oficina"></a>
+        <a href="marcaje.html" class="zona-activa zona-marcaje"></a>
+        <a href="escolar.html" class="zona-activa zona-escolar"></a>
     </div>
-
 </div>
-
 </body>
 </html>
