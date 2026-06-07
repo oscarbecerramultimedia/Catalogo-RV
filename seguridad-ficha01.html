@@ -56,9 +56,46 @@ html, body {
     transform: scaleX(0.65); /* Estrechez exclusiva para MONEDAS */
 }
 
+/* ==========================================
+   ESTILOS BASE PARA MÓVILES (ANDROID)
+   ========================================== */
+
+.texto-monedas, .texto-billetes {
+    position: absolute;
+    right: 2%; 
+    color: #1a4d8c; 
+    font-family: sans-serif; 
+    font-weight: bold;
+    font-size: 8cqw; /* Altura de la letra */
+    z-index: 5; 
+    pointer-events: none;
+    text-align: right; 
+    white-space: nowrap;
+    transform-origin: right center; /* Anclaje de transformación a la derecha */
+}
+
+.texto-monedas { 
+    top: 1.5%; 
+    transform: scaleX(1); /* Proporción normal en Android */
+}
+
 .texto-billetes { 
     top: 48.5%; 
-    transform: scaleX(0.63); /* Estrechez exclusiva para BILLETES */
+    transform: scaleX(1); /* Proporción normal en Android */
+}
+
+/* ==========================================
+   REGLAS EXCLUSIVAS PARA ESCRITORIO (WINDOWS)
+   ========================================== */
+
+@media (min-width: 768px) {
+    .texto-monedas {
+        transform: scaleX(0.65); /* Comprime MONEDAS en Windows para que no se salga del marco */
+    }
+    
+    .texto-billetes {
+        transform: scaleX(0.67); /* Comprime BILLETES en Windows para que no se salga del marco */
+    }
 }
 .texto-monedas { top: 0.5%; }
 .texto-billetes { top: 43.5%; }
