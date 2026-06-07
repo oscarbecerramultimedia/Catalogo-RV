@@ -7,30 +7,19 @@
 
 <style>
 html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100dvh;
-    overflow: hidden;
-    background: #73A9E4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 0; padding: 0; width: 100%; height: 100dvh;
+    overflow: hidden; background: #ffffff;
+    display: flex; justify-content: center; align-items: center;
 }
 
 .contenedor {
-    position: relative;
-    width: 100vw;
-    height: 100dvh;
-    overflow: hidden;
+    position: relative; width: 100vw; height: 100dvh; overflow: hidden;
 }
 
 @media (min-width: 768px) {
     .contenedor {
-        height: 100dvh;
-        width: calc(100dvh * 540 / 1200);
-        max-width: 100vw;
-        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        height: 100dvh; width: calc(100dvh * 540 / 1200);
+        max-width: 100vw; box-shadow: 0 0 15px rgba(0,0,0,0.2);
     }
 }
 
@@ -43,23 +32,26 @@ html, body {
 .monedas { position: absolute; top: 14%; left: 8%; width: 84%; z-index: 3; }
 .billetes { position: absolute; top: 52%; left: 5%; width: 90%; z-index: 3; }
 
-/* Bordes y Textos */
 .borde-azul { position: absolute; width: 100%; height: auto; z-index: 4; left: 0; }
 .borde-top { top: 0%; }
 .borde-mid { top: 47%; }
 
-.texto-monedas {
-    position: absolute; top: 0.8%; width: 100%; text-align: left;
-    color: #1a4d8c; font-family: sans-serif; font-weight: bold;
-    font-size: 1.2rem; z-index: 5; pointer-events: none;
+.texto-monedas, .texto-billetes {
+    position: absolute;
+    width: 60%; 
+    right: 5%; 
+    color: #1a4d8c; 
+    font-family: sans-serif; 
+    font-weight: bold;
+    font-size: 1.1rem; 
+    z-index: 5; 
+    pointer-events: none;
+    text-align: right; 
+    white-space: nowrap; 
 }
-.texto-billetes {
-    position: absolute; top: 47.8%; width: 100%; text-align: left;
-    color: #1a4d8c; font-family: sans-serif; font-weight: bold;
-    font-size: 1.2rem; z-index: 5; pointer-events: none;
-}
+.texto-monedas { top: 1.2%; }
+.texto-billetes { top: 48.2%; }
 
-/* Barra Navegación */
 .barra-navegacion-unica { position: absolute; bottom: 0; left: 0; width: 100%; height: 17%; z-index: 4; }
 .tira-pegatinas-img { width: 100%; height: 100%; object-fit: fill; display: block; }
 .zona-activa { position: absolute; top: 0; height: 100%; }
@@ -81,8 +73,8 @@ html, body {
     <a href="ImagInfoAyuda.html" class="ayuda"><img src="imagenes/botones/BtnAyuda.webp" alt="Ayuda"></a>
     <a href="https://wa.me/573124899581" class="whatsapp" target="_blank"><img src="imagenes/botones/BtnWts.webp" alt="WhatsApp"></a>
 
-    <img src="imagenes/fondos/borde-azul2.webp" class="borde-azul borde-top" alt="Borde Superior">
-    <img src="imagenes/fondos/borde-azul2.webp" class="borde-azul borde-mid" alt="Borde Medio">
+    <img src="imagenes/bordes/borde-azul2.webp" class="borde-azul borde-top" alt="Borde Superior">
+    <img src="imagenes/bordes/borde-azul2.webp" class="borde-azul borde-mid" alt="Borde Medio">
 
     <div class="texto-monedas">CONTADOR DE MONEDAS</div>
     <div class="texto-billetes">CONTADOR DE BILLETES</div>
