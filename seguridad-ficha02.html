@@ -103,7 +103,7 @@ html, body {
 }
     
 .det-ze106 {
-    position: absolute;             Clava el elemento en coordenadas fijas dentro del lienzo */
+    position: absolute;            /*Clava el elemento en coordenadas fijas dentro del lienzo */
     top: 55%;                      /* Distancia vertical desde la regla superior del lienzo */
     left: 5%;                      /* Distancia horizontal desde la regla izquierda del lienzo */
     width: 88%;                    /* Ajusta el ancho del dibujo de la máquina de billetes */
@@ -112,9 +112,9 @@ html, body {
     
 .det-ze104 img,
 .det-ze105 img,
-det-ze106 img {
-    width: 100%;
-   display: block;
+.det-ze106 img {
+    width: 100%;                   /* Fija el ancho de la imagen interna al 100% de su contenedor */
+    display: block;                /* Quita rebabas e imperfecciones de alineación en el bloque */
 }
 
 /* ==========================================
@@ -146,7 +146,7 @@ det-ze106 img {
 .separador-mid { 
     top: 60%;                      /* Clava la línea azul en la sección media del lienzo */
 }
-.separador-bot { 
+.separador-top { 
     top: 90%;                      /* Clava la línea azul en la sección inferior del lienzo */
 }
 
