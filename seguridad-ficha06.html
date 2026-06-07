@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reloj de Control</title>
+<title>Destructora de Documentos</title>
 
 <style>
+/* 1. RESET Y BASE GENERAL */
 html, body {
     margin: 0;
     padding: 0;
@@ -18,6 +19,7 @@ html, body {
     align-items: center;
 }
 
+/* 2. CONTENEDOR MAESTRO ESCALABLE */
 .contenedor {
     position: relative;
     width: 100vw;
@@ -25,6 +27,7 @@ html, body {
     overflow: hidden;
 }
 
+/* REGLA PARA ESCRITORIO (Monitores) */
 @media (min-width: 768px) {
     .contenedor {
         height: 100dvh;
@@ -34,6 +37,7 @@ html, body {
     }
 }
 
+/* 3. FONDO */
 .fondo {
     position: absolute;
     inset: 0;
@@ -43,6 +47,7 @@ html, body {
     z-index: 1;
 }
 
+/* 4. BOTONES PERIFÉRICOS CON Z-INDEX ALTO */
 .indice {
     position: absolute;
     top: 1%;
@@ -53,7 +58,7 @@ html, body {
 
 .ayuda {
     position: absolute;
-    top: 5.5%;
+    top: 7.5%;
     right: 1.5%;
     width: 4.5%;
     z-index: 5;
@@ -61,8 +66,8 @@ html, body {
 
 .whatsapp {
     position: absolute;
-    top: 37%;
-    left: 1%;
+    top: 42%;
+    right: 1%;
     width: 24%;
     z-index: 5;
 }
@@ -74,30 +79,32 @@ html, body {
     display: block;
 }
 
-/* Producto 1: Reloj Biométrico ZE-110 (477px / 540px = 88.33%) */
-.monedas {
+/* 5. BLOQUES DE PRODUCTOS ESTÁTICOS */
+/* DestrDocsZE-113.webp (472px / 540px = 87.4%) */
+.destructora-ze113 {
     position: absolute;
     top: 11.5%;
-    left: 5.83%;
-    width: 88.33%;
+    left: 6.3%; 
+    width: 87.4%;
     z-index: 3;
 }
 
-/* Producto 2: Contador Correspondencia ZE-111 (478px / 540px = 88.51%) */
-.billetes {
+/* DestrDocsZE-114.webp (478px / 540px = 88.51%) */
+.destructora-ze114 {
     position: absolute;
-    top: 52.5%;
+    top: 49%;
     left: 5.74%;
     width: 88.51%;
     z-index: 3;
 }
 
-.monedas img,
-.billetes img {
+.destructora-ze113 img,
+.destructora-ze114 img {
     width: 100%;
     display: block;
 }
 
+/* 6. BARRA DE NAVEGACIÓN ÚNICA */
 .barra-navegacion-unica {
     position: absolute;
     bottom: 0;
@@ -133,29 +140,29 @@ html, body {
 <div class="contenedor">
 
     <img class="fondo"
-         src="imagenes/fondos/FondoSegrFich05.webp"
+         src="imagenes/fondos/FondoSegrFich06.webp"
          alt="Fondo">
 
-    <a href="seguridad.html" class="indice">
+    <a href="seguridad.html" class="indice" title="Volver al índice">
         <img src="imagenes/botones/BtnVerLista.webp" alt="Índice">
     </a>
 
-    <a href="ImagInfoAyuda.html" class="ayuda">
+    <a href="ImagInfoAyuda.html" class="ayuda" title="Ayuda">
         <img src="imagenes/botones/BtnAyuda.webp" alt="Ayuda">
     </a>
 
-    <a href="https://wa.me/573124899581" class="whatsapp" target="_blank">
-        <img src="imagenes/botones/BtnWts.webp" alt="WhatsApp">
+    <a href="https://wa.me/573124899581" class="whatsapp" target="_blank" title="Contacto WhatsApp">
+        <img src="imagenes/botones/BtnWtsDerecha.webp" alt="WhatsApp">
     </a>
 
-    <div class="monedas">
-        <img src="imagenes/productos/RelojBiometricoZE-110.webp"
-             alt="Reloj Biométrico ZE-110">
+    <div class="destructora-ze113">
+        <img src="imagenes/productos/DestrDocsZE-113.webp"
+             alt="Destructora de Documentos 15 Hojas ZE-113">
     </div>
 
-    <div class="billetes">
-        <img src="imagenes/productos/ContadorCorrespondenciaZE-111.webp"
-             alt="Contador Correspondencia ZE-111">
+    <div class="destructora-ze114">
+        <img src="imagenes/productos/DestrDocsZE-114.webp"
+             alt="Destructora de Documentos 20 Hojas ZE-114">
     </div>
 
     <div class="barra-navegacion-unica">
@@ -164,10 +171,10 @@ html, body {
              class="tira-pegatinas-img"
              alt="Navegación">
 
-        <a href="seguridad.html" class="zona-activa zona-inicio"></a>
-        <a href="oficina.html" class="zona-activa zona-oficina"></a>
-        <a href="marcaje.html" class="zona-activa zona-marcaje"></a>
-        <a href="escolar.html" class="zona-activa zona-escolar"></a>
+        <a href="seguridad.html" class="zona-activa zona-inicio" title="Inicio"></a>
+        <a href="oficina.html" class="zona-activa zona-oficina" title="Oficina"></a>
+        <a href="marcaje.html" class="zona-activa zona-marcaje" title="Marcaje"></a>
+        <a href="escolar.html" class="zona-activa zona-escolar" title="Escolar"></a>
 
     </div>
 
