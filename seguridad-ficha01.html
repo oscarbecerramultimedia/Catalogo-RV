@@ -6,95 +6,205 @@
 <title>Contador de Monedas y Billetes</title>
 
 <style>
+/* ==========================================
+   CONFIGURACIÓN GENERAL DEL ESCRITORIO
+   ========================================== */
 html, body {
-    margin: 0; padding: 0; width: 100%; height: 100dvh;
-    overflow: hidden; background: #73A9E4;
-    display: flex; justify-content: center; align-items: center;
+    margin: 0;                     /* Elimina el margen externo del papel */
+    padding: 0;                    /* Elimina el espacio interno del marco */
+    width: 100%;                   /* Ajusta el ancho total de la zona de dibujo */
+    height: 100dvh;                /* Ajusta la altura total de la zona de dibujo */
+    overflow: hidden;              /* Recorta y oculta cualquier trazo que se salga del papel */
+    background: #73A9E4;           /* Color de la tinta de fondo del escritorio */
+    display: flex;                 /* Activa la regla de alineación técnica de elementos */
+    justify-content: center;       /* Centra los elementos horizontalmente en el escritorio */
+    align-items: center;           /* Centra los elementos verticalmente en el escritorio */
 }
 
+/* ==========================================
+   EL LIENZO PRINCIPAL
+   ========================================== */
 .contenedor {
-    position: relative; width: 100vw; height: 100dvh; overflow: hidden;
-    container-type: inline-size;
+    position: relative;            /* Define este bloque como el lienzo base para calcular coordenadas */
+    width: 100vw;                  /* Ajusta el ancho del lienzo al 100% de la visual */
+    height: 100dvh;                /* Ajusta el alto del lienzo al 100% de la visual */
+    overflow: hidden;              /* Recorta todo elemento que desborde los límites del lienzo */
+    container-type: inline-size;   /* Mide el ancho del lienzo para graduar escalas tipográficas */
 }
 
+/* ==========================================
+   AJUSTE DE PROPORCIÓN PARA ESCRITORIO (WINDOWS)
+   ========================================== */
 @media (min-width: 768px) {
     .contenedor {
-        height: 100dvh; width: calc(100dvh * 540 / 1200);
-        max-width: 100vw; box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        height: 100dvh;            /* Mantiene el alto total en la pantalla del monitor */
+        width: calc(100dvh * 540 / 1200); /* Ajusta el ancho aplicando una proporción fija de dibujo */
+        max-width: 100vw;          /* Restringe el ancho máximo al límite físico de la pantalla */
+        box-shadow: 0 0 15px rgba(0,0,0,0.2); /* Dibuja una sombra proyectada alrededor del lienzo */
     }
 }
 
-.fondo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; z-index: 1; }
-
-.indice { position: absolute; top: 1%; left: 1%; width: 14%; z-index: 5; }
-.ayuda { position: absolute; top: 6%; right: 1.5%; width: 4.5%; z-index: 5; }
-.whatsapp { position: absolute; top: 37%; left: 1%; width: 24%; z-index: 5; }
-
-.monedas { position: absolute; top: 14%; left: 8%; width: 84%; z-index: 3; }
-.billetes { position: absolute; top: 54%; left: 5%; width: 90%; z-index: 3; }
-
-.borde-azul { position: absolute; width: 100%; height: auto; z-index: 4; left: 0; }
-.borde-top { top: 0%; }
-.borde-mid { top: 43%; }
-
 /* ==========================================
-   1. REGLAS COMPARTIDAS BASE
-   No modifique coordenadas ni escalas aquí.
+   CAPA DE FONDO
    ========================================== */
-.texto-monedas, .texto-billetes {
-    position: absolute;
-    color: #1a4d8c; 
-    font-family: sans-serif; 
-    font-weight: bold;
-    font-size: 8cqw; 
-    z-index: 5; 
-    pointer-events: none;
-    text-align: right; 
-    white-space: nowrap;
-    transform-origin: right center; 
+.fondo { 
+    position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
+    inset: 0;                      /* Ajusta los cuatro bordes para alinearse con los del lienzo */
+    width: 100%;                   /* Copia el ancho total del lienzo */
+    height: 100%;                  /* Copia la altura total del lienzo */
+    object-fit: fill;              /* Estira el dibujo de fondo para cubrir todo el espacio sin dejar vacíos */
+    z-index: 1;                    /* Capa 1: Se ubica en el fondo de la pila del dibujo */
 }
 
 /* ==========================================
-   2. CONTROLES INDEPENDIENTES PARA ANDROID (MÓVILES)
+   COORDENADAS DE BOTONES SUPERIORES
+   ========================================== */
+.indice { 
+    position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
+    top: 1%;                       /* Distancia vertical desde la regla superior del lienzo */
+    left: 1%;                      /* Distancia horizontal desde la regla izquierda del lienzo */
+    width: 14%;                    /* Ajusta el ancho de la imagen del botón */
+    z-index: 5;                    /* Capa 5: Al frente de todo el plano para recibir clics */
+}
+
+.ayuda { 
+    position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
+    top: 6%;                       /* Distancia vertical desde la regla superior del lienzo */
+    right: 1.5%;                   /* Distancia horizontal desde la regla derecha del lienzo */
+    width: 4.5%;                   /* Ajusta el ancho de la imagen del botón */
+    z-index: 5;                    /* Capa 5: Al frente de todo el plano para recibir clics */
+}
+
+.whatsapp { 
+    position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
+    top: 37%;                      /* Distancia vertical desde la regla superior del lienzo */
+    left: 1%;                      /* Distancia horizontal desde la regla izquierda del lienzo */
+    width: 24%;                    /* Ajusta el ancho de la imagen del botón */
+    z-index: 5;                    /* Capa 5: Al frente de todo el plano para recibir clics */
+}
+
+/* ==========================================
+   COORDENADAS DE LAS IMÁGENES DE PRODUCTOS
+   ========================================== */
+.monedas { 
+    position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
+    top: 14%;                      /* Distancia vertical desde la regla superior del lienzo */
+    left: 8%;                      /* Distancia horizontal desde la regla izquierda del lienzo */
+    width: 84%;                    /* Ajusta el ancho del dibujo de la máquina de monedas */
+    z-index: 3;                    /* Capa 3: Plano intermedio del dibujo */
+}
+
+.billetes { 
+    position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
+    top: 54%;                      /* Distancia vertical desde la regla superior del lienzo */
+    left: 5%;                      /* Distancia horizontal desde la regla izquierda del lienzo */
+    width: 90%;                    /* Ajusta el ancho del dibujo de la máquina de billetes */
+    z-index: 3;                    /* Capa 3: Plano intermedio del dibujo */
+}
+
+/* ==========================================
+   MARCOS Y DIVISIONES DECORATIVAS
+   ========================================== */
+.borde-azul { 
+    position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
+    width: 100%;                   /* Ajusta el ancho de la línea de lado a lado del lienzo */
+    height: auto;                  /* Calcula el alto automáticamente para no deformar el trazo */
+    z-index: 4;                    /* Capa 4: Plano por encima de los productos */
+    left: 0;                       /* Alinea el inicio del trazo con el borde izquierdo */
+}
+
+.borde-top { 
+    top: 0%;                       /* Clava la línea azul en el extremo superior */
+}
+
+.borde-mid { 
+    top: 43%;                      /* Clava la línea azul en la sección media del lienzo */
+}
+
+/* ==========================================
+   REGLAS GRÁFICAS BASE PARA AMBOS TEXTOS
+   ========================================== */
+.texto-monedas, .texto-billetes {
+    position: absolute;            /* Clava el texto en coordenadas fijas dentro del lienzo */
+    color: #1a4d8c;                /* Color del pigmento o tinta de las letras */
+    font-family: sans-serif;       /* Tipo de caligrafía o fuente lineal limpia */
+    font-weight: bold;             /* Aplica trazo grueso (negrita) a las letras */
+    font-size: 8cqw;               /* Ajusta el alto general de las letras según la escala del lienzo */
+    z-index: 5;                    /* Capa 5: Se dibuja en el plano superior, al frente de todo */
+    pointer-events: none;          /* El texto actúa como dibujo fantasma; no bloquea trazos inferiores */
+    text-align: right;             /* Justifica o alinea la rotulación hacia el lado derecho */
+    white-space: nowrap;           /* Prohíbe el salto de renglón; mantiene el texto en una sola línea */
+    transform-origin: right center; /* Clava el punto de anclaje en el extremo derecho antes de deformar */
+}
+
+/* ==========================================
+   AJUSTES Y GRADUACIÓN PARA ANCHOS EN ANDROID
    ========================================== */
 .texto-monedas { 
-    top: 0.5%;      /* Altura en Android */
-    right: 2%;      /* Posición horizontal en Android */
-    transform: scaleX(0.65); /* Estrechez en Android */
+    top: 0.5%;                     /* Distancia vertical desde el techo del lienzo */
+    right: 2%;                     /* Distancia horizontal desde el marco derecho */
+    transform: scaleX(0.65);       /* Gradúa el ancho: comprime horizontalmente al 65% en Android */
 }
 
 .texto-billetes { 
-    top: 43.5%;     /* Altura en Android */
-    right: 2%;      /* Posición horizontal en Android */
-    transform: scaleX(0.67); /* Estrechez en Android */
+    top: 43.5%;                    /* Distancia vertical desde el techo del lienzo */
+    right: 2%;                     /* Distancia horizontal desde el marco derecho */
+    transform: scaleX(0.67);       /* Gradúa el ancho: comprime horizontalmente al 67% en Android */
 }
 
 /* ==========================================
-   3. CONTROLES INDEPENDIENTES PARA WINDOWS (ESCRITORIO)
+   AJUSTES Y GRADUACIÓN PARA ANCHOS EN WINDOWS
    ========================================== */
 @media (min-width: 768px) {
     .texto-monedas {
-        top: 0.5%;      /* Altura en Windows */
-        right: 0.5%;      /* Posición horizontal en Windows */
-        transform: scaleX(0.61); /* Estrechez en Windows */
+        top: 0.5%;                 /* Mantiene la distancia vertical en el escritorio de Windows */
+        right: 2%;                 /* Mantiene la distancia horizontal en el escritorio de Windows */
+        transform: scaleX(0.55);   /* Ajusta ancho en Windows: comprime más horizontalmente (al 55%) */
     }
     
     .texto-billetes {
-        top: 43.5%;     /* Altura en Windows */
-        right: 0.5%;      /* Posición horizontal en Windows */
-        transform: scaleX(0.63); /* Estrechez en Windows */
+        top: 43.5%;                /* Mantiene la distancia vertical en el escritorio de Windows */
+        right: 2%;                 /* Mantiene la distancia horizontal en el escritorio de Windows */
+        transform: scaleX(0.57);   /* Ajusta ancho en Windows: comprime más horizontalmente (al 57%) */
     }
 }
 
-.barra-navegacion-unica { position: absolute; bottom: 0; left: 0; width: 100%; height: 17%; z-index: 4; }
-.tira-pegatinas-img { width: 100%; height: 100%; object-fit: fill; display: block; }
-.zona-activa { position: absolute; top: 0; height: 100%; }
-.zona-inicio { left: 0%; width: 25%; }
-.zona-oficina { left: 25%; width: 25%; }
-.zona-marcaje { left: 50%; width: 25%; }
-.zona-escolar { left: 75%; width: 25%; }
+/* ==========================================
+   BARRA DE NAVEGACIÓN INFERIOR Y DIVISIONES
+   ========================================== */
+.barra-navegacion-unica { 
+    position: absolute;            /* Clava la barra en coordenadas fijas dentro del lienzo */
+    bottom: 0;                     /* Alínea y clava la base del dibujo con el suelo del lienzo */
+    left: 0;                       /* Alínea el inicio con la pared izquierda del lienzo */
+    width: 100%;                   /* Extiende el ancho al 100% del lienzo */
+    height: 17%;                   /* Ajusta el alto ocupando el 17% inferior del espacio */
+    z-index: 4;                    /* Capa 4: Plano intermedio-alto */
+}
 
-.indice img, .ayuda img, .whatsapp img, .monedas img, .billetes img { width: 100%; display: block; }
+.tira-pegatinas-img { 
+    width: 100%;                   /* Ajusta la imagen al ancho total de su caja */
+    height: 100%;                  /* Ajusta la imagen a la altura total de su caja */
+    object-fit: fill;              /* Adapta el dibujo de la tira sin dejar márgenes vacíos */
+    display: block;                /* Elimina espacios vacíos o rebabas en la base del dibujo */
+}
+
+.zona-activa { 
+    position: absolute;            /* Clava el recuadro de clic en coordenadas fijas */
+    top: 0;                        /* Alínea el recuadro con el techo de la barra inferior */
+    height: 100%;                  /* Extiende el recuadro al alto total de la barra */
+}
+
+/* Ajustes de posición horizontal para los 4 cuadrantes del menú */
+.zona-inicio { left: 0%; width: 25%; }   /* Cuadrante 1: Ocupa del 0% al 25% del ancho */
+.zona-oficina { left: 25%; width: 25%; }  /* Cuadrante 2: Ocupa del 25% al 50% del ancho */
+.zona-marcaje { left: 50%; width: 25%; }  /* Cuadrante 3: Ocupa del 50% al 75% del ancho */
+.zona-escolar { left: 75%; width: 25%; }  /* Cuadrante 4: Ocupa del 75% al 100% del ancho */
+
+/* Restringe que los dibujos internos de los botones no deformen o desborden sus marcos */
+.indice img, .ayuda img, .whatsapp img, .monedas img, .billetes img { 
+    width: 100%;                   /* Fija el ancho de la imagen interna al 100% de su contenedor */
+    display: block;                /* Quita rebabas e imperfecciones de alineación en el bloque */
+}
 </style>
 </head>
 
