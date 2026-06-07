@@ -14,7 +14,6 @@ html, body {
 
 .contenedor {
     position: relative; width: 100vw; height: 100dvh; overflow: hidden;
-    /* Define el contenedor para usar unidades relativas a su tamaño (cqw) */
     container-type: inline-size;
 }
 
@@ -44,14 +43,12 @@ html, body {
     color: #1a4d8c; 
     font-family: sans-serif; 
     font-weight: bold;
-    /* cqw escala dinámicamente con el ancho del .contenedor */
-    font-size: 5.5cqw; 
+    font-size: 8cqw; /* Aumenta la altura general de la letra */
     z-index: 5; 
     pointer-events: none;
     text-align: right; 
     white-space: nowrap;
-    /* Comprime la fuente horizontalmente (aspect ratio) y la ancla a la derecha */
-    transform: scaleX(0.85); 
+    transform: scaleX(0.65); /* Comprime el ancho. Modifique este valor para graduar la estrechez */
     transform-origin: right center;
 }
 .texto-monedas { top: 1.5%; }
