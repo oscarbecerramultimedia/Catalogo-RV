@@ -37,31 +37,54 @@ html, body {
 .borde-top { top: 0%; }
 .borde-mid { top: 43%; }
 
+/* ==========================================
+   1. REGLAS COMPARTIDAS BASE
+   No modifique coordenadas ni escalas aquí.
+   ========================================== */
 .texto-monedas, .texto-billetes {
     position: absolute;
-    right: 2%; 
     color: #1a4d8c; 
     font-family: sans-serif; 
     font-weight: bold;
-    font-size: 8cqw; /* Aumenta la altura general de la letra */
+    font-size: 8cqw; 
     z-index: 5; 
     pointer-events: none;
     text-align: right; 
     white-space: nowrap;
-    transform-origin: right center; /* Mantiene el anclaje a la derecha */
+    transform-origin: right center; 
 }
 
+/* ==========================================
+   2. CONTROLES INDEPENDIENTES PARA ANDROID (MÓVILES)
+   ========================================== */
 .texto-monedas { 
-    top: 1.5%; 
-    transform: scaleX(0.65); /* Estrechez exclusiva para MONEDAS */
+    top: 0.5%;      /* Altura en Android */
+    right: 2%;      /* Posición horizontal en Android */
+    transform: scaleX(0.65); /* Estrechez en Android */
 }
 
 .texto-billetes { 
-    top: 48.5%; 
-    transform: scaleX(0.67); /* Estrechez exclusiva para BILLETES */
+    top: 43.5%;     /* Altura en Android */
+    right: 2%;      /* Posición horizontal en Android */
+    transform: scaleX(0.67); /* Estrechez en Android */
 }
-.texto-monedas { top: 0.5%; }
-.texto-billetes { top: 43.5%; }
+
+/* ==========================================
+   3. CONTROLES INDEPENDIENTES PARA WINDOWS (ESCRITORIO)
+   ========================================== */
+@media (min-width: 768px) {
+    .texto-monedas {
+        top: 0.5%;      /* Altura en Windows */
+        right: 2%;      /* Posición horizontal en Windows */
+        transform: scaleX(0.55); /* Estrechez en Windows */
+    }
+    
+    .texto-billetes {
+        top: 43.5%;     /* Altura en Windows */
+        right: 2%;      /* Posición horizontal en Windows */
+        transform: scaleX(0.57); /* Estrechez en Windows */
+    }
+}
 
 .barra-navegacion-unica { position: absolute; bottom: 0; left: 0; width: 100%; height: 17%; z-index: 4; }
 .tira-pegatinas-img { width: 100%; height: 100%; object-fit: fill; display: block; }
