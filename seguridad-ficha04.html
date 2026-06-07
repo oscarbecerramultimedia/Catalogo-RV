@@ -84,9 +84,9 @@ html, body {
 }
 
 /* ==========================================
-   COORDENADAS DE LAS IMÁGENES DE PRODUCTOS
+   COORDENADAS DE LOS PRODUCTOS
    ========================================== */
-.monedas {
+.reloj-biometrico {
     position: absolute;
     top: 13%;
     left: 5.83%;
@@ -94,7 +94,7 @@ html, body {
     z-index: 3;
 }
 
-.billetes {
+.reloj-correspondencia {
     position: absolute;
     top: 52.5%;
     left: 5.74%;
@@ -122,7 +122,7 @@ html, body {
 }
 
 /* ==========================================
-   REGLAS GRÁFICAS BASE PARA AMBOS TEXTOS
+   REGLAS GRÁFICAS PARA TEXTOS
    ========================================== */
 .texto-reloj-personal, .texto-reloj-correspondencia {
     position: absolute;
@@ -137,9 +137,6 @@ html, body {
     transform-origin: right center;
 }
 
-/* ==========================================
-   AJUSTES Y GRADUACIÓN PARA ANCHOS EN ANDROID
-   ========================================== */
 .texto-reloj-personal {
     top: 0.5%;
     right: 2%;
@@ -152,21 +149,14 @@ html, body {
     transform: scaleX(0.70);
 }
 
-/* ==========================================
-   AJUSTES Y GRADUACIÓN PARA ANCHOS EN WINDOWS
-   ========================================== */
 @media (min-width: 768px) {
-    .texto-reloj-personal {
-        transform: scaleX(0.65);
-    }
-    
-    .texto-reloj-correspondencia {
-        transform: scaleX(0.65);
+    .texto-reloj-personal, .texto-reloj-correspondencia {
+        transform: scaleX(0.60);
     }
 }
 
 /* ==========================================
-   BARRA DE NAVEGACIÓN INFERIOR Y DIVISIONES
+   BARRA DE NAVEGACIÓN INFERIOR
    ========================================== */
 .barra-navegacion-unica {
     position: absolute;
@@ -195,7 +185,7 @@ html, body {
 .zona-marcaje  { left: 50%; width: 25%; }
 .zona-escolar  { left: 75%; width: 25%; }
 
-.indice img, .ayuda img, .whatsapp img, .monedas img, .billetes img {
+.indice img, .ayuda img, .whatsapp img, .reloj-biometrico img, .reloj-correspondencia img {
     width: 100%;
     display: block;
 }
@@ -205,7 +195,7 @@ html, body {
 <body>
 
 <div class="contenedor">
-    <img class="fondo" src="imagenes/fondos/fondo-linea-seguridad.webp" alt="Fondo">
+    <img class="fondo" src="imagenes/fondos/FondoSegrFich04.webp" alt="Fondo">
 
     <a href="seguridad.html" class="indice">
         <img src="imagenes/botones/BtnVerLista.webp" alt="Índice">
@@ -225,11 +215,11 @@ html, body {
     <div class="texto-reloj-personal">RELOJ DE CONTROL<br>DE PERSONAL</div>
     <div class="texto-reloj-correspondencia">RELOJ CONTROL DE<br>CORRESPONDENCIA</div>
 
-    <div class="monedas">
+    <div class="reloj-biometrico">
         <img src="imagenes/productos/RelojBiometricoZE-110.webp" alt="Reloj Biométrico ZE-110">
     </div>
 
-    <div class="billetes">
+    <div class="reloj-correspondencia">
         <img src="imagenes/productos/ContadorCorrespondenciaZE-111.webp" alt="Contador Correspondencia ZE-111">
     </div>
 
