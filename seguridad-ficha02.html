@@ -103,19 +103,19 @@ html, body {
 }
     
 .det-ze106 {
-    position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
+    position: absolute;             Clava el elemento en coordenadas fijas dentro del lienzo */
     top: 55%;                      /* Distancia vertical desde la regla superior del lienzo */
     left: 5%;                      /* Distancia horizontal desde la regla izquierda del lienzo */
     width: 88%;                    /* Ajusta el ancho del dibujo de la máquina de billetes */
     z-index: 3;                    /* Capa 3: Plano intermedio del dibujo */
 }
     
-.det-ze104 img,
-.det-ze105 img,
-.det-ze106 img {
-    width: 100%;
-    display: block;
-}
+/*.det-ze104 img,*/
+/*.det-ze105 img,*/
+/*.det-ze106 img {*/
+   /* width: 100%;*/
+   /* display: block;*/
+} /*/
 
 /* ==========================================
    MARCOS Y DIVISIONES DECORATIVAS
@@ -129,16 +129,75 @@ html, body {
 }
 
 .borde-top { 
-    top: 0%;                       /* Clava la línea azul en el extremo superior */
+    top: 0%;                       /* Clava Borde azul en el extremo superior */
+}
+.separador-azul { 
+    position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
+    width: 100%;                   /* Ajusta el ancho de la línea de lado a lado del lienzo */
+    height: auto;                  /* Calcula el alto automáticamente para no deformar el trazo */
+    z-index: 4;                    /* Capa 4: Plano por encima de los productos */
+    left: 0;                       /* Alinea el inicio del trazo con el borde izquierdo */
+}
+   
+.separador-top { 
+    top: 33%;                      /* Clava la línea azul en la sección superior del lienzo */
+}
+   
+.separador-mid { 
+    top: 60%;                      /* Clava la línea azul en la sección media del lienzo */
+}
+.separador-bot { 
+    top: 90%;                      /* Clava la línea azul en la sección inferior del lienzo */
 }
 
-.borde-mid { 
-    top: 43%;                      /* Clava la línea azul en la sección media del lienzo */
+/* ==========================================
+   REGLAS GRÁFICAS BASE PARA AMBOS TEXTOS
+   ========================================== */
+.texto-monedas, .texto-billetes {
+    position: absolute;            /* Clava el texto en coordenadas fijas dentro del lienzo */
+    color: #1a4d8c;                /* Color del pigmento o tinta de las letras */
+    font-family: sans-serif;       /* Tipo de caligrafía o fuente lineal limpia */
+    font-weight: bold;             /* Aplica trazo grueso (negrita) a las letras */
+    font-size: 8cqw;               /* Ajusta el alto general de las letras según la escala del lienzo */
+    z-index: 5;                    /* Capa 5: Se dibuja en el plano superior, al frente de todo */
+    pointer-events: none;          /* El texto actúa como dibujo fantasma; no bloquea trazos inferiores */
+    text-align: right;             /* Justifica o alinea la rotulación hacia el lado derecho */
+    white-space: nowrap;           /* Prohíbe el salto de renglón; mantiene el texto en una sola línea */
+    transform-origin: right center; /* Clava el punto de anclaje en el extremo derecho antes de deformar */
 }
-.borde-bot { 
-    top: 83%;                      /* Clava la línea azul en la sección media del lienzo */
+
+/* ==========================================
+   AJUSTES Y GRADUACIÓN PARA ANCHOS EN ANDROID
+   ========================================== */
+.texto-monedas { 
+    top: 0.5%;                     /* Distancia vertical desde el techo del lienzo */
+    right: 2%;                     /* Distancia horizontal desde el marco derecho */
+    transform: scaleX(0.65);       /* Gradúa el ancho: comprime horizontalmente al 65% en Android */
 }
- 
+
+.texto-billetes { 
+    top: 43.5%;                    /* Distancia vertical desde el techo del lienzo */
+    right: 2%;                     /* Distancia horizontal desde el marco derecho */
+    transform: scaleX(0.67);       /* Gradúa el ancho: comprime horizontalmente al 67% en Android */
+}
+
+/* ==========================================
+   AJUSTES Y GRADUACIÓN PARA ANCHOS EN WINDOWS
+   ========================================== */
+@media (min-width: 768px) {
+    .texto-monedas {
+        top: 0.5%;                 /* Mantiene la distancia vertical en el escritorio de Windows */
+        right: 2%;                 /* Mantiene la distancia horizontal en el escritorio de Windows */
+        transform: scaleX(0.55);   /* Ajusta ancho en Windows: comprime más horizontalmente (al 55%) */
+    }
+    
+    .texto-billetes {
+        top: 43.5%;                /* Mantiene la distancia vertical en el escritorio de Windows */
+        right: 2%;                 /* Mantiene la distancia horizontal en el escritorio de Windows */
+        transform: scaleX(0.57);   /* Ajusta ancho en Windows: comprime más horizontalmente (al 57%) */
+    }
+}
+   
 /* ==========================================
    BARRA DE NAVEGACIÓN INFERIOR Y DIVISIONES
    ========================================== */
@@ -171,7 +230,7 @@ html, body {
 .zona-escolar { left: 75%; width: 25%; }  /* Cuadrante 4: Ocupa del 75% al 100% del ancho */
 
 /* Restringe que los dibujos internos de los botones no deformen o desborden sus marcos */
-.indice img, .ayuda img, .whatsapp img, .monedas img, .billetes img { 
+.indice img, .ayuda img, .whatsapp img, .detec-monedas img { 
     width: 100%;                   /* Fija el ancho de la imagen interna al 100% de su contenedor */
     display: block;                /* Quita rebabas e imperfecciones de alineación en el bloque */
 }
@@ -189,9 +248,11 @@ html, body {
     <a href="https://wa.me/573124899581" class="whatsapp" target="_blank"><img src="imagenes/botones/BtnWts.webp" alt="WhatsApp"></a>
 
     <img src="imagenes/fondos/borde-azul2.webp" class="borde-azul borde-top" alt="Borde Superior">
-    <img src="imagenes/fondos/borde-azul2.webp" class="borde-azul borde-mid" alt="Borde Medio">
+    <img src="imagenes/fondos/separador-azul.webp" class="separador-azul separdor-top" alt="Separador Superior">
+    <img src="imagenes/fondos/separador-azul.webp" class="separador-azul separdor-mid" alt="Separador Medio">
+    <img src="imagenes/fondos/separador-azul.webp" class="separador-azul separdor-bot" alt="Separador Inferior">
 
-    <div class="texto-monedas">DETECTOR DE BILLETES</div>
+    <div class="texto-detec-monedas">DETECTOR DE BILLETES</div>
 
     <div class="det-ze104"><img src="imagenes/productos/DetBilletesZE-104.webp"alt="Detector de Billetes ZE-104"></div>
     <div class="det-ze105"><img src="imagenes/productos/DetBilletesZE-105.webp"alt="Detector de Billetes ZE-105"></div>
