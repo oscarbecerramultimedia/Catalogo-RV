@@ -6,110 +6,139 @@
 <title>Detector de Billetes</title>
 
 <style>
-/* 1. RESET Y BASE GENERAL */
+/* ==========================================
+   CONFIGURACIÓN GENERAL DEL ESCRITORIO
+   ========================================== */
 html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100dvh;
-    overflow: hidden;
-    background: #73A9E4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 0;                     /* Elimina el margen externo del papel */
+    padding: 0;                    /* Elimina el espacio interno del marco */
+    width: 100%;                   /* Ajusta el ancho total de la zona de dibujo */
+    height: 100dvh;                /* Ajusta la altura total de la zona de dibujo */
+    overflow: hidden;              /* Recorta y oculta cualquier trazo que se salga del papel */
+    background: #73A9E4;           /* Color de la tinta de fondo del escritorio */
+    display: flex;                 /* Activa la regla de alineación técnica de elementos */
+    justify-content: center;       /* Centra los elementos horizontalmente en el escritorio */
+    align-items: center;           /* Centra los elementos verticalmente en el escritorio */
 }
 
-/* 2. CONTENEDOR MAESTRO ESCALABLE */
+/* ==========================================
+   EL LIENZO PRINCIPAL
+   ========================================== */
 .contenedor {
-    position: relative;
-    width: 100vw;
-    height: 100dvh;
-    overflow: hidden;
+    position: relative;            /* Define este bloque como el lienzo base para calcular coordenadas */
+    width: 100vw;                  /* Ajusta el ancho del lienzo al 100% de la visual */
+    height: 100dvh;                /* Ajusta el alto del lienzo al 100% de la visual */
+    overflow: hidden;              /* Recorta todo elemento que desborde los límites del lienzo */
+    container-type: inline-size;   /* Mide el ancho del lienzo para graduar escalas tipográficas */
 }
 
-/* REGLA PARA ESCRITORIO (Monitores) */
+/* ==========================================
+   AJUSTE DE PROPORCIÓN PARA ESCRITORIO (WINDOWS)
+   ========================================== */
 @media (min-width: 768px) {
     .contenedor {
-        height: 100dvh;
-        width: calc(100dvh * 540 / 1200);
-        max-width: 100vw;
-        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        height: 100dvh;            /* Mantiene el alto total en la pantalla del monitor */
+        width: calc(100dvh * 540 / 1200); /* Ajusta el ancho aplicando una proporción fija de dibujo */
+        max-width: 100vw;          /* Restringe el ancho máximo al límite físico de la pantalla */
+        box-shadow: 0 0 15px rgba(0,0,0,0.2); /* Dibuja una sombra proyectada alrededor del lienzo */
     }
 }
 
-/* 3. FONDO */
-.fondo {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
-    z-index: 1;
+/* ==========================================
+   CAPA DE FONDO
+   ========================================== */
+.fondo { 
+    position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
+    inset: 0;                      /* Ajusta los cuatro bordes para alinearse con los del lienzo */
+    width: 100%;                   /* Copia el ancho total del lienzo */
+    height: 100%;                  /* Copia la altura total del lienzo */
+    object-fit: fill;              /* Estira el dibujo de fondo para cubrir todo el espacio sin dejar vacíos */
+    z-index: 1;                    /* Capa 1: Se ubica en el fondo de la pila del dibujo */
 }
 
-/* 4. BOTONES PERIFÉRICOS CON Z-INDEX ALTO */
-.indice {
-    position: absolute;
-    top: 1%;
-    left: 1%;
-    width: 14%;
-    z-index: 5;
+
+/* ==========================================
+   COORDENADAS DE BOTONES SUPERIORES PERIFERICOS
+   ========================================== */
+.indice { 
+    position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
+    top: 1%;                       /* Distancia vertical desde la regla superior del lienzo */
+    left: 1%;                      /* Distancia horizontal desde la regla izquierda del lienzo */
+    width: 14%;                    /* Ajusta el ancho de la imagen del botón */
+    z-index: 5;                    /* Capa 5: Al frente de todo el plano para recibir clics */
 }
 
-.ayuda {
-    position: absolute;
-    top: 5.5%;
-    right: 1.5%;
-    width: 4.5%;
-    z-index: 5;
+.ayuda { 
+    position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
+    top: 6%;                       /* Distancia vertical desde la regla superior del lienzo */
+    right: 1.5%;                   /* Distancia horizontal desde la regla derecha del lienzo */
+    width: 4.5%;                   /* Ajusta el ancho de la imagen del botón */
+    z-index: 5;                    /* Capa 5: Al frente de todo el plano para recibir clics */
 }
 
-.whatsapp {
-    position: absolute;
-    top: 42%;
-    right: 1%;
-    width: 24%;
-    z-index: 5;
+.whatsapp { 
+    position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
+    top: 42%;                      /* Distancia vertical desde la regla superior del lienzo */
+    right: 1%;                      /* Distancia horizontal desde la regla izquierda del lienzo */
+    width: 24%;                    /* Ajusta el ancho de la imagen del botón */
+    z-index: 5;                    /* Capa 5: Al frente de todo el plano para recibir clics */
 }
-
-.indice img,
-.ayuda img,
-.whatsapp img {
-    width: 100%;
-    display: block;
-}
-
-/* 5. BLOQUES DE PRODUCTOS ESTÁTICOS */
+/* ==========================================
+   COORDENADAS DE LAS IMÁGENES DE PRODUCTOS
+   ========================================== */
 .det-ze104 {
-    position: absolute;
-    top: 9.5%;
-    left: 5%;
-    width: 88%;
-    z-index: 3;
+    position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
+    top: 9.5%;                     /* Distancia vertical desde la regla superior del lienzo */
+    left: 5%;                      /* Distancia horizontal desde la regla izquierda del lienzo */
+    width: 88%;                    /* Ajusta el ancho del dibujo de la máquina de monedas */
+    z-index: 3;                    /* Capa 3: Plano intermedio del dibujo */
 }
-
-.det-ze105 {
-    position: absolute;
-    top: 28.5%;
-    left: 4.5%;
-    width: 88%;
-    z-index: 3;
+    
+.det-ze105 { 
+    position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
+    top: 28.5%;                    /* Distancia vertical desde la regla superior del lienzo */
+    left: 4.5%;                    /* Distancia horizontal desde la regla izquierda del lienzo */
+    width: 88%;                    /* Ajusta el ancho del dibujo de la máquina de billetes */
+    z-index: 3;                    /* Capa 3: Plano intermedio del dibujo */
 }
-
+    
 .det-ze106 {
-    position: absolute;
-    top: 55%;
-    left: 5%;
-    width: 88%;
-    z-index: 3;
+    position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
+    top: 55%;                      /* Distancia vertical desde la regla superior del lienzo */
+    left: 5%;                      /* Distancia horizontal desde la regla izquierda del lienzo */
+    width: 88%;                    /* Ajusta el ancho del dibujo de la máquina de billetes */
+    z-index: 3;                    /* Capa 3: Plano intermedio del dibujo */
 }
-
+    
 .det-ze104 img,
 .det-ze105 img,
 .det-ze106 img {
     width: 100%;
     display: block;
 }
+
+/* ==========================================
+   MARCOS Y DIVISIONES DECORATIVAS
+   ========================================== */
+.borde-azul { 
+    position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
+    width: 100%;                   /* Ajusta el ancho de la línea de lado a lado del lienzo */
+    height: auto;                  /* Calcula el alto automáticamente para no deformar el trazo */
+    z-index: 4;                    /* Capa 4: Plano por encima de los productos */
+    left: 0;                       /* Alinea el inicio del trazo con el borde izquierdo */
+}
+
+.borde-top { 
+    top: 0%;                       /* Clava la línea azul en el extremo superior */
+}
+
+.borde-mid { 
+    top: 43%;                      /* Clava la línea azul en la sección media del lienzo */
+}
+
+    
+    
+
 
 /* 6. BARRA DE NAVEGACIÓN ÚNICA */
 .barra-navegacion-unica {
