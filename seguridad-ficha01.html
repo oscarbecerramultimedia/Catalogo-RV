@@ -8,7 +8,7 @@
 <style>
 html, body {
     margin: 0; padding: 0; width: 100%; height: 100dvh;
-    overflow: hidden; background: #ffffff;
+    overflow: hidden; background: #73A9E4;
     display: flex; justify-content: center; align-items: center;
 }
 
@@ -31,7 +31,7 @@ html, body {
 .whatsapp { position: absolute; top: 37%; left: 1%; width: 24%; z-index: 5; }
 
 .monedas { position: absolute; top: 14%; left: 8%; width: 84%; z-index: 3; }
-.billetes { position: absolute; top: 52%; left: 5%; width: 90%; z-index: 3; }
+.billetes { position: absolute; top: 54%; left: 5%; width: 90%; z-index: 3; }
 
 .borde-azul { position: absolute; width: 100%; height: auto; z-index: 4; left: 0; }
 .borde-top { top: 0%; }
@@ -48,8 +48,17 @@ html, body {
     pointer-events: none;
     text-align: right; 
     white-space: nowrap;
-    transform: scaleX(0.65); /* Comprime el ancho. Modifique este valor para graduar la estrechez */
-    transform-origin: right center;
+    transform-origin: right center; /* Mantiene el anclaje a la derecha */
+}
+
+.texto-monedas { 
+    top: 1.5%; 
+    transform: scaleX(0.65); /* Estrechez exclusiva para MONEDAS */
+}
+
+.texto-billetes { 
+    top: 48.5%; 
+    transform: scaleX(0.63); /* Estrechez exclusiva para BILLETES */
 }
 .texto-monedas { top: 0.5%; }
 .texto-billetes { top: 43.5%; }
