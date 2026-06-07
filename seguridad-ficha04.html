@@ -69,7 +69,7 @@ html, body {
 
 .ayuda {
     position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
-    top: 8%;                     /* Distancia vertical desde la regla superior del lienzo */
+    top: 9%;                     /* Distancia vertical desde la regla superior del lienzo */
     right: 1.5%;                   /* Distancia horizontal desde la regla derecha del lienzo */
     width: 4.5%;                   /* Ajusta el ancho de la imagen del botón */
     z-index: 5;                    /* Capa 5: Al frente de todo el plano para recibir clics */
@@ -143,13 +143,13 @@ html, body {
 .texto-reloj-personal {
     top: 0.5%;                     /* Distancia vertical desde el techo del lienzo */
     right: 2%;                     /* Distancia horizontal desde el marco derecho */
-    transform: scaleX(0.70);       /* Gradúa el ancho: comprime horizontalmente en Android */
+    transform: scaleX(0.82);       /* Gradúa el ancho: comprime horizontalmente en Android */
 }
 
 .texto-reloj-correspondencia {
     top: 39.5%;                    /* Distancia vertical desde el techo del lienzo (bajo el separador) */
     right: 2%;                     /* Distancia horizontal desde el marco derecho */
-    transform: scaleX(0.70);       /* Gradúa el ancho: comprime horizontalmente en Android */
+    transform: scaleX(0.82);       /* Gradúa el ancho: comprime horizontalmente en Android */
 }
 
 /* ==========================================
@@ -157,7 +157,7 @@ html, body {
    ========================================== */
 @media (min-width: 768px) {
     .texto-reloj-personal, .texto-reloj-correspondencia {
-        transform: scaleX(0.60);   /* Ajusta ancho en Windows: comprime más horizontalmente */
+        transform: scaleX(0.80);   /* Ajusta ancho en Windows: comprime más horizontalmente */
     }
 }
 
