@@ -6,132 +6,189 @@
 <title>Destructora de Documentos</title>
 
 <style>
-/* 1. RESET Y BASE GENERAL */
+/* ==========================================
+   CONFIGURACIÓN GENERAL DEL ESCRITORIO
+   ========================================== */
 html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100dvh;
-    overflow: hidden;
-    background: #73A9E4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 0;                     /* Elimina el margen externo del papel */
+    padding: 0;                    /* Elimina el espacio interno del marco */
+    width: 100%;                   /* Ajusta el ancho total de la zona de dibujo */
+    height: 100dvh;                /* Ajusta la altura total de la zona de dibujo */
+    overflow: hidden;              /* Recorta y oculta cualquier trazo que se salga del papel */
+    background: #73A9E4;           /* Color de la tinta de fondo del escritorio */
+    display: flex;                 /* Activa la regla de alineación técnica de elementos */
+    justify-content: center;       /* Centra los elementos horizontalmente en el escritorio */
+    align-items: center;           /* Centra los elementos verticalmente en el escritorio */
 }
 
-/* 2. CONTENEDOR MAESTRO ESCALABLE */
+/* ==========================================
+   EL LIENZO PRINCIPAL
+   ========================================== */
 .contenedor {
-    position: relative;
-    width: 100vw;
-    height: 100dvh;
-    overflow: hidden;
+    position: relative;            /* Define este bloque como el lienzo base para calcular coordenadas */
+    width: 100vw;                  /* Ajusta el ancho del lienzo al 100% de la visual */
+    height: 100dvh;                /* Ajusta el alto del lienzo al 100% de la visual */
+    overflow: hidden;              /* Recorta todo elemento que desborde los límites del lienzo */
+    container-type: inline-size;   /* Mide el ancho del lienzo para graduar escalas tipográficas */
 }
 
-/* REGLA PARA ESCRITORIO (Monitores) */
+/* ==========================================
+   AJUSTE DE PROPORCIÓN PARA ESCRITORIO (WINDOWS)
+   ========================================== */
 @media (min-width: 768px) {
     .contenedor {
-        height: 100dvh;
-        width: calc(100dvh * 540 / 1200);
-        max-width: 100vw;
-        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        height: 100dvh;            /* Mantiene el alto total en la pantalla del monitor */
+        width: calc(100dvh * 540 / 1200); /* Ajusta el ancho aplicando una proporción fija de dibujo */
+        max-width: 100vw;          /* Restringe el ancho máximo al límite físico de la pantalla */
+        box-shadow: 0 0 15px rgba(0,0,0,0.2); /* Dibuja una sombra proyectada alrededor del lienzo */
     }
 }
 
-/* 3. FONDO */
+/* ==========================================
+   CAPA DE FONDO
+   ========================================== */
 .fondo {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
-    z-index: 1;
+    position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
+    inset: 0;                      /* Ajusta los cuatro bordes para alinearse con los del lienzo */
+    width: 100%;                   /* Copia el ancho total del lienzo */
+    height: 100%;                  /* Copia la altura total del lienzo */
+    object-fit: fill;              /* Estira el dibujo de fondo para cubrir todo el espacio sin dejar vacíos */
+    z-index: 1;                    /* Capa 1: Se ubica en el fondo de la pila del dibujo */
 }
 
-/* 4. BOTONES PERIFÉRICOS CON Z-INDEX ALTO */
+/* ==========================================
+   COORDENADAS DE BOTONES SUPERIORES
+   ========================================== */
 .indice {
-    position: absolute;
-    top: 1%;
-    left: 1%;
-    width: 14%;
-    z-index: 5;
+    position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
+    top: 1%;                       /* Distancia vertical desde la regla superior del lienzo */
+    left: 1%;                      /* Distancia horizontal desde la regla izquierda del lienzo */
+    width: 14%;                    /* Ajusta el ancho de la imagen del botón */
+    z-index: 5;                    /* Capa 5: Al frente de todo el plano para recibir clics */
 }
 
 .ayuda {
-    position: absolute;
-    top: 7.5%;
-    right: 1.5%;
-    width: 4.5%;
-    z-index: 5;
+    position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
+    top: 7.5%;                     /* Distancia vertical desde la regla superior del lienzo */
+    right: 1.5%;                   /* Distancia horizontal desde la regla derecha del lienzo */
+    width: 4.5%;                   /* Ajusta el ancho de la imagen del botón */
+    z-index: 5;                    /* Capa 5: Al frente de todo el plano para recibir clics */
 }
 
 .whatsapp {
-    position: absolute;
-    top: 33%;
-    right: 1%;
-    width: 24%;
-    z-index: 5;
+    position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
+    top: 33%;                      /* Distancia vertical desde la regla superior del lienzo */
+    right: 1%;                     /* Distancia horizontal desde la regla derecha del lienzo */
+    width: 24%;                    /* Ajusta el ancho de la imagen del botón */
+    z-index: 5;                    /* Capa 5: Al frente de todo el plano para recibir clics */
 }
 
 .indice img,
 .ayuda img,
 .whatsapp img {
-    width: 100%;
-    display: block;
+    width: 100%;                   /* Fija el ancho de la imagen interna al 100% de su contenedor */
+    display: block;                /* Quita rebabas e imperfecciones de alineación en el bloque */
 }
 
-/* 5. BLOQUES DE PRODUCTOS ESTÁTICOS */
-/* DestrDocsZE-113.webp (472px / 540px = 87.4%) */
+/* ==========================================
+   MARCOS Y DIVISIONES DECORATIVAS
+   ========================================== */
+.borde-azul, .separador-azul {
+    position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
+    width: 100%;                   /* Ajusta el ancho de la línea de lado a lado del lienzo */
+    height: auto;                  /* Calcula el alto automáticamente para no deformar el trazo */
+    z-index: 4;                    /* Capa 4: Plano por encima de los productos */
+    left: 0;                       /* Alinea el inicio del trazo con el borde izquierdo */
+}
+
+.borde-top {
+    top: 0%;                       /* Clava la línea azul en el extremo superior */
+}
+
+.separador-mid {
+    top: 42%;                      /* Clava la línea azul de separación en la zona central */
+}
+
+/* ==========================================
+   REGLAS GRÁFICAS PARA EL TÍTULO
+   ========================================== */
+.texto-titulo {
+    position: absolute;            /* Clava el texto en coordenadas fijas dentro del lienzo */
+    color: #1a4d8c;                /* Color del pigmento o tinta de las letras */
+    font-family: sans-serif;       /* Tipo de caligrafía o fuente lineal limpia */
+    font-weight: bold;             /* Aplica trazo grueso (negrita) a las letras */
+    font-size: 6.5cqw;             /* Ajusta el alto general de las letras según la escala del lienzo */
+    z-index: 5;                    /* Capa 5: Se dibuja en el plano superior, al frente de todo */
+    pointer-events: none;          /* El texto actúa como dibujo fantasma; no bloquea trazos inferiores */
+    text-align: right;             /* Justifica o alinea la rotulación hacia el lado derecho */
+    line-height: 1.1;              /* Ajusta el interlineado entre los renglones del texto */
+    top: 1.5%;                     /* Distancia vertical desde el techo del lienzo */
+    right: 2%;                     /* Distancia horizontal desde el marco derecho */
+    transform-origin: right center; /* Clava el punto de anclaje en el extremo derecho antes de deformar */
+    transform: scaleX(0.70);       /* Gradúa el ancho: comprime horizontalmente en Android */
+}
+
+@media (min-width: 768px) {
+    .texto-titulo {
+        transform: scaleX(0.60);   /* Ajusta ancho en Windows: comprime más horizontalmente */
+    }
+}
+
+/* ==========================================
+   BLOQUES DE PRODUCTOS ESTÁTICOS
+   ========================================== */
 .destructora-ze113 {
-    position: absolute;
-    top: 11.5%;
-    left: 6.3%; 
-    width: 87.4%;
-    z-index: 3;
+    position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
+    top: 11.5%;                    /* Distancia vertical desde la regla superior del lienzo */
+    left: 6.3%;                    /* Distancia horizontal desde la regla izquierda del lienzo */
+    width: 87.4%;                  /* Ajusta el ancho del dibujo del producto */
+    z-index: 3;                    /* Capa 3: Plano intermedio del dibujo */
 }
 
-/* DestrDocsZE-114.webp (478px / 540px = 88.51%) */
 .destructora-ze114 {
-    position: absolute;
-    top: 49%;
-    left: 5.74%;
-    width: 88.51%;
-    z-index: 3;
+    position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
+    top: 49%;                      /* Distancia vertical desde la regla superior del lienzo */
+    left: 5.74%;                   /* Distancia horizontal desde la regla izquierda del lienzo */
+    width: 88.51%;                 /* Ajusta el ancho del dibujo del producto */
+    z-index: 3;                    /* Capa 3: Plano intermedio del dibujo */
 }
 
 .destructora-ze113 img,
 .destructora-ze114 img {
-    width: 100%;
-    display: block;
+    width: 100%;                   /* Fija el ancho de la imagen interna al 100% de su contenedor */
+    display: block;                /* Quita rebabas e imperfecciones de alineación en el bloque */
 }
 
-/* 6. BARRA DE NAVEGACIÓN ÚNICA */
+/* ==========================================
+   BARRA DE NAVEGACIÓN ÚNICA
+   ========================================== */
 .barra-navegacion-unica {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 17%;
-    z-index: 4;
+    position: absolute;            /* Clava la barra en coordenadas fijas dentro del lienzo */
+    bottom: 0;                     /* Alínea y clava la base del dibujo con el suelo del lienzo */
+    left: 0;                       /* Alínea el inicio con la pared izquierda del lienzo */
+    width: 100%;                   /* Extiende el ancho al 100% del lienzo */
+    height: 17%;                   /* Ajusta el alto ocupando el 17% inferior del espacio */
+    z-index: 4;                    /* Capa 4: Plano intermedio-alto */
 }
 
 .tira-pegatinas-img {
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
-    display: block;
+    width: 100%;                   /* Ajusta la imagen al ancho total de su caja */
+    height: 100%;                  /* Ajusta la imagen a la altura total de su caja */
+    object-fit: fill;              /* Adapta el dibujo de la tira sin dejar márgenes vacíos */
+    display: block;                /* Elimina espacios vacíos o rebabas en la base del dibujo */
 }
 
 .zona-activa {
-    position: absolute;
-    top: 0;
-    height: 100%;
+    position: absolute;            /* Clava el recuadro de clic en coordenadas fijas */
+    top: 0;                        /* Alínea el recuadro con el techo de la barra inferior */
+    height: 100%;                  /* Extiende el recuadro al alto total de la barra */
 }
 
-.zona-inicio   { left: 0%;  width: 25%; }
-.zona-oficina  { left: 25%; width: 25%; }
-.zona-marcaje  { left: 50%; width: 25%; }
-.zona-escolar  { left: 75%; width: 25%; }
-
+/* Ajustes de posición horizontal para los 4 cuadrantes del menú */
+.zona-inicio   { left: 0%;  width: 25%; } /* Cuadrante 1: Ocupa del 0% al 25% del ancho */
+.zona-oficina  { left: 25%; width: 25%; } /* Cuadrante 2: Ocupa del 25% al 50% del ancho */
+.zona-marcaje  { left: 50%; width: 25%; } /* Cuadrante 3: Ocupa del 50% al 75% del ancho */
+.zona-escolar  { left: 75%; width: 25%; } /* Cuadrante 4: Ocupa del 75% al 100% del ancho */
 </style>
 </head>
 
@@ -139,9 +196,7 @@ html, body {
 
 <div class="contenedor">
 
-    <img class="fondo"
-         src="imagenes/fondos/FondoSegrFich06.webp"
-         alt="Fondo">
+    <img class="fondo" src="imagenes/fondos/fondo-linea-seguridad.webp" alt="Fondo">
 
     <a href="seguridad.html" class="indice" title="Volver al índice">
         <img src="imagenes/botones/BtnVerLista.webp" alt="Índice">
@@ -151,34 +206,4 @@ html, body {
         <img src="imagenes/botones/BtnAyuda.webp" alt="Ayuda">
     </a>
 
-    <a href="https://wa.me/573124899581" class="whatsapp" target="_blank" title="Contacto WhatsApp">
-        <img src="imagenes/botones/BtnWtsDerecha.webp" alt="WhatsApp">
-    </a>
-
-    <div class="destructora-ze113">
-        <img src="imagenes/productos/DestrDocsZE-113.webp"
-             alt="Destructora de Documentos 15 Hojas ZE-113">
-    </div>
-
-    <div class="destructora-ze114">
-        <img src="imagenes/productos/DestrDocsZE-114.webp"
-             alt="Destructora de Documentos 20 Hojas ZE-114">
-    </div>
-
-    <div class="barra-navegacion-unica">
-
-        <img src="imagenes/botones/TiraPegatinasCompleta.webp"
-             class="tira-pegatinas-img"
-             alt="Navegación">
-
-        <a href="seguridad.html" class="zona-activa zona-inicio" title="Inicio"></a>
-        <a href="oficina.html" class="zona-activa zona-oficina" title="Oficina"></a>
-        <a href="marcaje.html" class="zona-activa zona-marcaje" title="Marcaje"></a>
-        <a href="escolar.html" class="zona-activa zona-escolar" title="Escolar"></a>
-
-    </div>
-
-</div>
-
-</body>
-</html>
+    <a href="https://wa.me/573124899581" class="whatsapp
