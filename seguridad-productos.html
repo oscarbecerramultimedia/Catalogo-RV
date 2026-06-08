@@ -93,10 +93,10 @@ html, body {
    ========================================== */
 .visor-productos-scroll {
     position: absolute;
-    top: 0;                        /* Inicia exactamente en el techo del lienzo */
+    top: 0;                        /* ARREGLADO: Inicia exactamente en la arista superior del lienzo (top:0) */
     left: 0;
     width: 100%;
-    height: 83%;                   /* GEOMETRÍA EXACTA: 100% total - 17% de pegatinas = 83% libre. Evita solapamiento. */
+    height: 83%;                   /* GEOMETRÍA EXACTA: 100% total - 17% de pegatinas = 83% libre. Evita solapamiento abajo. */
     overflow-y: auto;              /* Habilita la rueda de desplazamiento vertical */
     scroll-snap-type: y mandatory; /* Activa el riel magnético vertical para forzar encajes exactos */
     scroll-behavior: smooth;       /* Transición fluida al saltar mediante anclas (índice) */
@@ -133,7 +133,7 @@ html, body {
 }
 
 /* Variantes de distancia vertical (Cotas Y) para posicionar títulos en la hoja */
-.titulo-top { margin-top: 3%; }    /* Título que va en la parte superior de la hoja */
+.titulo-top { margin-top: 0.5%; }    /* ARREGLADO: Cota reducida al mínimo para pegar el título al techo de la hoja */
 .titulo-mid { margin-top: 5%; }    /* Título separador para el segundo producto en la misma hoja */
 
 .grafico-borde {
@@ -146,7 +146,7 @@ html, body {
 .texto-rotulo {
     position: relative;
     z-index: 2;                    /* Coloca la tinta de las letras por encima del marco azul */
-    color: #1a4d8c;                /* Tinta azul institucional */
+    color: #051020;                /* ARREGLADO: Tinta azul muy oscura, casi negra para máximo contraste */
     font-family: sans-serif;
     font-weight: bold;
     text-align: right;             /* Justifica la caligrafía a la derecha */
@@ -305,7 +305,7 @@ html, body {
             <div class="producto-render">
                 <img src="imagenes/productos/Protec-CheqElect-112.webp" alt="Protector Cheques ZE-112">
             </div>
-            </section>
+        </section>
 
         <section id="destructoras" class="bloque-seccion">
             <div class="grupo-titulo titulo-top">
