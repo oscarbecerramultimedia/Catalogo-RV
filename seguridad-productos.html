@@ -41,7 +41,6 @@ html, body {
     }
 }
 
-/* Capa de fondo estática del catálogo */
 .fondo-estatico {
     position: absolute;
     inset: 0;
@@ -52,25 +51,32 @@ html, body {
 }
 
 /* ==========================================
-   VISOR DESLIZANTE CON EFECTO IMÁN (SCROLL SNAP)
+   VISOR DESLIZANTE RESTAURADO + EFECTO IMÁN
    ========================================== */
 .visor-productos-scroll {
     position: absolute;
-    top: 12%;                     /* Inicia justo debajo del título del banner global (Imagen 2) */
-    left: 0;
-    width: 100%;
-    height: 71%;                  /* Abarca la zona exacta cuadriculada en rojo */
+    top: 0;                       /* Restaurado al original */
+    left: 5%;                     /* Restaurado al original */
+    width: 90%;                   /* Restaurado al original */
+    height: 83%;                  /* Restaurado al original */
     overflow-y: scroll !important;
-    scroll-snap-type: y mandatory; /* Fuerza a que cada deslizamiento salte a la siguiente página */
+    scroll-snap-type: y mandatory; /* Mantiene el salto magnético de página completa */
     scroll-behavior: smooth;
     z-index: 3;
+    padding-top: 20px;            /* Restaurado al original */
+    padding-right: 5px;           /* Restaurado al original */
     box-sizing: border-box;
 }
 
-/* Ocultar barra de scroll para mantener estética limpia */
+/* Estilos de la barra de scroll originales */
 .visor-productos-scroll::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
+    width: 4px;
+    display: block !important;
+}
+
+.visor-productos-scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 255, 255, 0.35);
+    border-radius: 4px;
 }
 
 /* ==========================================
@@ -79,8 +85,8 @@ html, body {
 .ficha-pagina {
     position: relative;
     width: 100%;
-    height: 100%;                 /* Obliga a cada sección a medir exactamente lo mismo que el visor */
-    scroll-snap-align: start;     /* Alínea el inicio de la ficha con el inicio del visor */
+    height: 100%;                 /* Obliga a la sección a medir el 100% de la caja visible */
+    scroll-snap-align: start;     /* Alínea el imán al inicio de la caja */
     flex-shrink: 0;
     overflow: hidden;
 }
@@ -96,8 +102,9 @@ html, body {
     left: 0;
 }
 
-.pos-top { top: 0%; }
-.pos-mid { top: 46%; }            /* Posición de control media para separar dos productos */
+/* Se ajustan para no chocar con los botones superiores al restaurar top:0 en la caja madre */
+.pos-top { top: 11%; }            
+.pos-mid { top: 51%; }            
 
 /* ==========================================
    REGLAS GRÁFICAS PARA ROTULACIÓN DE TÍTULOS
@@ -110,15 +117,14 @@ html, body {
     font-size: 7.5cqw;
     z-index: 5;
     pointer-events: none;
-    text-align: right;
+    text-align: right;            /* Títulos justificados a la derecha respetado */
     white-space: nowrap;
     transform-origin: right center;
-    right: 3%;
+    right: 2%;                    
 }
 
-/* Clases de calibración de ancho de texto (Android/Escritorio) */
-.tit-top { top: 0.5%; transform: scaleX(0.70); }
-.tit-mid { top: 46.5%; transform: scaleX(0.72); }
+.tit-top { top: 11.5%; transform: scaleX(0.70); }
+.tit-mid { top: 51.5%; transform: scaleX(0.72); }
 
 @media (min-width: 768px) {
     .tit-top { transform: scaleX(0.58); }
@@ -130,23 +136,22 @@ html, body {
    ========================================== */
 .render-contenedor {
     position: absolute;
-    left: 5%;
-    width: 90%;
+    left: 0;
+    width: 100%;
     z-index: 3;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Modificadores de posición según distribución */
-.prod-unico { top: 12%; height: 75%; }
-.prod-doble-superior { top: 9%; height: 35%; }
-.prod-doble-inferior { top: 54%; height: 35%; }
+/* Modificadores ajustados a la caja restaurada */
+.prod-unico { top: 20%; height: 60%; }
+.prod-doble-superior { top: 17%; height: 32%; }
+.prod-doble-inferior { top: 57%; height: 32%; }
 
-/* Distribución especial de 3 productos (Ficha Detectores) */
-.prod-triple-1 { top: 8%; height: 26%; }
-.prod-triple-2 { top: 38%; height: 26%; }
-.prod-triple-3 { top: 68%; height: 26%; }
+.prod-triple-1 { top: 16%; height: 23%; }
+.prod-triple-2 { top: 40%; height: 23%; }
+.prod-triple-3 { top: 66%; height: 23%; }
 
 .render-contenedor img {
     max-width: 100%;
@@ -175,7 +180,7 @@ html, body {
 
 .whatsapp {
     position: absolute;
-    bottom: 18%;                  /* Por encima del menú de pegatinas */
+    bottom: 18%;                  
     right: 1%;
     width: 24%;
     z-index: 6;
@@ -306,6 +311,7 @@ html, body {
         </section>
 
     </div>
+
     <div class="barra-navegacion-unica">
         <img src="imagenes/botones/TiraPegatinasCompleta.webp" class="tira-pegatinas-img" alt="Navegación">
         <a href="seguridad.html" class="zona-activa zona-inicio" title="Seguridad"></a>
