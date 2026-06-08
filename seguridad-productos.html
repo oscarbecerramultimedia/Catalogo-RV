@@ -14,14 +14,13 @@ html, body {
     padding: 0;
     width: 100%;
     height: 100dvh;
-    overflow: hidden; /* Evita que la pantalla entera haga scroll */
+    overflow: hidden;
     background: #73A9E4;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* El marco que simula la pantalla del celular (Frame Fijo) */
 .contenedor {
     position: relative;
     width: 100vw;
@@ -33,7 +32,7 @@ html, body {
 @media (min-width: 768px) {
     .contenedor {
         height: 100dvh;
-        width: calc(100dvh * 540 / 1200); /* Mantiene la proporción en PC */
+        width: calc(100dvh * 540 / 1200);
         max-width: 100vw;
         box-shadow: 0 0 15px rgba(0,0,0,0.2);
     }
@@ -44,30 +43,28 @@ html, body {
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: fill; /* Estira la imagen de fondo para cubrir todo */
-    z-index: 1;       /* El nivel más bajo, al fondo */
+    object-fit: fill; 
+    z-index: 1;       
 }
 
 /* ========================================================
    2. EL VISOR DESLIZANTE (LA CAJA DEL CAMPO MAGNÉTICO)
    ======================================================== */
-/* Esta es la caja que contiene todas las "fichas" y permite deslizar */
 .visor-productos-scroll {
     position: absolute;
-    top: 0;                       /* INICIA DESDE ARRIBA COMO PEDISTE */
+    top: 0;                       /* INICIA DESDE ARRIBA */
     left: 5%;
     width: 90%;
-    height: 83%;                  /* DEJA EL 17% INFERIOR PARA LOS BOTONES */
+    height: 83%;                  /* DEJA EL 17% INFERIOR LIBRE */
     overflow-y: scroll !important;
-    scroll-snap-type: y mandatory; /* ACTIVA EL CAMPO MAGNÉTICO (y = vertical, mandatory = salto obligatorio) */
-    scroll-behavior: smooth;       /* Hace que el deslizamiento sea suave */
+    scroll-snap-type: y mandatory; 
+    scroll-behavior: smooth;       
     z-index: 3;
-    padding-top: 20px;            /* Espacio interno superior */
+    padding-top: 20px;            
     padding-right: 5px;
     box-sizing: border-box;
 }
 
-/* Diseño de la barrita lateral para arrastrar */
 .visor-productos-scroll::-webkit-scrollbar {
     width: 4px;
     display: block !important;
@@ -80,12 +77,11 @@ html, body {
 /* ========================================================
    3. LA FICHA DE CADA PÁGINA (EL IMÁN)
    ======================================================== */
-/* Cada <section> es una "página" que el visor atrapará */
 .ficha-pagina {
     position: relative;
     width: 100%;
-    height: 100%;                 /* Ocupa el 100% de la altura visible del visor */
-    scroll-snap-align: start;     /* LE DICE AL IMÁN: "Atrapa esta página desde su inicio (arriba)" */
+    height: 100%;                 
+    scroll-snap-align: start;     
     flex-shrink: 0;
     overflow: hidden;
 }
@@ -101,9 +97,9 @@ html, body {
     left: 0;
 }
 
-/* 👉 GUÍA: Cambia estos porcentajes si quieres subir o bajar las líneas azules */
-.pos-top { top: 3%; }  /* Línea azul superior (Acercado a 0% para subirlo como en Imagen 2) */
-.pos-mid { top: 48%; } /* Línea azul del medio (separador) */
+/* 👉 CORRECCIÓN APLICADA: Bajamos el top para no chocar con los botones */
+.pos-top { top: 10%; }  /* Antes en 3%, ahora en 10% (Despeja la zona superior) */
+.pos-mid { top: 50%; }  /* Antes en 48%, lo centramos mejor */
 
 /* ========================================================
    5. GUÍA DE REFERENCIA: ROTULACIÓN DE LOS TÍTULOS
@@ -116,23 +112,22 @@ html, body {
     font-size: 7.5cqw;
     z-index: 5;
     pointer-events: none;
-    text-align: right;            /* JUSTIFICADO A LA DERECHA COMO PEDISTE */
+    text-align: right;            
     white-space: nowrap;
     transform-origin: right center;
-    right: 2%;                    /* Pegado a 2% del borde derecho */
+    right: 2%;                    
 }
 
-/* 👉 GUÍA: Estos valores de 'top' deben ser casi iguales a los de pos-top y pos-mid para que el texto encaje en la línea */
+/* 👉 CORRECCIÓN APLICADA: Alineados con los nuevos bordes */
 .tit-top { 
-    top: 3.5%; 
-    transform: scaleX(0.70); /* Comprime el texto un poco a lo ancho para que quepa */
+    top: 10.5%; 
+    transform: scaleX(0.70); 
 }
 .tit-mid { 
-    top: 48.5%; 
+    top: 50.5%; 
     transform: scaleX(0.72); 
 }
 
-/* Ajuste de compresión de texto si se ve en PC */
 @media (min-width: 768px) {
     .tit-top { transform: scaleX(0.58); }
     .tit-mid { transform: scaleX(0.64); }
@@ -151,21 +146,21 @@ html, body {
     align-items: center;
 }
 
-/* 👉 GUÍA: Controla a qué altura (top) y qué tan grande (height) se ve la imagen del producto */
-.prod-unico { top: 15%; height: 65%; }          /* Para cuando hay 1 solo producto en la ficha */
+/* 👉 CORRECCIÓN APLICADA: Comprimimos la altura de los productos y los centramos */
+.prod-unico { top: 22%; height: 55%; }          
 
-.prod-doble-superior { top: 12%; height: 32%; } /* El producto de ARRIBA cuando hay 2 */
-.prod-doble-inferior { top: 56%; height: 32%; } /* El producto de ABAJO cuando hay 2 */
+.prod-doble-superior { top: 16%; height: 28%; } /* Antes top 12% height 32% */
+.prod-doble-inferior { top: 56%; height: 28%; } /* Subimos el límite inferior para no pisar a la asistente de WhatsApp */
 
-/* Para la ficha de detectores que tiene 3 productos */
-.prod-triple-1 { top: 12%; height: 23%; }
-.prod-triple-2 { top: 38%; height: 23%; }
-.prod-triple-3 { top: 65%; height: 23%; }
+/* Ajuste para los 3 detectores */
+.prod-triple-1 { top: 16%; height: 20%; }
+.prod-triple-2 { top: 39%; height: 20%; }
+.prod-triple-3 { top: 62%; height: 20%; }
 
 .render-contenedor img {
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain; /* Evita que la imagen del producto se deforme */
+    object-fit: contain; 
 }
 
 /* ========================================================
@@ -176,7 +171,7 @@ html, body {
     top: 1%;
     left: 1%;
     width: 14%;
-    z-index: 6; /* Capa superior para que sea clickeable siempre */
+    z-index: 6; 
 }
 
 .btn-ayuda {
@@ -195,7 +190,6 @@ html, body {
     z-index: 6;
 }
 
-/* Barra inferior de navegación (Tira de pegatinas) */
 .barra-navegacion-unica {
     position: absolute;
     bottom: 0;
@@ -212,7 +206,6 @@ html, body {
     display: block;
 }
 
-/* Zonas invisibles encima de las pegatinas para poder hacer clic */
 .zona-activa { position: absolute; top: 0; height: 100%; }
 .zona-inicio { left: 0%; width: 25%; }
 .zona-oficina { left: 25%; width: 25%; }
@@ -228,6 +221,7 @@ html, body {
 <div class="contenedor">
     <img class="fondo-estatico" src="imagenes/fondos/fondo-linea-seguridad.webp" alt="Fondo">
 
+    <!-- BOTONES FIJOS -->
     <a href="seguridad.html" class="btn-indice" title="Volver al índice">
         <img src="imagenes/botones/BtnVerLista.webp" alt="Índice">
     </a>
@@ -240,8 +234,12 @@ html, body {
         <img src="imagenes/botones/BtnWtsDerecha.webp" alt="WhatsApp">
     </a>
 
+    <!-- ========================================================
+         VISOR DE PÁGINAS (DESLIZABLE)
+         ======================================================== -->
     <div class="visor-productos-scroll">
 
+        <!-- FICHA 1: CONTADORES -->
         <section id="contadores" class="ficha-pagina">
             <img src="imagenes/fondos/borde-azul2.webp" class="borde-azul-decorativo pos-top" alt="Borde">
             <div class="texto-titulo-producto tit-top">CONTADOR DE MONEDAS</div>
@@ -256,6 +254,7 @@ html, body {
             </div>
         </section>
 
+        <!-- FICHA 2: DETECTORES -->
         <section id="detectores" class="ficha-pagina">
             <img src="imagenes/fondos/borde-azul3.webp" class="borde-azul-decorativo pos-top" alt="Borde">
             <div class="texto-titulo-producto tit-top">DETECTOR DE BILLETES</div>
@@ -271,6 +270,7 @@ html, body {
             </div>
         </section>
 
+        <!-- FICHA 3: CAJAS -->
         <section id="cajas" class="ficha-pagina">
             <img src="imagenes/fondos/borde-azul2.webp" class="borde-azul-decorativo pos-top" alt="Borde">
             <div class="texto-titulo-producto tit-top">CAJA MENOR METÁLICA</div>
@@ -285,6 +285,7 @@ html, body {
             </div>
         </section>
 
+        <!-- FICHA 4: RELOJES -->
         <section id="relojes" class="ficha-pagina">
             <img src="imagenes/fondos/borde-azul3.webp" class="borde-azul-decorativo pos-top" alt="Borde">
             <div class="texto-titulo-producto tit-top">RELOJ CONTROL DE PERSONAL</div>
@@ -299,6 +300,7 @@ html, body {
             </div>
         </section>
 
+        <!-- FICHA 5: PROTECTOR DE CHEQUES -->
         <section id="cheques" class="ficha-pagina">
             <img src="imagenes/fondos/borde-azul2.webp" class="borde-azul-decorativo pos-top" alt="Borde">
             <div class="texto-titulo-producto tit-top">PROTECTOR DE CHEQUES</div>
@@ -308,6 +310,7 @@ html, body {
             </div>
         </section>
 
+        <!-- FICHA 6: DESTRUCTORAS -->
         <section id="destructoras" class="ficha-pagina">
             <img src="imagenes/fondos/borde-azul3.webp" class="borde-azul-decorativo pos-top" alt="Borde">
             <div class="texto-titulo-producto tit-top">DESTRUCTORA DE DOCUMENTOS</div>
@@ -323,6 +326,7 @@ html, body {
 
     </div>
 
+    <!-- NAVEGACIÓN INFERIOR -->
     <div class="barra-navegacion-unica">
         <img src="imagenes/botones/TiraPegatinasCompleta.webp" class="tira-pegatinas-img" alt="Navegación">
         <a href="seguridad.html" class="zona-activa zona-inicio" title="Seguridad"></a>
