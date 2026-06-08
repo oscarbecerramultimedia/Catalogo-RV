@@ -69,7 +69,7 @@ html, body {
 
 .ayuda {
     position: absolute;            /* Clava el elemento en coordenadas fijas dentro del lienzo */
-    top: 5.5%;                     /* Distancia vertical desde la regla superior del lienzo */
+    top: 6%;                     /* Distancia vertical desde la regla superior del lienzo */
     right: 1.5%;                   /* Distancia horizontal desde la regla derecha del lienzo */
     width: 4.5%;                   /* Ajusta el ancho de la imagen del botón */
     z-index: 5;                    /* Capa 5: Al frente de todo el plano para recibir clics */
@@ -121,7 +121,7 @@ html, body {
     z-index: 5;                    /* Capa 5: Se dibuja en el plano superior, al frente de todo */
     pointer-events: none;          /* El texto actúa como dibujo fantasma; no bloquea trazos inferiores */
     text-align: right;             /* Justifica o alinea la rotulación hacia el lado derecho */
-    top: 1.5%;                     /* Distancia vertical desde el techo del lienzo */
+    top: 0.5%;                     /* Distancia vertical desde el techo del lienzo */
     right: 2%;                     /* Distancia horizontal desde el marco derecho */
     transform-origin: right center; /* Clava el punto de anclaje en el extremo derecho antes de deformar */
     transform: scaleX(0.70);       /* Gradúa el ancho: comprime horizontalmente en Android */
@@ -129,7 +129,7 @@ html, body {
 
 @media (min-width: 768px) {
     .texto-titulo {
-        transform: scaleX(0.64);   /* Ajusta ancho en Windows: comprime más horizontalmente */
+        transform: scaleX(0.67);   /* Ajusta ancho en Windows: comprime más horizontalmente */
     }
 }
 
