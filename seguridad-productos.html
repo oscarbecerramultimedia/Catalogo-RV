@@ -6,9 +6,9 @@
 <title>Catálogo Interactivo - Seguridad y Biométricos</title>
 
 <style>
-/* ========================================================
-   1. CONFIGURACIÓN DEL LIENZO (PANTALLA PRINCIPAL)
-   ======================================================== */
+/* ==========================================
+   CONFIGURACIÓN GENERAL DEL ESCRITORIO
+   ========================================== */
 html, body {
     margin: 0;
     padding: 0;
@@ -21,6 +21,9 @@ html, body {
     align-items: center;
 }
 
+/* ==========================================
+   EL LIENZO PRINCIPAL (FRAME FIJO)
+   ========================================== */
 .contenedor {
     position: relative;
     width: 100vw;
@@ -38,57 +41,53 @@ html, body {
     }
 }
 
+/* Capa de fondo estática del catálogo */
 .fondo-estatico {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: fill; 
-    z-index: 1;       
+    object-fit: fill;
+    z-index: 1;
 }
 
-/* ========================================================
-   2. EL VISOR DESLIZANTE (LA CAJA DEL CAMPO MAGNÉTICO)
-   ======================================================== */
+/* ==========================================
+   VISOR DESLIZANTE CON EFECTO IMÁN (SCROLL SNAP)
+   ========================================== */
 .visor-productos-scroll {
     position: absolute;
-    top: 0;                       /* INICIA DESDE ARRIBA */
-    left: 5%;
-    width: 90%;
-    height: 83%;                  /* DEJA EL 17% INFERIOR LIBRE */
+    top: 12%;                     /* Inicia justo debajo del título del banner global (Imagen 2) */
+    left: 0;
+    width: 100%;
+    height: 71%;                  /* Abarca la zona exacta cuadriculada en rojo */
     overflow-y: scroll !important;
-    scroll-snap-type: y mandatory; 
-    scroll-behavior: smooth;       
+    scroll-snap-type: y mandatory; /* Fuerza a que cada deslizamiento salte a la siguiente página */
+    scroll-behavior: smooth;
     z-index: 3;
-    padding-top: 20px;            
-    padding-right: 5px;
     box-sizing: border-box;
 }
 
+/* Ocultar barra de scroll para mantener estética limpia */
 .visor-productos-scroll::-webkit-scrollbar {
-    width: 4px;
-    display: block !important;
-}
-.visor-productos-scroll::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 255, 255, 0.35);
-    border-radius: 4px;
+    width: 0px;
+    background: transparent;
 }
 
-/* ========================================================
-   3. LA FICHA DE CADA PÁGINA (EL IMÁN)
-   ======================================================== */
+/* ==========================================
+   ESTRUCTURA DE CADA PÁGINA (FICHA) INDEPENDIENTE
+   ========================================== */
 .ficha-pagina {
     position: relative;
     width: 100%;
-    height: 100%;                 
-    scroll-snap-align: start;     
+    height: 100%;                 /* Obliga a cada sección a medir exactamente lo mismo que el visor */
+    scroll-snap-align: start;     /* Alínea el inicio de la ficha con el inicio del visor */
     flex-shrink: 0;
     overflow: hidden;
 }
 
-/* ========================================================
-   4. GUÍA DE REFERENCIA: POSICIÓN DE LOS BORDES DECORATIVOS
-   ======================================================== */
+/* ==========================================
+   CONTROL DE MARCOS Y DIVISIONES DECORATIVAS
+   ========================================== */
 .borde-azul-decorativo {
     position: absolute;
     width: 100%;
@@ -97,13 +96,12 @@ html, body {
     left: 0;
 }
 
-/* 👉 CORRECCIÓN APLICADA: Bajamos el top para no chocar con los botones */
-.pos-top { top: 10%; }  /* Antes en 3%, ahora en 10% (Despeja la zona superior) */
-.pos-mid { top: 50%; }  /* Antes en 48%, lo centramos mejor */
+.pos-top { top: 0%; }
+.pos-mid { top: 46%; }            /* Posición de control media para separar dos productos */
 
-/* ========================================================
-   5. GUÍA DE REFERENCIA: ROTULACIÓN DE LOS TÍTULOS
-   ======================================================== */
+/* ==========================================
+   REGLAS GRÁFICAS PARA ROTULACIÓN DE TÍTULOS
+   ========================================== */
 .texto-titulo-producto {
     position: absolute;
     color: #1a4d8c;
@@ -112,66 +110,59 @@ html, body {
     font-size: 7.5cqw;
     z-index: 5;
     pointer-events: none;
-    text-align: right;            
+    text-align: right;
     white-space: nowrap;
     transform-origin: right center;
-    right: 2%;                    
+    right: 3%;
 }
 
-/* 👉 CORRECCIÓN APLICADA: Alineados con los nuevos bordes */
-.tit-top { 
-    top: 10.5%; 
-    transform: scaleX(0.70); 
-}
-.tit-mid { 
-    top: 50.5%; 
-    transform: scaleX(0.72); 
-}
+/* Clases de calibración de ancho de texto (Android/Escritorio) */
+.tit-top { top: 0.5%; transform: scaleX(0.70); }
+.tit-mid { top: 46.5%; transform: scaleX(0.72); }
 
 @media (min-width: 768px) {
     .tit-top { transform: scaleX(0.58); }
     .tit-mid { transform: scaleX(0.64); }
 }
 
-/* ========================================================
-   6. GUÍA DE REFERENCIA: POSICIÓN DE LOS PRODUCTOS
-   ======================================================== */
+/* ==========================================
+   POSICIONAMIENTO GEOMÉTRICO DE PRODUCTOS
+   ========================================== */
 .render-contenedor {
     position: absolute;
-    left: 0;
-    width: 100%;
+    left: 5%;
+    width: 90%;
     z-index: 3;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* 👉 CORRECCIÓN APLICADA: Comprimimos la altura de los productos y los centramos */
-.prod-unico { top: 22%; height: 55%; }          
+/* Modificadores de posición según distribución */
+.prod-unico { top: 12%; height: 75%; }
+.prod-doble-superior { top: 9%; height: 35%; }
+.prod-doble-inferior { top: 54%; height: 35%; }
 
-.prod-doble-superior { top: 16%; height: 28%; } /* Antes top 12% height 32% */
-.prod-doble-inferior { top: 56%; height: 28%; } /* Subimos el límite inferior para no pisar a la asistente de WhatsApp */
-
-/* Ajuste para los 3 detectores */
-.prod-triple-1 { top: 16%; height: 20%; }
-.prod-triple-2 { top: 39%; height: 20%; }
-.prod-triple-3 { top: 62%; height: 20%; }
+/* Distribución especial de 3 productos (Ficha Detectores) */
+.prod-triple-1 { top: 8%; height: 26%; }
+.prod-triple-2 { top: 38%; height: 26%; }
+.prod-triple-3 { top: 68%; height: 26%; }
 
 .render-contenedor img {
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain; 
+    object-fit: contain;
 }
 
-/* ========================================================
-   7. BOTONES FLOTANTES E INTERFAZ INFERIOR
-   ======================================================== */
+/* ==========================================
+   BOTONES E INTERFAZ GLOBAL DEL CONTENEDOR
+   ========================================== */
 .btn-indice {
     position: absolute;
     top: 1%;
     left: 1%;
     width: 14%;
-    z-index: 6; 
+    z-index: 6;
 }
 
 .btn-ayuda {
@@ -184,7 +175,7 @@ html, body {
 
 .whatsapp {
     position: absolute;
-    bottom: 18%;                  
+    bottom: 18%;                  /* Por encima del menú de pegatinas */
     right: 1%;
     width: 24%;
     z-index: 6;
@@ -221,7 +212,6 @@ html, body {
 <div class="contenedor">
     <img class="fondo-estatico" src="imagenes/fondos/fondo-linea-seguridad.webp" alt="Fondo">
 
-    <!-- BOTONES FIJOS -->
     <a href="seguridad.html" class="btn-indice" title="Volver al índice">
         <img src="imagenes/botones/BtnVerLista.webp" alt="Índice">
     </a>
@@ -234,12 +224,8 @@ html, body {
         <img src="imagenes/botones/BtnWtsDerecha.webp" alt="WhatsApp">
     </a>
 
-    <!-- ========================================================
-         VISOR DE PÁGINAS (DESLIZABLE)
-         ======================================================== -->
     <div class="visor-productos-scroll">
 
-        <!-- FICHA 1: CONTADORES -->
         <section id="contadores" class="ficha-pagina">
             <img src="imagenes/fondos/borde-azul2.webp" class="borde-azul-decorativo pos-top" alt="Borde">
             <div class="texto-titulo-producto tit-top">CONTADOR DE MONEDAS</div>
@@ -254,7 +240,6 @@ html, body {
             </div>
         </section>
 
-        <!-- FICHA 2: DETECTORES -->
         <section id="detectores" class="ficha-pagina">
             <img src="imagenes/fondos/borde-azul3.webp" class="borde-azul-decorativo pos-top" alt="Borde">
             <div class="texto-titulo-producto tit-top">DETECTOR DE BILLETES</div>
@@ -270,7 +255,6 @@ html, body {
             </div>
         </section>
 
-        <!-- FICHA 3: CAJAS -->
         <section id="cajas" class="ficha-pagina">
             <img src="imagenes/fondos/borde-azul2.webp" class="borde-azul-decorativo pos-top" alt="Borde">
             <div class="texto-titulo-producto tit-top">CAJA MENOR METÁLICA</div>
@@ -285,7 +269,6 @@ html, body {
             </div>
         </section>
 
-        <!-- FICHA 4: RELOJES -->
         <section id="relojes" class="ficha-pagina">
             <img src="imagenes/fondos/borde-azul3.webp" class="borde-azul-decorativo pos-top" alt="Borde">
             <div class="texto-titulo-producto tit-top">RELOJ CONTROL DE PERSONAL</div>
@@ -300,7 +283,6 @@ html, body {
             </div>
         </section>
 
-        <!-- FICHA 5: PROTECTOR DE CHEQUES -->
         <section id="cheques" class="ficha-pagina">
             <img src="imagenes/fondos/borde-azul2.webp" class="borde-azul-decorativo pos-top" alt="Borde">
             <div class="texto-titulo-producto tit-top">PROTECTOR DE CHEQUES</div>
@@ -310,7 +292,6 @@ html, body {
             </div>
         </section>
 
-        <!-- FICHA 6: DESTRUCTORAS -->
         <section id="destructoras" class="ficha-pagina">
             <img src="imagenes/fondos/borde-azul3.webp" class="borde-azul-decorativo pos-top" alt="Borde">
             <div class="texto-titulo-producto tit-top">DESTRUCTORA DE DOCUMENTOS</div>
@@ -325,8 +306,6 @@ html, body {
         </section>
 
     </div>
-
-    <!-- NAVEGACIÓN INFERIOR -->
     <div class="barra-navegacion-unica">
         <img src="imagenes/botones/TiraPegatinasCompleta.webp" class="tira-pegatinas-img" alt="Navegación">
         <a href="seguridad.html" class="zona-activa zona-inicio" title="Seguridad"></a>
