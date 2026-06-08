@@ -10,26 +10,26 @@
    CONFIGURACIÓN GENERAL DEL ESCRITORIO
    ========================================== */
 html, body {
-    margin: 0;                     
-    padding: 0;                    
-    width: 100%;                   
-    height: 100dvh;                
-    overflow: hidden;              
-    background: #73A9E4;           
-    display: flex;                 
-    justify-content: center;       
-    align-items: center;           
+    margin: 0;                     /* Elimina el margen externo del papel */
+    padding: 0;                    /* Elimina el espacio interno del marco */
+    width: 100%;                   /* Ajusta el ancho total de la zona de dibujo */
+    height: 100dvh;                /* Ajusta la altura total de la zona de dibujo */
+    overflow: hidden;              /* Recorta y oculta cualquier trazo que se salga del papel */
+    background: #73A9E4;           /* Color de la tinta de fondo del escritorio */
+    display: flex;                 /* Activa la regla de alineación técnica */
+    justify-content: center;       /* Centra los elementos horizontalmente */
+    align-items: center;           /* Centra los elementos verticalmente */
 }
 
 /* ==========================================
    EL LIENZO PRINCIPAL
    ========================================== */
 .contenedor {
-    position: relative;            
-    width: 100vw;                  
-    height: 100dvh;                
-    overflow: hidden;              
-    container-type: size;          
+    position: relative;            /* Define el lienzo base para trazar coordenadas XYZ */
+    width: 100vw;                  /* Ancho del lienzo al 100% de la visual */
+    height: 100dvh;                /* Alto del lienzo al 100% de la visual */
+    overflow: hidden;              /* Enmascara elementos fuera de los bordes del lienzo */
+    container-type: size;          /* Mide el ancho y alto del lienzo para calcular escalas relativas */
 }
 
 /* ==========================================
@@ -37,220 +37,294 @@ html, body {
    ========================================== */
 @media (min-width: 768px) {
     .contenedor {
-        height: 100dvh;            
-        width: calc(100dvh * 540 / 1200); 
-        max-width: 100vw;          
-        box-shadow: 0 0 15px rgba(0,0,0,0.2); 
-    }
-    .texto-titulo-interno {
-        font-size: 20px !important; 
+        height: 100dvh;            /* Mantiene el alto total en la pantalla del monitor */
+        width: calc(100dvh * 540 / 1200); /* Ajusta el ancho aplicando la proporción aurea del diseño original */
+        max-width: 100vw;          /* Restringe el ancho máximo al límite físico de la pantalla */
+        box-shadow: 0 0 15px rgba(0,0,0,0.2); /* Dibuja una sombra proyectada alrededor del marco */
     }
 }
 
 /* ==========================================
-   CAPA DE FONDO
+   CAPA DE FONDO MAESTRA
    ========================================== */
 .fondo {
-    position: absolute;            
-    inset: 0;                      
-    width: 100%;                   
-    height: 100%;                  
-    object-fit: fill;              
-    z-index: 1;                    
+    position: absolute;            /* Clava el elemento en coordenadas fijas */
+    inset: 0;                      /* Expande los bordes a los cuatro límites del lienzo */
+    width: 100%;
+    height: 100%;
+    object-fit: fill;              /* Estira el dibujo de fondo para no dejar vacíos */
+    z-index: 1;                    /* Capa 1: Fondo de la pila (papel tapiz) */
 }
 
 /* ==========================================
-   VISOR DESLIZANTE AMPLIADO
+   BOTONES INTERACTIVOS GLOBALES
+   ========================================== */
+.indice { 
+    position: absolute;            /* Clava el botón sobre el lienzo */
+    top: 1%;                       /* Cota Y: Distancia desde el techo */
+    left: 1%;                      /* Cota X: Distancia desde la pared izquierda */
+    width: 14%;                    /* Escala del plano del botón */
+    z-index: 5;                    /* Capa 5: Al frente para recibir clics */
+}
+
+.ayuda { 
+    position: absolute;
+    top: 5.5%;                     /* Cota Y: Debajo del índice */
+    right: 1.5%;                   /* Cota X: Distancia desde la pared derecha */
+    width: 4.5%;                   
+    z-index: 5;
+}
+
+.whatsapp { 
+    position: absolute;
+    bottom: 18.5%;                 /* Cota Y: Posicionado justo sobre el límite de las pegatinas (17%) */
+    right: 1%;
+    width: 24%;
+    z-index: 5;
+}
+
+.indice img, .ayuda img, .whatsapp img { 
+    width: 100%;                   /* Obliga al gráfico a ocupar exactamente su marco delimitador */
+    display: block;
+}
+
+/* ==========================================
+   VISOR DESLIZANTE (LA CINTA DE PÁGINAS)
    ========================================== */
 .visor-productos-scroll {
     position: absolute;
-    top: 0;
-    left: 5%;
-    width: 90%;
-    height: 83%;                   
-    overflow-y: auto !important;   
-    scroll-snap-type: y mandatory; /* AGREGADO: ACTIVA EL CAMPO MAGNÉTICO (EL CONTENEDOR) */
-    scroll-behavior: smooth;       
-    z-index: 3;                    
-    padding-top: 20px;
-    padding-right: 5px;
-    box-sizing: border-box;
+    top: 0;                        /* Inicia exactamente en el techo del lienzo */
+    left: 0;
+    width: 100%;
+    height: 83%;                   /* GEOMETRÍA EXACTA: 100% total - 17% de pegatinas = 83% libre. Evita solapamiento. */
+    overflow-y: auto;              /* Habilita la rueda de desplazamiento vertical */
+    scroll-snap-type: y mandatory; /* Activa el riel magnético vertical para forzar encajes exactos */
+    scroll-behavior: smooth;       /* Transición fluida al saltar mediante anclas (índice) */
+    z-index: 3;                    /* Capa 3: Sobre el fondo, debajo de los botones */
+    scrollbar-width: none;         /* Oculta la barra de desplazamiento en Firefox para estética limpia */
 }
-
 .visor-productos-scroll::-webkit-scrollbar {
-    width: 4px;
-    display: block !important;
-}
-
-.visor-productos-scroll::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 255, 255, 0.35);
-    border-radius: 4px;
+    display: none;                 /* Oculta la barra de desplazamiento en Chrome/Safari */
 }
 
 /* ==========================================
-   BLOQUES DE SECCIÓN (TAXONOMÍA)
+   HOJA DE SECCIÓN (CADA PÁGINA INDIVIDUAL)
    ========================================== */
 .bloque-seccion {
-    width: 100%;
-    height: 100%;                  /* AGREGADO: OBLIGA A QUE CADA BLOQUE OCUPE EL 100% DEL VISOR */
-    scroll-snap-align: start;      /* AGREGADO: ESTE ES EL IMÁN QUE SE PEGA ARRIBA */
-    flex-shrink: 0;                /* AGREGADO: Evita que las páginas se encojan */
+    width: 100%;                   /* La hoja ocupa todo el ancho del visor */
+    height: 100%;                  /* La hoja ocupa el 100% del alto del visor (que es el 83% del lienzo). Corte exacto. */
+    scroll-snap-align: start;      /* Punto de anclaje magnético en el borde superior de cada hoja */
+    scroll-snap-stop: always;      /* Fuerza el imán a frenar en cada hoja, evita saltar dos de largo */
+    position: relative;            /* Define el punto 0,0 interno para las coordenadas de esta hoja */
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 10px;          /* Sustituye el margin por padding para no dañar el imán */
-    box-sizing: border-box;
+    flex-direction: column;        /* Apila los elementos internos de arriba hacia abajo */
+    overflow: hidden;              /* Corta cualquier gráfico que intente invadir la hoja siguiente */
 }
 
-.texto-titulo-interno {
+/* ==========================================
+   ROTULACIÓN Y MARCOS DECORATIVOS (TÍTULOS DERECHOS)
+   ========================================== */
+.grupo-titulo {
+    position: relative;
     width: 100%;
-    color: #1a4d8c;
+    display: flex;
+    justify-content: flex-end;     /* Empuja todo el bloque (marco y texto) contra la pared derecha */
+    align-items: center;           /* Alinea verticalmente el texto con el centro del marco azul */
+}
+
+/* Variantes de distancia vertical (Cotas Y) para posicionar títulos en la hoja */
+.titulo-top { margin-top: 3%; }    /* Título que va en la parte superior de la hoja */
+.titulo-mid { margin-top: 5%; }    /* Título separador para el segundo producto en la misma hoja */
+
+.grafico-borde {
+    position: absolute;
+    left: 0;                       /* Ancla la imagen decorativa a la izquierda */
+    width: 100%;                   /* Extiende la línea azul de lado a lado */
+    z-index: 1;                    /* Coloca la franja azul detrás del texto */
+}
+
+.texto-rotulo {
+    position: relative;
+    z-index: 2;                    /* Coloca la tinta de las letras por encima del marco azul */
+    color: #1a4d8c;                /* Tinta azul institucional */
     font-family: sans-serif;
     font-weight: bold;
-    font-size: 5.5cqw;
-    text-align: center;
-    margin-bottom: 15px;
-    padding-bottom: 5px;
-    border-bottom: 2px solid rgba(26, 77, 140, 0.2);
-    text-transform: uppercase;
-    flex-shrink: 0;                /* Evita que el título se aplaste */
+    text-align: right;             /* Justifica la caligrafía a la derecha */
+    padding-right: 4%;             /* Margen interno para que la letra no toque el borde de la pantalla */
+    max-width: 60%;                /* Límite de la caja de texto. Si el título es muy largo, genera un salto de párrafo automático */
+    line-height: 1.1;              /* Interlineado ajustado para títulos de doble párrafo */
 }
 
+/* Control de escala de caligrafía según el tipo de título */
+.texto-corto { font-size: 6.5cqw; } /* Escala mayor para textos breves ("CAJA FUERTE") */
+.texto-largo { font-size: 5cqw; }   /* Escala menor para textos extendidos ("RELOJ CONTROL DE PERSONAL") */
+
+/* ==========================================
+   COORDENADAS DE RENDER DE PRODUCTO
+   ========================================== */
 .producto-render {
     width: 100%;
-    margin-bottom: 10px;
-    flex-grow: 1;                  /* AGREGADO: Permite que el contenedor de la imagen ocupe el espacio sobrante */
+    flex-grow: 1;                  /* Absorbe el espacio sobrante en la hoja para centrar la imagen */
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 0;                 /* Evita desbordamientos en pantallas pequeñas */
+    position: relative;
+    z-index: 2;
 }
 
 .producto-render img {
-    max-width: 100%;               /* Cambiado de width a max-width */
-    max-height: 100%;              /* AGREGADO: Evita que la imagen se salga de la pantalla */
-    display: block;
-    object-fit: contain;           
+    max-width: 85%;                /* Limita el ancho del producto para mantener un área de respiro */
+    max-height: 90%;               /* Limita el alto para que no colisione con los títulos */
+    object-fit: contain;           /* Escala la foto proporcionalmente sin deformar la perspectiva */
 }
 
 /* ==========================================
-   BOTONES FLOTANTES
+   BARRA DE NAVEGACIÓN INFERIOR (PEGATINAS)
    ========================================== */
-.btn-volver {
+.barra-navegacion-unica { 
     position: absolute;
-    top: 2%;
-    left: 2%;
-    width: 14%;
-    z-index: 5;                    
-}
-
-.btn-volver img {
-    width: 100%;
-    display: block;
-}
-
-.whatsapp {
-    position: absolute;
-    bottom: 18%;                   
-    right: 3%;
-    width: 14%;
-    z-index: 4;
-}
-
-.whatsapp img {
-    width: 100%;
-    display: block;
-}
-
-/* ==========================================
-   BARRA DE NAVEGACIÓN INFERIOR
-   ========================================== */
-.barra-navegacion-unica {
-    position: absolute;
-    bottom: 0;
+    bottom: 0;                     /* Clavado en el suelo del lienzo (Cota Y = 0) */
     left: 0;
     width: 100%;
-    height: 17%;
-    z-index: 4;
+    height: 17%;                   /* Cota Z exacta complementaria al 83% del visor */
+    z-index: 4;                    /* Plano por encima de la cinta de productos */
 }
 
-.tira-pegatinas-img {
+.tira-pegatinas-img { 
     width: 100%;
     height: 100%;
-    object-fit: fill;
+    object-fit: fill;              /* Estira la tira gráfica ocupando todo su bloque */
     display: block;
 }
 
-.zona-activa {
+.zona-activa { 
     position: absolute;
     top: 0;
-    height: 100%;
-    cursor: pointer;               
+    height: 100%;                  /* Extiende la zona invisible de clic al alto total de la barra */
 }
 
-/* Cuadrantes de navegación */
+/* Cuadrantes matemáticos para mapeo de enlaces (Hotspots) */
 .zona-inicio { left: 0%; width: 25%; }
 .zona-oficina { left: 25%; width: 25%; }
 .zona-marcaje { left: 50%; width: 25%; }
 .zona-escolar { left: 75%; width: 25%; }
 </style>
 </head>
+
 <body>
 
 <div class="contenedor">
     <img class="fondo" src="imagenes/fondos/fondo-linea-seguridad.webp" alt="Fondo">
-    
-    <a href="seguridad.html" class="btn-volver">
-        <img src="imagenes/botones/Btn-indice.webp" alt="Volver">
+
+    <a href="seguridad.html" class="indice" title="Volver al índice">
+        <img src="imagenes/botones/BtnVerLista.webp" alt="Índice">
     </a>
-    
+
+    <a href="ImagInfoAyuda.html" class="ayuda" title="Ayuda">
+        <img src="imagenes/botones/BtnAyuda.webp" alt="Ayuda">
+    </a>
+
+    <a href="https://wa.me/573124899581" class="whatsapp" target="_blank" title="Contacto WhatsApp">
+        <img src="imagenes/botones/BtnWtsDerecha.webp" alt="WhatsApp">
+    </a>
+
     <div class="visor-productos-scroll">
         
         <section id="contadores" class="bloque-seccion">
-            <div class="texto-titulo-interno">Contador De Monedas y Billetes</div>
-            <div class="producto-render"><img src="imagenes/productos/ConDeMndsZE-101.webp" alt="ZE-101"></div>
-            <div class="producto-render"><img src="imagenes/productos/ConDeBlltsZE-102.webp" alt="ZE-102"></div>
+            <div class="grupo-titulo titulo-top">
+                <img src="imagenes/fondos/borde-azul1.webp" class="grafico-borde" alt="Marco Decorativo">
+                <div class="texto-rotulo texto-corto">CONTADOR DE MONEDAS</div>
+            </div>
+            <div class="producto-render">
+                <img src="imagenes/productos/ConDeMndsZE-101.webp" alt="Contador Monedas ZE-101">
+            </div>
+
+            <div class="grupo-titulo titulo-mid">
+                <img src="imagenes/fondos/borde-azul2.webp" class="grafico-borde" alt="Marco Decorativo">
+                <div class="texto-rotulo texto-corto">CONTADOR DE BILLETES</div>
+            </div>
+            <div class="producto-render">
+                <img src="imagenes/productos/ConDeBlltsZE-102.webp" alt="Contador Billetes ZE-102">
+            </div>
         </section>
 
         <section id="detectores" class="bloque-seccion">
-            <div class="texto-titulo-interno">Detector De Billetes</div>
-            <div class="producto-render"><img src="imagenes/productos/DetBilletesZE-104.webp" alt="ZE-104"></div>
-            <div class="producto-render"><img src="imagenes/productos/DetBilletesZE-105.webp" alt="ZE-105"></div>
-            <div class="producto-render"><img src="imagenes/productos/DetBilletesZE-106.webp" alt="ZE-106"></div>
+            <div class="grupo-titulo titulo-top">
+                <img src="imagenes/fondos/borde-azul1.webp" class="grafico-borde" alt="Marco Decorativo">
+                <div class="texto-rotulo texto-corto">DETECTOR DE BILLETES</div>
+            </div>
+            <div class="producto-render">
+                <img src="imagenes/productos/DetBilletesZE-104.webp" alt="Detector ZE-104">
+            </div>
+             <div class="producto-render">
+                <img src="imagenes/productos/DetBilletesZE-105.webp" alt="Detector ZE-105">
+            </div>
         </section>
 
         <section id="cajas" class="bloque-seccion">
-            <div class="texto-titulo-interno">Caja Menor Metálica y Caja Fuerte</div>
-            <div class="producto-render"><img src="imagenes/productos/CajaMenorZE-108.webp" alt="ZE-108"></div>
-            <div class="producto-render"><img src="imagenes/productos/CajaFuerte-ZE109.webp" alt="ZE-109"></div>
+            <div class="grupo-titulo titulo-top">
+                <img src="imagenes/fondos/borde-azul1.webp" class="grafico-borde" alt="Marco Decorativo">
+                <div class="texto-rotulo texto-largo">CAJA MENOR METÁLICA</div>
+            </div>
+            <div class="producto-render">
+                <img src="imagenes/productos/CajaMenorZE-108.webp" alt="Caja Menor ZE-108">
+            </div>
+
+            <div class="grupo-titulo titulo-mid">
+                <img src="imagenes/fondos/borde-azul2.webp" class="grafico-borde" alt="Marco Decorativo">
+                <div class="texto-rotulo texto-corto">CAJA FUERTE</div>
+            </div>
+            <div class="producto-render">
+                <img src="imagenes/productos/CajaFuerte-ZE109.webp" alt="Caja Fuerte ZE-109">
+            </div>
         </section>
 
         <section id="relojes" class="bloque-seccion">
-            <div class="texto-titulo-interno">Reloj Control De Personal y Correspondencia</div>
-            <div class="producto-render"><img src="imagenes/productos/RelojBiometricoZE-110.webp" alt="ZE-110"></div>
-            <div class="producto-render"><img src="imagenes/productos/ContadorCorrespondenciaZE-111.webp" alt="ZE-111"></div>
+            <div class="grupo-titulo titulo-top">
+                <img src="imagenes/fondos/borde-azul1.webp" class="grafico-borde" alt="Marco Decorativo">
+                <div class="texto-rotulo texto-largo">RELOJ DE CONTROL DE PERSONAL</div>
+            </div>
+            <div class="producto-render">
+                <img src="imagenes/productos/RelojBiometricoZE-110.webp" alt="Reloj ZE-110">
+            </div>
+
+            <div class="grupo-titulo titulo-mid">
+                <img src="imagenes/fondos/borde-azul3.webp" class="grafico-borde" alt="Marco Decorativo">
+                <div class="texto-rotulo texto-largo">RELOJ CONTROL DE CORRESPONDENCIA</div>
+            </div>
+            <div class="producto-render">
+                <img src="imagenes/productos/ContadorCorrespondenciaZE-111.webp" alt="Contador Correspondencia ZE-111">
+            </div>
         </section>
 
         <section id="cheques" class="bloque-seccion">
-            <div class="texto-titulo-interno">Protector De Cheques</div>
-            <div class="producto-render"><img src="imagenes/productos/Protec-CheqElect-112.webp" alt="ZE-112"></div>
-        </section>
+            <div class="grupo-titulo titulo-top">
+                <img src="imagenes/fondos/borde-azul1.webp" class="grafico-borde" alt="Marco Decorativo">
+                <div class="texto-rotulo texto-largo">PROTECTOR DE CHEQUES</div>
+            </div>
+            <div class="producto-render">
+                <img src="imagenes/productos/Protec-CheqElect-112.webp" alt="Protector Cheques ZE-112">
+            </div>
+            </section>
 
         <section id="destructoras" class="bloque-seccion">
-            <div class="texto-titulo-interno">Destructora De Documentos</div>
-            <div class="producto-render"><img src="imagenes/productos/DestrDocsZE-113.webp" alt="ZE-113"></div>
-            <div class="producto-render"><img src="imagenes/productos/DestrDocsZE-114.webp" alt="ZE-114"></div>
+            <div class="grupo-titulo titulo-top">
+                <img src="imagenes/fondos/borde-azul1.webp" class="grafico-borde" alt="Marco Decorativo">
+                <div class="texto-rotulo texto-largo">DESTRUCTORA DE DOCUMENTOS</div>
+            </div>
+            <div class="producto-render">
+                <img src="imagenes/productos/DestrDocsZE-113.webp" alt="Destructora ZE-113">
+            </div>
+            <div class="producto-render">
+                <img src="imagenes/productos/DestrDocsZE-114.webp" alt="Destructora ZE-114">
+            </div>
         </section>
 
     </div>
 
-    <a href="https://wa.me/573124899581" class="whatsapp" target="_blank">
-        <img src="imagenes/botones/BtnWtsDerecha.webp" alt="WhatsApp">
-    </a>
-
     <div class="barra-navegacion-unica">
         <img src="imagenes/botones/TiraPegatinasCompleta.webp" class="tira-pegatinas-img" alt="Navegación">
-        <a href="seguridad.html" class="zona-activa zona-inicio" title="Seguridad"></a>
+        <a href="seguridad.html" class="zona-activa zona-inicio" title="Inicio"></a>
         <a href="oficina.html" class="zona-activa zona-oficina" title="Oficina"></a>
         <a href="marcaje.html" class="zona-activa zona-marcaje" title="Marcaje"></a>
         <a href="escolar.html" class="zona-activa zona-escolar" title="Escolar"></a>
