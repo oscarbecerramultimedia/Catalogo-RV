@@ -1,1 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Productos de Seguridad y Biométricos</title>
+<style>
+html, body { margin: 0; padding: 0; width: 100%; height: 100dvh; overflow: hidden; background: #73A9E4; display: flex; justify-content: center; align-items: center; }
+.contenedor { position: relative; width: 100vw; height: 100dvh; overflow: hidden; container-type: size; }
+@media (min-width: 768px) { .contenedor { height: 100dvh; width: calc(100dvh * 540 / 1200); max-width: 100vw; box-shadow: 0 0 15px rgba(0,0,0,0.2); } .texto-titulo-interno { font-size: 20px !important; } }
+.fondo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; z-index: 1; }
+.banner { position: absolute; top: 0; left: 0; width: 100%; height: 23%; object-fit: fill; z-index: 2; }
 
+/* VISOR DESLIZANTE */
+.visor-productos-scroll { position: absolute; top: 23%; left: 5%; width: 90%; height: 60%; overflow-y: auto !important; scroll-behavior: smooth; z-index: 3; padding-right: 5px; box-sizing: border-box; }
+.visor-productos-scroll::-webkit-scrollbar { width: 4px; display: block !important; }
+.visor-productos-scroll::-webkit-scrollbar-thumb { background-color: rgba(0, 255, 255, 0.35); border-radius: 4px; }
+
+/* BLOQUES DE SECCIÓN */
+.bloque-seccion { width: 100%; margin-bottom: 40px; display: flex; flex-direction: column; align-items: center; }
+.texto-titulo-interno { width: 100%; color: #1a4d8c; font-family: sans-serif; font-weight: bold; font-size: 5.5cqw; text-align: center; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 2px solid rgba(26, 77, 140, 0.2); text-transform: uppercase; }
+.producto-render { width: 100%; margin-bottom: 15px; }
+.producto-render img { width: 100%; display: block; object-fit: contain; }
+
+/* BOTONES Y NAVEGACIÓN */
+.btn-volver { position: absolute; top: 14.5%; left: 2%; width: 14%; z-index: 4; }
+.btn-volver img { width: 100%; display: block; }
+.whatsapp { position: absolute; bottom: 18%; right: 3%; width: 14%; z-index: 4; }
+.whatsapp img { width: 100%; display: block; }
+.barra-navegacion-unica { position: absolute; bottom: 0; left: 0; width: 100%; height: 17%; z-index: 4; }
+.tira-pegatinas-img { width: 100%; height: 100%; object-fit: fill; display: block; }
+.zona-activa { position: absolute; top: 0; height: 100%; cursor: pointer; }
+.zona-inicio { left: 0%; width: 25%; }
+.zona-oficina { left: 25%; width: 25%; }
+.zona-marcaje { left: 50%; width: 25%; }
+.zona-escolar { left: 75%; width: 25%; }
+</style>
+</head>
+<body>
+<div class="contenedor">
+    <img class="fondo" src="imagenes/fondos/fondo-linea-seguridad.webp" alt="Fondo">
+    <img class="banner" src="imagenes/banners/ImagBannerSeguridad.webp" alt="Línea Seguridad">
+    
+    <a href="seguridad.html" class="btn-volver"><img src="imagenes/botones/Btn-indice.webp" alt="Volver"></a>
+    
+    <div class="visor-productos-scroll">
+        
+        <section id="contadores" class="bloque-seccion">
+            <div class="texto-titulo-interno">Contador De Monedas y Billetes</div>
+            <div class="producto-render"><img src="imagenes/productos/ContrMonedasZE-101.webp" alt="ZE-101"></div>
+            <div class="producto-render"><img src="imagenes/productos/ContrBilletesZE-102.webp" alt="ZE-102"></div>
+        </section>
+
+        <section id="detectores" class="bloque-seccion">
+            <div class="texto-titulo-interno">Detector De Billetes</div>
+            <div class="producto-render"><img src="imagenes/productos/DetectorZE-104.webp" alt="ZE-104"></div>
+            <div class="producto-render"><img src="imagenes/productos/DetectorZE-105.webp" alt="ZE-105"></div>
+        </section>
+
+        <section id="cajas" class="bloque-seccion">
+            <div class="texto-titulo-interno">Caja Menor Metálica y Caja Fuerte</div>
+            <div class="producto-render"><img src="imagenes/productos/CajaMenorZE-108.webp" alt="ZE-108"></div>
+            <div class="producto-render"><img src="imagenes/productos/CajaFuerteZE-109.webp" alt="ZE-109"></div>
+        </section>
+
+        <section id="relojes" class="bloque-seccion">
+            <div class="texto-titulo-interno">Reloj Control De Personal y Correspondencia</div>
+            <div class="producto-render"><img src="imagenes/productos/RelojZE-110.webp" alt="ZE-110"></div>
+            <div class="producto-render"><img src="imagenes/productos/RelojZE-111.webp" alt="ZE-111"></div>
+        </section>
+
+        <section id="cheques" class="bloque-seccion">
+            <div class="texto-titulo-interno">Protector De Cheques</div>
+            <div class="producto-render"><img src="imagenes/productos/ProtectorZE-112.webp" alt="ZE-112"></div>
+        </section>
+
+        <section id="destructoras" class="bloque-seccion">
+            <div class="texto-titulo-interno">Destructora De Documentos</div>
+            <div class="producto-render"><img src="imagenes/productos/DestrDocsZE-113.webp" alt="ZE-113"></div>
+            <div class="producto-render"><img src="imagenes/productos/DestrDocsZE-114.webp" alt="ZE-114"></div>
+        </section>
+
+    </div>
+
+    <a href="https://wa.me/573124899581" class="whatsapp" target="_blank"><img src="imagenes/botones/BtnWtsDerecha.webp" alt="WhatsApp"></a>
+
+    <div class="barra-navegacion-unica">
+        <img src="imagenes/botones/TiraPegatinasCompleta.webp" class="tira-pegatinas-img" alt="Navegación">
+        <a href="seguridad.html" class="zona-activa zona-inicio"></a>
+        <a href="oficina.html" class="zona-activa zona-oficina"></a>
+        <a href="marcaje.html" class="zona-activa zona-marcaje"></a>
+        <a href="escolar.html" class="zona-activa zona-escolar"></a>
+    </div>
+</div>
+</body>
+</html>
