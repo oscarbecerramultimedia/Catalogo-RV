@@ -173,7 +173,7 @@ html, body {
 
 /* --- PÁGINA 1: CONTADORES (Sin separador intermedio) --- */
 .borde-p1-top { top: 0%; }
-.rotulo-p1-top { top: 1.5%; right: 0.5%; transform: scaleX(0.78); } /* Ajusta scaleX para encoger texto */
+.rotulo-p1-top { top: 1.5%; right: 0.5%; transform: scaleX(0.78); }
 
 .prod-p1-mnds { top: 14%; height: 32%; }
 
@@ -187,10 +187,10 @@ html, body {
 .rotulo-p2-top { top: 1.5%; right: 0.5%; transform: scaleX(0.84); }
 
 .prod-p2-det01 { top: 12%; height: 24%; }
-.separador-p2-01 { top: 38%; } /* Mueve este % para subir o bajar la línea */
+.separador-p2-01 { top: 38%; }
 
 .prod-p2-det02 { top: 42%; height: 24%; }
-.separador-p2-02 { top: 68%; } /* Mueve este % para subir o bajar la línea */
+.separador-p2-02 { top: 68%; }
 
 .prod-p2-det03 { top: 72%; height: 24%; }
 
@@ -207,7 +207,6 @@ html, body {
 
 /* --- PÁGINA 4: RELOJES (Doble título, sin separador) --- */
 .borde-p4-top { top: 0%; }
-/* GUÍA: Modifica font-size para títulos de dos renglones */
 .rotulo-p4-top { top: 1.5%; right: 0.5%; font-size: 6cqw; line-height: 1.1; transform: scaleX(1.05); }
 
 .prod-p4-pers { top: 16%; height: 28%; }
@@ -230,7 +229,7 @@ html, body {
 .prod-p6-docs01 { top: 14%; height: 33%; }
 .separador-p6-mid { top: 48%; }
 .prod-p6-docs02 { top: 57%; left: 4.5%; height: 35%; }
-/*.prod-p6-docs02 { top: 57%; height: 35%; } /*
+/* .prod-p6-docs02 { top: 57%; height: 35%; } */
 
 /* ==========================================================================
    7. BARRA DE NAVEGACIÓN INFERIOR
@@ -263,7 +262,6 @@ html, body {
 .zona-marcaje { left: 50%; width: 25%; }
 .zona-escolar { left: 75%; width: 25%; }
 
-
 /* ==========================================================================
    8. FILTRO MAESTRO PARA PC / WINDOWS (AL FINAL PARA GANAR POR CASCADA)
    ========================================================================== */
@@ -277,7 +275,7 @@ html, body {
     
     /* Ajustes de rotulación exclusivos para Windows */
     .rotulo-p1-top {
-        transform: scaleX(0.72); /* AHORA SÍ TE VA A DETECTAR EL 50% INMEDIATAMENTE */
+        transform: scaleX(0.72);
     }
     
     .rotulo-p1-mid {
@@ -301,35 +299,40 @@ html, body {
         transform: scaleX(0.86); 
     }
          
-   .rotulo-p4-top { top: 1.0%; right: 0.5%; font-size: 6cqw; line-height: 1.1; transform: scaleX(0.95); }
-
-  .prod-p4-pers { top: 16%; height: 28%; }
-
-  .borde-p4-mid { top: 48%; }
-  .rotulo-p4-mid { top: 49%; right: 0.5%; font-size: 6cqw; line-height: 1.1; transform: scaleX(0.9); }
-
-  .prod-p4-corr { top: 64%; height: 28%; }
-  
-  .borde-p4-mid {transform: scaleX(1.05);
-                 }    
-       
+    .rotulo-p4-top { 
+        top: 1.0%; 
+        right: 0.5%; 
+        font-size: 6cqw; 
+        line-height: 1.1; 
+        transform: scaleX(0.95); 
     }
+
+    .prod-p4-pers { top: 16%; height: 28%; }
+
+    .borde-p4-mid { top: 48%; transform: scaleX(1.05); }
+    .rotulo-p4-mid { top: 49%; right: 0.5%; font-size: 6cqw; line-height: 1.1; transform: scaleX(0.9); }
+
+    .prod-p4-corr { top: 64%; height: 28%; }
     
     .rotulo-p5-top {
         transform: scaleX(0.66); 
     }
-    .prod-p5-cheq { top: 10%; height: 60%;
+    
+    .prod-p5-cheq { 
+        top: 10%; 
+        height: 60%;
     }
+    
     .rotulo-p6-top {
          transform: scaleX(0.57); 
-
-.btn-ayuda { 
-    position: absolute;
-    top: 8%; 
-    z-index: 10;
-       
     }
-  }
+
+    .btn-ayuda { 
+        position: absolute;
+        top: 8%; 
+        z-index: 10;
+    }
+}
 </style>
 </head>
 <body>
