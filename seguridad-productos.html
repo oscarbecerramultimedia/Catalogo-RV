@@ -32,51 +32,6 @@ html, body {
     container-type: size;
 }
 
-/* 👇 TODO LO QUE ESTÉ AQUÍ ADENTRO SOLO AFECTA A PC / WINDOWS 👇 */
-@media (min-width: 768px) {
-    .contenedor {
-        height: 100dvh;
-        width: calc(100dvh * 540 / 1200);
-        max-width: 100vw;
-        box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    }
-    
-    /* Ajustes específicos de rotulación SOLO para Desktop/Windows */
-    
-    .rotulo-p1-top {
-        transform: scaleX(0.50); /* Era 0.76 en móvil, lo bajas un poco aquí */
-    }
-    
-    .rotulo-p1-mid {
-        transform: scaleX(0.70);
-    }
-
-    .rotulo-p2-top {
-        transform: scaleX(0.68); /* Bajas el valor para que en Windows quepa bien */
-    }
-   
-    .rotulo-p3-top { top: 0.5%; right: 0.5%; transform: scaleX(0.71); }
-
-    .rotulo-p3-mid { top: 49%; right: 0.5%; transform: scaleX(0.86); }
-         
-    }
-
-    .rotulo-p4-top {
-        font-size: 5.5cqw; /* También puedes achicar un poco la fuente si es de 2 renglones */
-        top: 0.5%; transform: scaleX(0.89);
-    }
-    
-    .rotulo-p5-top {
-        transform: scaleX(0.66); /* Este ya lo tenías */
-    }
-
-   .rotulo-p6-top {
-        transform: scaleX(0.59); /* Este ya lo tenías */
-    }
-    /* Agrega aquí cualquier otra clase (rotulo-pX...) que necesite ajuste en Windows */
-}
-/* 👆 FIN DEL FILTRO PARA PC 👆 */
-
 /* ==========================================================================
    3. CAPAS FIJAS DEL LIENZO (Fondo y Botones Globales)
    ========================================================================== */
@@ -218,7 +173,7 @@ html, body {
 
 /* --- PÁGINA 1: CONTADORES (Sin separador intermedio) --- */
 .borde-p1-top { top: 0%; }
-.rotulo-p1-top { top: 1.5%; right: 0.5%; transform: scaleX(0.78); } /* Ajusta scaleX para encoger texto */
+.rotulo-p1-top { top: 1.5%; right: 0.5%; transform: scaleX(0.78); } /* Controla Móvil */
 
 .prod-p1-mnds { top: 14%; height: 32%; }
 
@@ -232,10 +187,10 @@ html, body {
 .rotulo-p2-top { top: 1.5%; right: 0.5%; transform: scaleX(0.84); }
 
 .prod-p2-det01 { top: 12%; height: 24%; }
-.separador-p2-01 { top: 38%; } /* Mueve este % para subir o bajar la línea */
+.separador-p2-01 { top: 38%; } 
 
 .prod-p2-det02 { top: 42%; height: 24%; }
-.separador-p2-02 { top: 68%; } /* Mueve este % para subir o bajar la línea */
+.separador-p2-02 { top: 68%; } 
 
 .prod-p2-det03 { top: 72%; height: 24%; }
 
@@ -252,7 +207,6 @@ html, body {
 
 /* --- PÁGINA 4: RELOJES (Doble título, sin separador) --- */
 .borde-p4-top { top: 0%; }
-/* GUÍA: Modifica font-size para títulos de dos renglones */
 .rotulo-p4-top { top: 1.5%; right: 0.5%; font-size: 6cqw; line-height: 1.1; transform: scaleX(1.05); }
 
 .prod-p4-pers { top: 16%; height: 28%; }
@@ -275,7 +229,6 @@ html, body {
 .prod-p6-docs01 { top: 14%; height: 33%; }
 .separador-p6-mid { top: 48%; }
 .prod-p6-docs02 { top: 57%; left: 4.5%; height: 35%; }
-/*.prod-p6-docs02 { top: 57%; height: 35%; } /*
 
 /* ==========================================================================
    7. BARRA DE NAVEGACIÓN INFERIOR
@@ -307,9 +260,60 @@ html, body {
 .zona-oficina { left: 25%; width: 25%; }
 .zona-marcaje { left: 50%; width: 25%; }
 .zona-escolar { left: 75%; width: 25%; }
+
+
+/* ==========================================================================
+   8. FILTRO MAESTRO PARA PC / WINDOWS (AL FINAL PARA GANAR POR CASCADA)
+   ========================================================================== */
+@media (min-width: 768px) {
+    .contenedor {
+        height: 100dvh;
+        width: calc(100dvh * 540 / 1200);
+        max-width: 100vw;
+        box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+    
+    /* Ajustes de rotulación exclusivos para Windows */
+    .rotulo-p1-top {
+        transform: scaleX(0.66); /* AHORA SÍ TE VA A DETECTAR EL 50% INMEDIATAMENTE */
+    }
+    
+    .rotulo-p1-mid {
+        transform: scaleX(0.70);
+    }
+
+    .rotulo-p2-top {
+        transform: scaleX(0.68); 
+    }
+   
+    .rotulo-p3-top { 
+        top: 0.5%; 
+        right: 0.5%; 
+        transform: scaleX(0.71); 
+    }
+
+    .rotulo-p3-mid { 
+        top: 49%; 
+        right: 0.5%; 
+        transform: scaleX(0.86); 
+    }
+         
+    .rotulo-p4-top {
+        font-size: 5.5cqw; 
+        top: 0.5%; 
+        transform: scaleX(0.89);
+    }
+    
+    .rotulo-p5-top {
+        transform: scaleX(0.66); 
+    }
+
+    .rotulo-p6-top {
+        transform: scaleX(0.59); 
+    }
+}
 </style>
 </head>
-
 <body>
 
 <div class="contenedor">
