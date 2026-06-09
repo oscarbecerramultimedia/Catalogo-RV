@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Línea Seguridad y Biométricos - Blueprint Profesional</title>
+<title>Línea Seguridad y Biométricos</title>
 
 <style>
 /* ==========================================================================
@@ -29,10 +29,9 @@ html, body {
     width: 100vw;
     height: 100dvh;
     overflow: hidden;
-    container-type: size; /* Mide el lienzo para calcular fuentes dinámicas (cqw) */
+    container-type: size;
 }
 
-/* Proporciones fijas emulando el visor de escritorio (Aspect Ratio de visualización) */
 @media (min-width: 768px) {
     .contenedor {
         height: 100dvh;
@@ -43,7 +42,7 @@ html, body {
 }
 
 /* ==========================================================================
-   3. CAPAS FIJAS DEL LIENZO (Fondo y Botones Globales que no se mueven)
+   3. CAPAS FIJAS DEL LIENZO (Fondo y Botones Globales)
    ========================================================================== */
 .fondo-estatico {
     position: absolute;
@@ -51,84 +50,87 @@ html, body {
     width: 100%;
     height: 100%;
     object-fit: fill;
-    z-index: 1; /* Capa 1: Fondo profundo */
+    z-index: 1; 
 }
 
-.btn-indice { 
+.btn-ver-lista { 
     position: absolute;
     top: 1.5%;
     left: 2%;
     width: 14%;
-    z-index: 10; /* Capa Superior: Siempre accesible */
+    z-index: 10; 
 }
 
+/* GUÍA PARA DIBUJANTES: 'top: 16%' baja el icono para esquivar títulos grandes */
 .btn-ayuda { 
     position: absolute;
-    top: 1.5%;
+    top: 16%; 
     right: 2%;
     width: 4.5%;
     z-index: 10;
 }
 
+/* GUÍA PARA DIBUJANTES: 'top: 55%' lo ubica justo por debajo de la mitad */
 .btn-whatsapp { 
     position: absolute;
-    bottom: 18.5%; /* Situado exactamente arriba de las pegatinas */
+    top: 55%; 
     right: 2%;
-    width: 24%;
+    width: 14%;
     z-index: 10;
 }
 
-.btn-indice img, .btn-ayuda img, .btn-whatsapp img {
+.btn-ver-lista img, .btn-ayuda img, .btn-whatsapp img {
     width: 100%;
     display: block;
 }
 
 /* ==========================================================================
-   4. VISOR DESLIZANTE CON ENCUADRE MAGNÉTICO (EL CUADERNO DE HOJAS)
+   4. VISOR DESLIZANTE CON ENCUADRE MAGNÉTICO
    ========================================================================== */
 .visor-productos-scroll {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 83%; /* Termina exactamente donde empieza la barra de navegación (100% - 17%) */
+    height: 83%; 
     overflow-y: auto;
-    scroll-snap-type: y mandatory; /* Activa el imán de encuadre vertical */
+    scroll-snap-type: y mandatory; 
     scroll-behavior: smooth;
-    z-index: 5; /* Capa Intermedia: Por encima del fondo, por debajo de los botones */
+    z-index: 5; 
 }
 
-/* Ocultar barra de scroll manteniendo funcionalidad */
 .visor-productos-scroll::-webkit-scrollbar {
     width: 0px;
     background: transparent;
 }
 
-/* ==========================================================================
-   5. REGLAS GRÁFICAS E INDEPENDIENTES PARA CADA HOJA DEL LIENZO
-   ========================================================================== */
 .bloque-seccion {
-    position: relative; /* Convierte cada hoja en un sub-lienzo de coordenadas absolutas */
+    position: relative; 
     width: 100%;
-    height: 100%; /* Obliga a la hoja a calzar exactamente en el visor de 83% */
-    scroll-snap-align: start; /* Punto de anclaje del imán al inicio de la hoja */
+    height: 100%; 
+    scroll-snap-align: start; 
     flex-shrink: 0;
-    overflow: hidden; /* Corta y oculta cualquier trazo sobrante para evitar que se asome abajo */
+    overflow: hidden; 
 }
 
 /* ==========================================================================
-   6. LIBRERÍA DE COMPONENTES GRÁFICOS (Moldes Base)
+   5. LIBRERÍA DE COMPONENTES GRÁFICOS (Moldes Base)
    ========================================================================== */
+/* GUÍA: 'width: 100%' fuerza al gráfico a ocupar todo el ancho, escalando uniformemente */
 .borde-contenedor-titulo {
     position: absolute;
-    right: 0; /* Clavado en la pared derecha */
+    right: 0; 
+    width: 100%; 
     height: auto;
     z-index: 6;
 }
 
 .borde-contenedor-titulo img {
     width: 100%;
+    height: auto;
     display: block;
+    object-fit: contain;
+    object-position: right top;
 }
 
 .separador-linea {
@@ -160,7 +162,7 @@ html, body {
     object-fit: contain;
 }
 
-/* ETIQUETA O CALIGRAFÍA (ROTULACIÓN): Ajustable individualmente en escala X */
+/* ROTULACIÓN: Ajustable individualmente en escala X para apretar el texto */
 .rotulo-titulo {
     position: absolute;
     color: #1a4d8c;
@@ -171,92 +173,75 @@ html, body {
     pointer-events: none;
     text-align: right;
     white-space: nowrap;
-    transform-origin: right center; /* Ancla el encogimiento a la derecha */
+    transform-origin: right center; 
 }
 
 /* ==========================================================================
-   7. COORDENADAS ARTÍSTICAS DE PRECISIÓN (PÁGINA POR PÁGINA)
+   6. COORDENADAS ARTÍSTICAS DE PRECISIÓN (PÁGINA POR PÁGINA)
    ========================================================================== */
 
-/* --------------------------------------------------------------------------
-   PÁGINA 1: CONTADORES (2 Productos, 2 Títulos Largos, 1 Separador)
-   -------------------------------------------------------------------------- */
-.borde-p1-top { top: 0%; width: 75%; }
-.rotulo-p1-top { top: 0.5%; right: 3%; transform: scaleX(0.70); }
+/* --- PÁGINA 1: CONTADORES (Sin separador intermedio) --- */
+.borde-p1-top { top: 0%; }
+.rotulo-p1-top { top: 1.5%; right: 4%; transform: scaleX(0.70); } /* Ajusta scaleX para encoger texto */
 
-.prod-p1-mnds { top: 8%; height: 35%; }
+.prod-p1-mnds { top: 14%; height: 32%; }
 
-.separador-p1-mid { top: 46%; }
+.borde-p1-mid { top: 48%; }
+.rotulo-p1-mid { top: 49.5%; right: 4%; transform: scaleX(0.70); }
 
-.borde-p1-mid { top: 48%; width: 75%; }
-.rotulo-p1-mid { top: 48.5%; right: 3%; transform: scaleX(0.70); }
+.prod-p1-bllts { top: 62%; height: 32%; }
 
-.prod-p1-bllts { top: 56%; height: 35%; }
+/* --- PÁGINA 2: DETECTORES (Con separadores porque no hay títulos en medio) --- */
+.borde-p2-top { top: 0%; }
+.rotulo-p2-top { top: 1.5%; right: 4%; transform: scaleX(0.72); }
 
-/* --------------------------------------------------------------------------
-   PÁGINA 2: DETECTORES (3 Productos, 1 Título Largo, 2 Separadores)
-   -------------------------------------------------------------------------- */
-.borde-p2-top { top: 0%; width: 75%; }
-.rotulo-p2-top { top: 0.5%; right: 3%; transform: scaleX(0.72); }
+.prod-p2-det01 { top: 12%; height: 24%; }
+.separador-p2-01 { top: 38%; } /* Mueve este % para subir o bajar la línea */
 
-.prod-p2-det01 { top: 9%; height: 26%; }
-.separador-p2-01 { top: 37%; }
+.prod-p2-det02 { top: 42%; height: 24%; }
+.separador-p2-02 { top: 68%; } /* Mueve este % para subir o bajar la línea */
 
-.prod-p2-det02 { top: 40%; height: 26%; }
-.separador-p2-02 { top: 68%; }
+.prod-p2-det03 { top: 72%; height: 24%; }
 
-.prod-p2-det03 { top: 71%; height: 26%; }
+/* --- PÁGINA 3: CAJAS (Sin separador intermedio) --- */
+.borde-p3-top { top: 0%; }
+.rotulo-p3-top { top: 1.5%; right: 4%; transform: scaleX(0.70); }
 
-/* --------------------------------------------------------------------------
-   PÁGINA 3: CAJAS (2 Productos, 1 Título Largo, 1 Corto, 1 Separador)
-   -------------------------------------------------------------------------- */
-.borde-p3-top { top: 0%; width: 75%; }
-.rotulo-p3-top { top: 0.5%; right: 3%; transform: scaleX(0.70); }
+.prod-p3-menor { top: 14%; height: 32%; }
 
-.prod-p3-menor { top: 9%; height: 35%; }
+.borde-p3-mid { top: 48%; }
+.rotulo-p3-mid { top: 49.5%; right: 4%; transform: scaleX(0.85); }
 
-.separador-p3-mid { top: 46%; }
+.prod-p3-fuerte { top: 62%; height: 32%; }
 
-.borde-p3-mid { top: 48%; width: 50%; } /* molde corto */
-.rotulo-p3-mid { top: 48.5%; right: 3%; transform: scaleX(0.85); }
+/* --- PÁGINA 4: RELOJES (Doble título, sin separador) --- */
+.borde-p4-top { top: 0%; }
+/* GUÍA: Modifica font-size para títulos de dos renglones */
+.rotulo-p4-top { top: 1%; right: 4%; font-size: 5.5cqw; line-height: 1.1; transform: scaleX(0.80); }
 
-.prod-p3-fuerte { top: 56%; height: 35%; }
+.prod-p4-pers { top: 16%; height: 28%; }
 
-/* --------------------------------------------------------------------------
-   PÁGINA 4: RELOJES (2 Productos, 2 Títulos Doble Párrafo, 1 Separador)
-   -------------------------------------------------------------------------- */
-.borde-p4-top { top: 0%; width: 85%; }
-.rotulo-p4-top { top: 0.2%; right: 3%; font-size: 5.5cqw; line-height: 1.1; transform: scaleX(0.80); text-align: right; }
+.borde-p4-mid { top: 48%; }
+.rotulo-p4-mid { top: 49%; right: 4%; font-size: 5.2cqw; line-height: 1.1; transform: scaleX(0.78); }
 
-.prod-p4-pers { top: 12%; height: 32%; }
+.prod-p4-corr { top: 64%; height: 28%; }
 
-.separador-p4-mid { top: 46%; }
+/* --- PÁGINA 5: PROTECTOR DE CHEQUES --- */
+.borde-p5-top { top: 0%; }
+.rotulo-p5-top { top: 1.5%; right: 4%; transform: scaleX(0.72); }
 
-.borde-p4-mid { top: 48%; width: 88%; }
-.rotulo-p4-mid { top: 48.2%; right: 3%; font-size: 5.2cqw; line-height: 1.1; transform: scaleX(0.78); text-align: right; }
+.prod-p5-cheq { top: 18%; height: 60%; } 
 
-.prod-p4-corr { top: 60%; height: 32%; }
+/* --- PÁGINA 6: DESTRUCTORAS (Con separador) --- */
+.borde-p6-top { top: 0%; }
+.rotulo-p6-top { top: 1.5%; right: 4%; transform: scaleX(0.68); }
 
-/* --------------------------------------------------------------------------
-   PÁGINA 5: PROTECTOR DE CHEQUES (1 Producto Grande, 1 Título Largo)
-   -------------------------------------------------------------------------- */
-.borde-p5-top { top: 0%; width: 75%; }
-.rotulo-p5-top { top: 0.5%; right: 3%; transform: scaleX(0.72); }
-
-.prod-p5-cheq { top: 15%; height: 60%; } /* Ocupa gran espacio central */
-
-/* --------------------------------------------------------------------------
-   PÁGINA 6: DESTRUCTORAS (2 Productos, 1 Título Largo, 1 Separador)
-   -------------------------------------------------------------------------- */
-.borde-p6-top { top: 0%; width: 100%; }
-.rotulo-p6-top { top: 0.5%; right: 3%; transform: scaleX(0.68); }
-
-.prod-p6-docs01 { top: 10%; height: 35%; }
+.prod-p6-docs01 { top: 14%; height: 30%; }
 .separador-p6-mid { top: 48%; }
-.prod-p6-docs02 { top: 52%; height: 35%; }
+.prod-p6-docs02 { top: 54%; height: 30%; }
 
 /* ==========================================================================
-   8. BARRA DE NAVEGACIÓN INFERIOR (FIJA EN LA BASE DEL CONTENEDOR)
+   7. BARRA DE NAVEGACIÓN INFERIOR
    ========================================================================== */
 .barra-navegacion-unica {
     position: absolute;
@@ -264,7 +249,7 @@ html, body {
     left: 0;
     width: 100%;
     height: 17%;
-    z-index: 15; /* Por encima de todo el lienzo deslizable */
+    z-index: 15; 
 }
 
 .tira-pegatinas-img {
@@ -293,8 +278,8 @@ html, body {
 <div class="contenedor">
     <img class="fondo-estatico" src="imagenes/fondos/fondo-linea-seguridad.webp" alt="Fondo">
 
-    <a href="seguridad.html" class="btn-indice" title="Volver al índice">
-        <img src="imagenes/botones/Btn-indice.webp" alt="Índice">
+    <a href="seguridad.html" class="btn-ver-lista" title="Ver Lista">
+        <img src="imagenes/botones/BtnVerLista.webp" alt="Ver Lista">
     </a>
 
     <a href="ImagInfoAyuda.html" class="btn-ayuda" title="Ayuda">
@@ -312,8 +297,6 @@ html, body {
             <div class="rotulo-titulo rotulo-p1-top">CONTADOR DE MONEDAS</div>
             <div class="render-producto prod-p1-mnds"><img src="imagenes/productos/ConDeMndsZE-101.webp" alt="ZE-101"></div>
             
-            <div class="separador-linea separador-p1-mid"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
-            
             <div class="borde-contenedor-titulo borde-p1-mid"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
             <div class="rotulo-titulo rotulo-p1-mid">CONTADOR DE BILLETES</div>
             <div class="render-producto prod-p1-bllts"><img src="imagenes/productos/ConDeBlltsZE-102.webp" alt="ZE-102"></div>
@@ -323,64 +306,4 @@ html, body {
             <div class="borde-contenedor-titulo borde-p2-top"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
             <div class="rotulo-titulo rotulo-p2-top">DETECTOR DE BILLETES</div>
             
-            <div class="render-producto prod-p2-det01"><img src="imagenes/productos/DetBilletesZE-104.webp" alt="ZE-104"></div>
-            <div class="separador-linea separador-p2-01"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
-            
-            <div class="render-producto prod-p2-det02"><img src="imagenes/productos/DetBilletesZE-105.webp" alt="ZE-105"></div>
-            <div class="separador-linea separador-p2-02"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
-            
-            <div class="render-producto prod-p2-det03"><img src="imagenes/productos/DetBilletesZE-106.webp" alt="ZE-106"></div>
-        </section>
-
-        <section id="cajas" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-p3-top"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-p3-top">CAJA MENOR METÁLICA</div>
-            <div class="render-producto prod-p3-menor"><img src="imagenes/productos/CajaMenorZE-108.webp" alt="ZE-108"></div>
-            
-            <div class="separador-linea separador-p3-mid"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
-            
-            <div class="borde-contenedor-titulo borde-p3-mid"><img src="imagenes/fondos/borde-azul1.webp" alt="Marco Corto"></div>
-            <div class="rotulo-titulo rotulo-p3-mid">CAJA FUERTE</div>
-            <div class="render-producto prod-p3-fuerte"><img src="imagenes/productos/CajaFuerte-ZE109.webp" alt="ZE-109"></div>
-        </section>
-
-        <section id="relojes" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-p4-top"><img src="imagenes/fondos/borde-azul3.webp" alt="Marco Doble"></div>
-            <div class="rotulo-titulo rotulo-p4-top">RELOJ DE CONTROL<br>DE PERSONAL</div>
-            <div class="render-producto prod-p4-pers"><img src="imagenes/productos/RelojBiometricoZE-110.webp" alt="ZE-110"></div>
-            
-            <div class="separador-linea separador-p4-mid"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
-            
-            <div class="borde-contenedor-titulo borde-p4-mid"><img src="imagenes/fondos/borde-azul3.webp" alt="Marco Doble"></div>
-            <div class="rotulo-titulo rotulo-p4-mid">RELOJ CONTROL DE<br>CORRESPONDENCIA</div>
-            <div class="render-producto prod-p4-corr"><img src="imagenes/productos/ContadorCorrespondenciaZE-111.webp" alt="ZE-111"></div>
-        </section>
-
-        <section id="cheques" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-p5-top"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-p5-top">PROTECTOR DE CHEQUES</div>
-            <div class="render-producto prod-p5-cheq"><img src="imagenes/productos/Protec-CheqElect-112.webp" alt="ZE-112"></div>
-        </section>
-
-        <section id="destructoras" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-p6-top"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-p6-top">DESTRUCTORA DE DOCUMENTOS</div>
-            
-            <div class="render-producto prod-p6-docs01"><img src="imagenes/productos/DestrDocsZE-113.webp" alt="ZE-113"></div>
-            <div class="separador-linea pampered-p6-mid"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
-            <div class="render-producto prod-p6-docs02"><img src="imagenes/productos/DestrDocsZE-114.webp" alt="ZE-114"></div>
-        </section>
-
-    </div>
-
-    <div class="barra-navegacion-unica">
-        <img src="imagenes/botones/TiraPegatinasCompleta.webp" class="tira-pegatinas-img" alt="Navegación">
-        <a href="seguridad.html" class="zona-activa zona-inicio" title="Seguridad"></a>
-        <a href="oficina.html" class="zona-activa zona-oficina" title="Oficina"></a>
-        <a href="marcaje.html" class="zona-activa zona-marcaje" title="Marcaje"></a>
-        <a href="escolar.html" class="zona-activa zona-escolar" title="Escolar"></a>
-    </div>
-</div>
-
-</body>
-</html>
+            <div
