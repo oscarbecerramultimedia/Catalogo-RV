@@ -44,7 +44,7 @@ html, body {
     /* Ajustes específicos de rotulación SOLO para Desktop/Windows */
     
     .rotulo-p1-top {
-        transform: scaleX(0.68); /* Era 0.76 en móvil, lo bajas un poco aquí */
+        transform: scaleX(0.66); /* Era 0.76 en móvil, lo bajas un poco aquí */
     }
     
     .rotulo-p1-mid {
@@ -52,20 +52,18 @@ html, body {
     }
 
     .rotulo-p2-top {
-        transform: scaleX(0.71); /* Bajas el valor para que en Windows quepa bien */
+        transform: scaleX(0.68); /* Bajas el valor para que en Windows quepa bien */
     }
    
-    .rotulo-p3-top { top: 1.0%; right: 0.5%; transform: scaleX(0.71); }
+    .rotulo-p3-top { top: 0.5%; right: 0.5%; transform: scaleX(0.71); }
 
-    .rotulo-p3-mid { top: 49.5%; right: 0.5%; transform: scaleX(0.86); }
+    .rotulo-p3-mid { top: 49%; right: 0.5%; transform: scaleX(0.86); }
          
-   /* .rotulo-p3-top {
-        transform: scaleX(0.71); /* Bajas el valor para que en Windows quepa bien */
     }
 
     .rotulo-p4-top {
         font-size: 5.5cqw; /* También puedes achicar un poco la fuente si es de 2 renglones */
-        transform: scaleX(0.92);
+        top: 0.5%; transform: scaleX(0.89);
     }
     
     .rotulo-p5-top {
@@ -73,7 +71,7 @@ html, body {
     }
 
    .rotulo-p6-top {
-        transform: scaleX(0.61); /* Este ya lo tenías */
+        transform: scaleX(0.59); /* Este ya lo tenías */
     }
     /* Agrega aquí cualquier otra clase (rotulo-pX...) que necesite ajuste en Windows */
 }
@@ -220,18 +218,18 @@ html, body {
 
 /* --- PÁGINA 1: CONTADORES (Sin separador intermedio) --- */
 .borde-p1-top { top: 0%; }
-.rotulo-p1-top { top: 1.5%; right: 0.5%; transform: scaleX(0.76); } /* Ajusta scaleX para encoger texto */
+.rotulo-p1-top { top: 1.5%; right: 0.5%; transform: scaleX(0.78); } /* Ajusta scaleX para encoger texto */
 
 .prod-p1-mnds { top: 14%; height: 32%; }
 
 .borde-p1-mid { top: 48%; }
-.rotulo-p1-mid { top: 49.5%; right: 0.5%; transform: scaleX(0.76); }
+.rotulo-p1-mid { top: 49.5%; right: 0.5%; transform: scaleX(0.83); }
 
 .prod-p1-bllts { top: 62%; height: 32%; }
 
 /* --- PÁGINA 2: DETECTORES (Con separadores porque no hay títulos en medio) --- */
 .borde-p2-top { top: 0%; }
-.rotulo-p2-top { top: 1.5%; right: 0.5%; transform: scaleX(0.8); }
+.rotulo-p2-top { top: 1.5%; right: 0.5%; transform: scaleX(0.84); }
 
 .prod-p2-det01 { top: 12%; height: 24%; }
 .separador-p2-01 { top: 38%; } /* Mueve este % para subir o bajar la línea */
@@ -243,12 +241,12 @@ html, body {
 
 /* --- PÁGINA 3: CAJAS (Sin separador intermedio) --- */
 .borde-p3-top { top: 0%; }
-.rotulo-p3-top { top: 1.5%; right: 0.5%; transform: scaleX(0.75); }
+.rotulo-p3-top { top: 1.5%; right: 0.5%; transform: scaleX(0.78); }
 
 .prod-p3-menor { top: 14%; height: 32%; }
 
 .borde-p3-mid { top: 48%; }
-.rotulo-p3-mid { top: 49.5%; right: 0.5%; transform: scaleX(0.86); }
+.rotulo-p3-mid { top: 49.5%; right: 0.5%; transform: scaleX(0.88); }
 
 .prod-p3-fuerte { top: 62%; height: 32%; }
 
@@ -268,7 +266,7 @@ html, body {
 .borde-p5-top { top: 0%; }
 .rotulo-p5-top { top: 1.5%; right: 0.5%; transform: scaleX(0.76); }
 
-.prod-p5-cheq { top: 18%; height: 60%; } 
+.prod-p5-cheq { top: 15%; height: 60%; } 
 
 /* --- PÁGINA 6: DESTRUCTORAS (Con separador) --- */
 .borde-p6-top { top: 0%; }
