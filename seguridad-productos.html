@@ -10,200 +10,150 @@
    CONFIGURACIÓN GENERAL DEL ESCRITORIO
    ========================================== */
 html, body {
-    margin: 0;                     /* Elimina el margen externo del papel */
-    padding: 0;                    /* Elimina el espacio interno del marco */
-    width: 100%;                   /* Ajusta el ancho total de la zona de dibujo */
-    height: 100dvh;                /* Ajusta la altura total de la zona de dibujo */
-    overflow: hidden;              /* Recorta y oculta cualquier trazo que se salga del papel */
-    background: #73A9E4;           /* Color de la tinta de fondo del escritorio */
-    display: flex;                 /* Activa la regla de alineación técnica */
-    justify-content: center;       /* Centra los elementos horizontalmente */
-    align-items: center;           /* Centra los elementos verticalmente */
+    margin: 0;                     /* Sin márgenes externos */
+    padding: 0;                    /* Sin márgenes internos */
+    width: 100%;
+    height: 100dvh;
+    overflow: hidden;              /* Oculta lo que se desborde de la pantalla principal */
+    background: #73A9E4;           /* Color base */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* ==========================================
-   EL LIENZO PRINCIPAL
+   EL LIENZO PRINCIPAL (El marco de tu mesa de luz)
    ========================================== */
 .contenedor {
-    position: relative;            /* Define el lienzo base para trazar coordenadas XYZ */
-    width: 100vw;                  /* Ancho del lienzo al 100% de la visual */
-    height: 100dvh;                /* Alto del lienzo al 100% de la visual */
-    overflow: hidden;              /* Enmascara elementos fuera de los bordes del lienzo */
-    container-type: size;          /* Mide el ancho y alto del lienzo para calcular escalas relativas */
+    position: relative;            /* Define el Punto 0,0 para los botones fijos */
+    width: 100vw;
+    height: 100dvh;
+    overflow: hidden;
 }
 
-/* ==========================================
-   AJUSTE DE PROPORCIÓN PARA ESCRITORIO (WINDOWS)
-   ========================================== */
 @media (min-width: 768px) {
     .contenedor {
-        height: 100dvh;            /* Mantiene el alto total en la pantalla del monitor */
-        width: calc(100dvh * 540 / 1200); /* Ajusta el ancho aplicando la proporción aurea del diseño original */
-        max-width: 100vw;          /* Restringe el ancho máximo al límite físico de la pantalla */
-        box-shadow: 0 0 15px rgba(0,0,0,0.2); /* Dibuja una sombra proyectada alrededor del marco */
+        height: 100dvh;
+        width: calc(100dvh * 540 / 1200); /* Proporción áurea de tu diseño original */
+        max-width: 100vw;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
     }
 }
 
 /* ==========================================
-   CAPA DE FONDO MAESTRA
+   CAPA DE FONDO MAESTRA (Fija debajo de todo)
    ========================================== */
 .fondo {
-    position: absolute;            /* Clava el elemento en coordenadas fijas */
-    inset: 0;                      /* Expande los bordes a los cuatro límites del lienzo */
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: fill;              /* Estira el dibujo de fondo para no dejar vacíos */
-    z-index: 1;                    /* Capa 1: Fondo de la pila (papel tapiz) */
+    object-fit: fill;              /* Estira el fondo sin dejar bordes blancos */
+    z-index: 1;                    /* Capa 1: Hasta el fondo */
 }
 
 /* ==========================================
-   BOTONES INTERACTIVOS GLOBALES
-   ========================================== */
-.indice { 
-    position: absolute;            /* Clava el botón sobre el lienzo */
-    top: 1%;                       /* Cota Y: Distancia desde el techo */
-    left: 1%;                      /* Cota X: Distancia desde la pared izquierda */
-    width: 14%;                    /* Escala del plano del botón */
-    z-index: 5;                    /* Capa 5: Al frente para recibir clics */
-}
-
-.ayuda { 
-    position: absolute;
-    top: 5.5%;                     /* Cota Y: Debajo del índice */
-    right: 1.5%;                   /* Cota X: Distancia desde la pared derecha */
-    width: 4.5%;                   
-    z-index: 5;
-}
-
-.whatsapp { 
-    position: absolute;
-    bottom: 18.5%;                 /* Cota Y: Posicionado justo sobre el límite de las pegatinas (17%) */
-    right: 1%;
-    width: 24%;
-    z-index: 5;
-}
-
-.indice img, .ayuda img, .whatsapp img { 
-    width: 100%;                   /* Obliga al gráfico a ocupar exactamente su marco delimitador */
-    display: block;
-}
-
-/* ==========================================
-   VISOR DESLIZANTE (LA CINTA DE PÁGINAS)
+   VISOR DESLIZANTE (El riel por donde pasan las páginas)
    ========================================== */
 .visor-productos-scroll {
     position: absolute;
-    top: 0;                        /* Inicia exactamente en el techo del lienzo */
+    top: 0;
     left: 0;
     width: 100%;
-    height: 83%;                   /* GEOMETRÍA EXACTA: 100% total - 17% de pegatinas = 83% libre. Evita solapamiento. */
-    overflow-y: auto;              /* Habilita la rueda de desplazamiento vertical */
-    scroll-snap-type: y mandatory; /* Activa el riel magnético vertical para forzar encajes exactos */
-    scroll-behavior: smooth;       /* Transición fluida al saltar mediante anclas (índice) */
-    z-index: 3;                    /* Capa 3: Sobre el fondo, debajo de los botones */
-    scrollbar-width: none;         /* Oculta la barra de desplazamiento en Firefox para estética limpia */
+    height: 83%;                   /* Deja exactamente un 17% libre abajo para las pegatinas */
+    overflow-y: auto;              /* Activa la rueda del ratón/dedo */
+    scroll-snap-type: y mandatory; /* El imán que obliga a frenar en cada página */
+    scroll-behavior: smooth;
+    z-index: 3;                    /* Capa 3: Por encima del fondo */
+    scrollbar-width: none;         /* Oculta la barra en Firefox */
 }
 .visor-productos-scroll::-webkit-scrollbar {
-    display: none;                 /* Oculta la barra de desplazamiento en Chrome/Safari */
+    display: none;                 /* Oculta la barra en Chrome/Safari/Edge */
 }
 
 /* ==========================================
-   HOJA DE SECCIÓN (CADA PÁGINA INDIVIDUAL)
+   HOJA DE CATÁLOGO (Tu nueva mesa de trabajo independiente)
    ========================================== */
-.bloque-seccion {
-    width: 100%;                   /* La hoja ocupa todo el ancho del visor */
-    height: 100%;                  /* La hoja ocupa el 100% del alto del visor (que es el 83% del lienzo). Corte exacto. */
-    scroll-snap-align: start;      /* Punto de anclaje magnético en el borde superior de cada hoja */
-    scroll-snap-stop: always;      /* Fuerza el imán a frenar en cada hoja, evita saltar dos de largo */
-    position: relative;            /* Define el punto 0,0 interno para las coordenadas de esta hoja */
-    display: flex;
-    flex-direction: column;        /* Apila los elementos internos de arriba hacia abajo */
-    overflow: hidden;              /* Corta cualquier gráfico que intente invadir la hoja siguiente */
-}
-
-/* ==========================================
-   ROTULACIÓN Y MARCOS DECORATIVOS (TÍTULOS DERECHOS)
-   ========================================== */
-.grupo-titulo {
-    position: relative;
+.hoja-catalogo {
     width: 100%;
-    display: flex;
-    justify-content: flex-end;     /* Empuja todo el bloque (marco y texto) contra la pared derecha */
-    align-items: center;           /* Alinea verticalmente el texto con el centro del marco azul */
+    height: 100%;                  /* Ocupa el 100% del visor (el 83% de la pantalla) */
+    scroll-snap-align: start;      /* Punto de frenado del imán (arriba) */
+    scroll-snap-stop: always;      /* Fuerza a frenar, evita saltarse páginas */
+    position: relative;            /* IMPORTANTE: Crea un nuevo Punto 0,0 interno para esta hoja */
+    overflow: hidden;              /* Corta cualquier gráfico que se salga de esta hoja */
 }
 
-/* Variantes de distancia vertical (Cotas Y) para posicionar títulos en la hoja */
-.titulo-top { margin-top: 3%; }    /* Título que va en la parte superior de la hoja */
-.titulo-mid { margin-top: 5%; }    /* Título separador para el segundo producto en la misma hoja */
+/* ==========================================
+   HERRAMIENTAS DE DIBUJO (Clases para acomodar elementos)
+   ========================================== */
+
+/* 1. MÓDULO DE TÍTULOS CON MARCO AZUL */
+.bloque-titulo {
+    position: absolute;            /* Anclaje libre en la hoja */
+    right: 0;                      /* Siempre pegado a la pared derecha */
+    width: 100%;
+    height: 12%;                   /* Altura estimada del marco. Ajustable si es necesario */
+    display: flex;
+    justify-content: flex-end;     /* Empuja el texto a la derecha */
+    align-items: center;           /* Centra el texto verticalmente con el marco */
+    z-index: 4;                    /* Capa 4: Por encima de los productos */
+}
 
 .grafico-borde {
     position: absolute;
-    left: 0;                       /* Ancla la imagen decorativa a la izquierda */
-    width: 100%;                   /* Extiende la línea azul de lado a lado */
-    z-index: 1;                    /* Coloca la franja azul detrás del texto */
+    right: 0;
+    top: 0;                        /* OBLIGATORIO: Como pediste, el gráfico toca el techo del bloque */
+    height: 100%;                  /* El gráfico llena la altura del bloque-titulo */
+    z-index: 1;                    /* Capa interna: Detrás de las letras */
 }
 
-.texto-rotulo {
+.texto-titulo {
     position: relative;
-    z-index: 2;                    /* Coloca la tinta de las letras por encima del marco azul */
-    color: #1a4d8c;                /* Tinta azul institucional */
+    z-index: 2;                    /* Capa interna: Letras al frente */
+    color: #1a4d8c;
     font-family: sans-serif;
     font-weight: bold;
-    text-align: right;             /* Justifica la caligrafía a la derecha */
-    padding-right: 4%;             /* Margen interno para que la letra no toque el borde de la pantalla */
-    max-width: 60%;                /* Límite de la caja de texto. Si el título es muy largo, genera un salto de párrafo automático */
-    line-height: 1.1;              /* Interlineado ajustado para títulos de doble párrafo */
+    text-align: right;
+    margin: 0;
+    padding-right: 5%;             /* Margen para que no choque con el borde derecho */
+    font-size: 5cqw;               /* Tamaño base. Úsalo como estándar */
+    transform-origin: right center;/* Si comprimes el texto, se encoge desde la izquierda hacia la derecha */
 }
 
-/* Control de escala de caligrafía según el tipo de título */
-.texto-corto { font-size: 6.5cqw; } /* Escala mayor para textos breves ("CAJA FUERTE") */
-.texto-largo { font-size: 5cqw; }   /* Escala menor para textos extendidos ("RELOJ CONTROL DE PERSONAL") */
+/* 2. PRODUCTOS INDIVIDUALES */
+.producto-aislado {
+    position: absolute;            /* Anclaje libre */
+    left: 50%;                     /* Cota X: Lo manda al centro de la pantalla... */
+    transform: translateX(-50%);   /* ...y esto lo centra perfectamente en su propio eje */
+    z-index: 3;                    /* Capa 3: Detrás de los títulos, por si se solapan */
+    object-fit: contain;           /* Evita que la foto del producto se deforme */
+}
+
+/* 3. SEPARADORES CENTRALES */
+.separador-central {
+    position: absolute;            /* Anclaje libre */
+    left: 50%;
+    transform: translateX(-50%);   /* Centrado automático exacto */
+    width: 60%;                    /* Ancho estándar del separador, ajústalo si lo ves muy largo */
+    z-index: 2;                    /* Capa 2: Debajo de los productos */
+}
 
 /* ==========================================
-   COORDENADAS DE RENDER DE PRODUCTO
+   BOTONES FIJOS GLOBALES
    ========================================== */
-.producto-render {
-    width: 100%;
-    flex-grow: 1;                  /* Absorbe el espacio sobrante en la hoja para centrar la imagen */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-}
-
-.producto-render img {
-    max-width: 85%;                /* Limita el ancho del producto para mantener un área de respiro */
-    max-height: 90%;               /* Limita el alto para que no colisione con los títulos */
-    object-fit: contain;           /* Escala la foto proporcionalmente sin deformar la perspectiva */
-}
+.btn-indice { position: absolute; top: 1%; left: 1%; width: 14%; z-index: 5; }
+.btn-ayuda { position: absolute; top: 7%; right: 1.5%; width: 5%; z-index: 5; }
+.btn-whatsapp { position: absolute; bottom: 18.5%; right: 1%; width: 14%; z-index: 5; }
+.btn-indice img, .btn-ayuda img, .btn-whatsapp img { width: 100%; display: block; }
 
 /* ==========================================
    BARRA DE NAVEGACIÓN INFERIOR (PEGATINAS)
    ========================================== */
 .barra-navegacion-unica { 
-    position: absolute;
-    bottom: 0;                     /* Clavado en el suelo del lienzo (Cota Y = 0) */
-    left: 0;
-    width: 100%;
-    height: 17%;                   /* Cota Z exacta complementaria al 83% del visor */
-    z-index: 4;                    /* Plano por encima de la cinta de productos */
+    position: absolute; bottom: 0; left: 0; width: 100%; height: 17%; z-index: 4; 
 }
-
-.tira-pegatinas-img { 
-    width: 100%;
-    height: 100%;
-    object-fit: fill;              /* Estira la tira gráfica ocupando todo su bloque */
-    display: block;
-}
-
-.zona-activa { 
-    position: absolute;
-    top: 0;
-    height: 100%;                  /* Extiende la zona invisible de clic al alto total de la barra */
-}
-
-/* Cuadrantes matemáticos para mapeo de enlaces (Hotspots) */
+.tira-pegatinas-img { width: 100%; height: 100%; object-fit: fill; display: block; }
+.zona-activa { position: absolute; top: 0; height: 100%; cursor: pointer; }
 .zona-inicio { left: 0%; width: 25%; }
 .zona-oficina { left: 25%; width: 25%; }
 .zona-marcaje { left: 50%; width: 25%; }
@@ -215,121 +165,62 @@ html, body {
 
 <div class="contenedor">
     <img class="fondo" src="imagenes/fondos/fondo-linea-seguridad.webp" alt="Fondo">
-
-    <a href="seguridad.html" class="indice" title="Volver al índice">
-        <img src="imagenes/botones/BtnVerLista.webp" alt="Índice">
-    </a>
-
-    <a href="ImagInfoAyuda.html" class="ayuda" title="Ayuda">
-        <img src="imagenes/botones/BtnAyuda.webp" alt="Ayuda">
-    </a>
-
-    <a href="https://wa.me/573124899581" class="whatsapp" target="_blank" title="Contacto WhatsApp">
-        <img src="imagenes/botones/BtnWtsDerecha.webp" alt="WhatsApp">
-    </a>
+    
+    <a href="seguridad.html" class="btn-indice"><img src="imagenes/botones/Btn-indice.webp" alt="Índice"></a>
+    <a href="https://wa.me/573124899581" class="btn-whatsapp" target="_blank"><img src="imagenes/botones/BtnWtsDerecha.webp" alt="WhatsApp"></a>
 
     <div class="visor-productos-scroll">
         
-        <section id="contadores" class="bloque-seccion">
-            <div class="grupo-titulo titulo-top">
-                <img src="imagenes/fondos/borde-azul1.webp" class="grafico-borde" alt="Marco Decorativo">
-                <div class="texto-rotulo texto-corto">CONTADOR DE MONEDAS</div>
-            </div>
-            <div class="producto-render">
-                <img src="imagenes/productos/ConDeMndsZE-101.webp" alt="Contador Monedas ZE-101">
+        <section id="contadores" class="hoja-catalogo">
+            
+            <div class="bloque-titulo" style="top: 0;">
+                <img src="imagenes/fondos/borde-azul1.webp" class="grafico-borde" alt="Borde">
+                <h2 class="texto-titulo" style="transform: scaleX(1);">Contador De Monedas</h2>
             </div>
 
-            <div class="grupo-titulo titulo-mid">
-                <img src="imagenes/fondos/borde-azul2.webp" class="grafico-borde" alt="Marco Decorativo">
-                <div class="texto-rotulo texto-corto">CONTADOR DE BILLETES</div>
-            </div>
-            <div class="producto-render">
-                <img src="imagenes/productos/ConDeBlltsZE-102.webp" alt="Contador Billetes ZE-102">
-            </div>
+            <img src="imagenes/productos/ConDeMndsZE-101.webp" class="producto-aislado" style="top: 15%; height: 30%;" alt="ZE-101">
+
+            <img src="imagenes/fondos/separador-azul.webp" class="separador-central" style="top: 48%;" alt="Separador">
+
+            <img src="imagenes/productos/ConDeBlltsZE-102.webp" class="producto-aislado" style="top: 55%; height: 30%;" alt="ZE-102">
+            
         </section>
 
-        <section id="detectores" class="bloque-seccion">
-            <div class="grupo-titulo titulo-top">
-                <img src="imagenes/fondos/borde-azul1.webp" class="grafico-borde" alt="Marco Decorativo">
-                <div class="texto-rotulo texto-corto">DETECTOR DE BILLETES</div>
+        <section id="detectores" class="hoja-catalogo">
+            
+            <div class="bloque-titulo" style="top: 0;">
+                <img src="imagenes/fondos/borde-azul2.webp" class="grafico-borde" alt="Borde">
+                <h2 class="texto-titulo" style="transform: scaleX(1);">Detector De Billetes</h2>
             </div>
-            <div class="producto-render">
-                <img src="imagenes/productos/DetBilletesZE-104.webp" alt="Detector ZE-104">
-            </div>
-             <div class="producto-render">
-                <img src="imagenes/productos/DetBilletesZE-105.webp" alt="Detector ZE-105">
-            </div>
+
+            <img src="imagenes/productos/DetBilletesZE-104.webp" class="producto-aislado" style="top: 15%; height: 20%;" alt="ZE-104">
+            
+            <img src="imagenes/fondos/separador-azul.webp" class="separador-central" style="top: 38%;" alt="Separador">
+
+            <img src="imagenes/productos/DetBilletesZE-105.webp" class="producto-aislado" style="top: 42%; height: 20%;" alt="ZE-105">
+            
+            <img src="imagenes/fondos/separador-azul.webp" class="separador-central" style="top: 65%;" alt="Separador">
+
+            <img src="imagenes/productos/DetBilletesZE-106.webp" class="producto-aislado" style="top: 70%; height: 20%;" alt="ZE-106">
+
         </section>
 
-        <section id="cajas" class="bloque-seccion">
-            <div class="grupo-titulo titulo-top">
-                <img src="imagenes/fondos/borde-azul1.webp" class="grafico-borde" alt="Marco Decorativo">
-                <div class="texto-rotulo texto-largo">CAJA MENOR METÁLICA</div>
-            </div>
-            <div class="producto-render">
-                <img src="imagenes/productos/CajaMenorZE-108.webp" alt="Caja Menor ZE-108">
+        <section id="cheques" class="hoja-catalogo">
+            
+            <div class="bloque-titulo" style="top: 0;">
+                <img src="imagenes/fondos/borde-azul3.webp" class="grafico-borde" alt="Borde">
+                <h2 class="texto-titulo" style="transform: scaleX(0.85);">Protector De Cheques</h2>
             </div>
 
-            <div class="grupo-titulo titulo-mid">
-                <img src="imagenes/fondos/borde-azul2.webp" class="grafico-borde" alt="Marco Decorativo">
-                <div class="texto-rotulo texto-corto">CAJA FUERTE</div>
-            </div>
-            <div class="producto-render">
-                <img src="imagenes/productos/CajaFuerte-ZE109.webp" alt="Caja Fuerte ZE-109">
-            </div>
-        </section>
+            <img src="imagenes/productos/Protec-CheqElect-112.webp" class="producto-aislado" style="top: 20%; height: 35%;" alt="ZE-112">
 
-        <section id="relojes" class="bloque-seccion">
-            <div class="grupo-titulo titulo-top">
-                <img src="imagenes/fondos/borde-azul1.webp" class="grafico-borde" alt="Marco Decorativo">
-                <div class="texto-rotulo texto-largo">RELOJ DE CONTROL DE PERSONAL</div>
-            </div>
-            <div class="producto-render">
-                <img src="imagenes/productos/RelojBiometricoZE-110.webp" alt="Reloj ZE-110">
-            </div>
+            <img src="imagenes/fondos/separador-azul.webp" class="separador-central" style="top: 58%;" alt="Separador">
 
-            <div class="grupo-titulo titulo-mid">
-                <img src="imagenes/fondos/borde-azul3.webp" class="grafico-borde" alt="Marco Decorativo">
-                <div class="texto-rotulo texto-largo">RELOJ CONTROL DE CORRESPONDENCIA</div>
-            </div>
-            <div class="producto-render">
-                <img src="imagenes/productos/ContadorCorrespondenciaZE-111.webp" alt="Contador Correspondencia ZE-111">
-            </div>
-        </section>
-
-        <section id="cheques" class="bloque-seccion">
-            <div class="grupo-titulo titulo-top">
-                <img src="imagenes/fondos/borde-azul1.webp" class="grafico-borde" alt="Marco Decorativo">
-                <div class="texto-rotulo texto-largo">PROTECTOR DE CHEQUES</div>
-            </div>
-            <div class="producto-render">
-                <img src="imagenes/productos/Protec-CheqElect-112.webp" alt="Protector Cheques ZE-112">
-            </div>
-            </section>
-
-        <section id="destructoras" class="bloque-seccion">
-            <div class="grupo-titulo titulo-top">
-                <img src="imagenes/fondos/borde-azul1.webp" class="grafico-borde" alt="Marco Decorativo">
-                <div class="texto-rotulo texto-largo">DESTRUCTORA DE DOCUMENTOS</div>
-            </div>
-            <div class="producto-render">
-                <img src="imagenes/productos/DestrDocsZE-113.webp" alt="Destructora ZE-113">
-            </div>
-            <div class="producto-render">
-                <img src="imagenes/productos/DestrDocsZE-114.webp" alt="Destructora ZE-114">
-            </div>
         </section>
 
     </div>
 
     <div class="barra-navegacion-unica">
         <img src="imagenes/botones/TiraPegatinasCompleta.webp" class="tira-pegatinas-img" alt="Navegación">
-        <a href="seguridad.html" class="zona-activa zona-inicio" title="Inicio"></a>
-        <a href="oficina.html" class="zona-activa zona-oficina" title="Oficina"></a>
-        <a href="marcaje.html" class="zona-activa zona-marcaje" title="Marcaje"></a>
-        <a href="escolar.html" class="zona-activa zona-escolar" title="Escolar"></a>
-    </div>
-</div>
-
-</body>
-</html>
+        <a href="seguridad.html" class="zona-activa zona-inicio" title="Seguridad"></a>
+        <a href="oficina.html" class="zona-act
