@@ -44,7 +44,7 @@ html, body {
     /* Ajustes específicos de rotulación SOLO para Desktop/Windows */
     
     .rotulo-p1-top {
-        transform: scaleX(0.70); /* Era 0.76 en móvil, lo bajas un poco aquí */
+        transform: scaleX(0.68); /* Era 0.76 en móvil, lo bajas un poco aquí */
     }
     
     .rotulo-p1-mid {
@@ -52,18 +52,29 @@ html, body {
     }
 
     .rotulo-p2-top {
-        transform: scaleX(0.75); /* Bajas el valor para que en Windows quepa bien */
+        transform: scaleX(0.71); /* Bajas el valor para que en Windows quepa bien */
+    }
+   
+    .rotulo-p3-top { top: 1.0%; right: 0.5%; transform: scaleX(0.71); }
+
+    .rotulo-p3-mid { top: 49.5%; right: 0.5%; transform: scaleX(0.86); }
+         
+   /* .rotulo-p3-top {
+        transform: scaleX(0.71); /* Bajas el valor para que en Windows quepa bien */
     }
 
     .rotulo-p4-top {
         font-size: 5.5cqw; /* También puedes achicar un poco la fuente si es de 2 renglones */
-        transform: scaleX(0.95);
+        transform: scaleX(0.92);
     }
     
     .rotulo-p5-top {
-        transform: scaleX(0.68); /* Este ya lo tenías */
+        transform: scaleX(0.66); /* Este ya lo tenías */
     }
-    
+
+   .rotulo-p6-top {
+        transform: scaleX(0.61); /* Este ya lo tenías */
+    }
     /* Agrega aquí cualquier otra clase (rotulo-pX...) que necesite ajuste en Windows */
 }
 /* 👆 FIN DEL FILTRO PARA PC 👆 */
@@ -237,7 +248,7 @@ html, body {
 .prod-p3-menor { top: 14%; height: 32%; }
 
 .borde-p3-mid { top: 48%; }
-.rotulo-p3-mid { top: 49.5%; right: 4%; transform: scaleX(0.85); }
+.rotulo-p3-mid { top: 49.5%; right: 0.5%; transform: scaleX(0.86); }
 
 .prod-p3-fuerte { top: 62%; height: 32%; }
 
