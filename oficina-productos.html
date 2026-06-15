@@ -7,7 +7,7 @@
 
 <style>
 /* ==========================================================================
-   1. CONFIGURACIÓN DEL ESCRITORIO GLOBAL
+   1. CONFIGURACIÓN DEL ESCRITORIO GLOBAL (EL MARCO FÍSICO)
    ========================================================================== */
 html, body {
     margin: 0;
@@ -33,7 +33,7 @@ html, body {
 }
 
 /* ==========================================================================
-   3. CAPAS FIJAS DEL LIENZO
+   3. CAPAS FIJAS DEL LIENZO (Fondo y Botones Globales)
    ========================================================================== */
 .fondo-estatico {
     position: absolute;
@@ -103,7 +103,7 @@ html, body {
 }
 
 /* ==========================================================================
-   5. LIBRERÍA DE COMPONENTES GRÁFICOS
+   5. LIBRERÍA DE COMPONENTES GRÁFICOS (Moldes Base)
    ========================================================================== */
 .borde-contenedor-titulo {
     position: absolute;
@@ -142,25 +142,9 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px;
 }
 
-/* Encapsulamiento de enlaces de productos para mantener proporciones */
-.enlace-producto {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 100%;
-    max-height: 100%;
-    text-decoration: none;
-    transition: transform 0.2s ease;
-}
-
-.enlace-producto:active {
-    transform: scale(0.95);
-}
-
-.enlace-producto img {
+.render-producto img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
@@ -179,7 +163,6 @@ html, body {
     transform-origin: right center; 
 }
 
-/* Tablas Técnicas Integradas */
 .tabla-tecnica {
     width: 90%;
     margin: 0 auto;
@@ -195,34 +178,86 @@ html, body {
 .tabla-tecnica td { padding: 5px 6px; border-bottom: 1px solid #ddd; color: #333; }
 
 /* ==========================================================================
-   6. COORDENADAS ARTÍSTICAS DE PRECISIÓN
+   6. COORDENADAS ARTÍSTICAS DE PRECISIÓN (PÁGINA POR PÁGINA)
    ========================================================================== */
-.borde-top-fijo { top: 0%; }
-.rotulo-top-fijo { top: 1.5%; right: 0.5%; }
 
-.prod-fila-alta { top: 12%; height: 34%; }
-.separador-mid-fijo { top: 48%; }
-.prod-fila-baja { top: 54%; height: 34%; }
+/* --- PÁGINA 1: PERFORADORAS --- */
+.borde-p1-top { top: 0%; }
+.rotulo-p1-top { top: 1.5%; right: 0.5%; transform: scaleX(0.75); }
+.prod-p1-f1 { top: 12%; height: 34%; gap: 8px; }
+.separador-p1-mid { top: 48%; }
+.prod-p1-f2 { top: 54%; height: 34%; gap: 8px; }
 
-/* Escalas de texto */
-.scale-perf { transform: scaleX(0.75); }
-.scale-cose { transform: scaleX(0.65); }
-.scale-grap { transform: scaleX(0.72); }
-.scale-anil { transform: scaleX(0.72); }
-.scale-lami { transform: scaleX(0.75); }
-.scale-pape { transform: scaleX(0.78); }
-.scale-orga { transform: scaleX(0.72); }
-.scale-bols { transform: scaleX(0.75); }
-.scale-llav { transform: scaleX(0.72); }
-.scale-nota { transform: scaleX(0.85); }
-.scale-tabl { transform: scaleX(0.82); }
-.scale-calc { transform: scaleX(0.85); }
-.scale-mane { transform: scaleX(0.80); }
-.scale-plas { transform: scaleX(0.75); }
+/* --- PÁGINA 2: COSEDORAS --- */
+.borde-p2-top { top: 0%; }
+.rotulo-p2-top { top: 1.5%; right: 0.5%; transform: scaleX(0.65); }
+.prod-p2-f1 { top: 12%; height: 34%; gap: 8px; }
+.separador-p2-mid { top: 48%; }
+.prod-p2-f2 { top: 54%; height: 34%; gap: 6px; }
 
-.prod-con-tabla { top: 12%; height: 35%; }
-.tabla-posicion { position: absolute; top: 52%; left: 5%; width: 90%; z-index: 7; }
-.prod-unico-centrado { top: 15%; height: 65%; }
+/* --- PÁGINA 3: GRAPAS (Con Tabla) --- */
+.borde-p3-top { top: 0%; }
+.rotulo-p3-top { top: 1.5%; right: 0.5%; transform: scaleX(0.72); }
+.prod-p3-img { top: 12%; height: 35%; }
+.tabla-p3-pos { position: absolute; top: 52%; left: 5%; width: 90%; z-index: 7; }
+
+/* --- PÁGINA 4: ANILLADORAS --- */
+.borde-p4-top { top: 0%; }
+.rotulo-p4-top { top: 1.5%; right: 0.5%; transform: scaleX(0.72); }
+.prod-p4-unic { top: 15%; height: 65%; }
+
+/* --- PÁGINA 5: LAMINADORAS --- */
+.borde-p5-top { top: 0%; }
+.rotulo-p5-top { top: 1.5%; right: 0.5%; transform: scaleX(0.75); }
+.prod-p5-unic { top: 15%; height: 65%; }
+
+/* --- PÁGINA 6: PAPELERAS --- */
+.borde-p6-top { top: 0%; }
+.rotulo-p6-top { top: 1.5%; right: 0.5%; transform: scaleX(0.78); }
+.prod-p6-unic { top: 15%; height: 65%; gap: 12px; }
+
+/* --- PÁGINA 7: ORGANIZADORES MALLA --- */
+.borde-p7-top { top: 0%; }
+.rotulo-p7-top { top: 1.5%; right: 0.5%; transform: scaleX(0.72); }
+.prod-p7-unic { top: 15%; height: 65%; gap: 12px; }
+
+/* --- PÁGINA 8: BOLSILLOS --- */
+.borde-p8-top { top: 0%; }
+.rotulo-p8-top { top: 1.5%; right: 0.5%; transform: scaleX(0.75); }
+.prod-p8-unic { top: 15%; height: 65%; }
+
+/* --- PÁGINA 9: LLAVES (Con Tabla) --- */
+.borde-p9-top { top: 0%; }
+.rotulo-p9-top { top: 1.5%; right: 0.5%; transform: scaleX(0.72); }
+.prod-p9-img { top: 12%; height: 35%; gap: 10px; }
+.tabla-p9-pos { position: absolute; top: 52%; left: 5%; width: 90%; z-index: 7; }
+
+/* --- PÁGINA 10: NOTAS (Con Tabla) --- */
+.borde-p10-top { top: 0%; }
+.rotulo-p10-top { top: 1.5%; right: 0.5%; transform: scaleX(0.85); }
+.prod-p10-img { top: 12%; height: 35%; }
+.tabla-p10-pos { position: absolute; top: 52%; left: 5%; width: 90%; z-index: 7; }
+
+/* --- PÁGINA 11: TABLAS CON CLIP --- */
+.borde-p11-top { top: 0%; }
+.rotulo-p11-top { top: 1.5%; right: 0.5%; transform: scaleX(0.82); }
+.prod-p11-unic { top: 15%; height: 65%; }
+
+/* --- PÁGINA 12: CALCULADORA --- */
+.borde-p12-top { top: 0%; }
+.rotulo-p12-top { top: 1.5%; right: 0.5%; transform: scaleX(0.85); }
+.prod-p12-unic { top: 15%; height: 65%; }
+
+/* --- PÁGINA 13: MANECILLAS (Con Tabla) --- */
+.borde-p13-top { top: 0%; }
+.rotulo-p13-top { top: 1.5%; right: 0.5%; transform: scaleX(0.80); }
+.prod-p13-img { top: 12%; height: 35%; }
+.tabla-p13-pos { position: absolute; top: 52%; left: 5%; width: 90%; z-index: 7; }
+
+/* --- PÁGINA 14: PLASTIFICADOS --- */
+.borde-p14-top { top: 0%; }
+.rotulo-p14-top { top: 1.5%; right: 0.5%; transform: scaleX(0.75); }
+.prod-p14-unic { top: 15%; height: 65%; gap: 15px; }
 
 /* ==========================================================================
    7. BARRA DE NAVEGACIÓN INFERIOR
@@ -256,7 +291,7 @@ html, body {
 .zona-escolar { left: 75%; width: 25%; }
 
 /* ==========================================================================
-   8. MEDIA QUERIES
+   8. FILTRO MAESTRO PARA PC / WINDOWS
    ========================================================================== */
 @media (min-width: 768px) {
     .contenedor {
@@ -267,6 +302,14 @@ html, body {
     }
     .tabla-tecnica { font-size: 1.1cqw; }
     .btn-ayuda { position: absolute; top: 8%; z-index: 10; }
+    
+    .rotulo-p1-top { transform: scaleX(0.70); }
+    .rotulo-p2-top { transform: scaleX(0.60); }
+    .rotulo-p3-top { transform: scaleX(0.68); }
+    .rotulo-p6-top { transform: scaleX(0.72); }
+    .rotulo-p7-top { transform: scaleX(0.68); }
+    .rotulo-p9-top { transform: scaleX(0.68); }
+    .rotulo-p10-top { transform: scaleX(0.80); }
 }
 </style>
 </head>
@@ -290,52 +333,52 @@ html, body {
     <div class="visor-productos-scroll">
         
         <section id="perforadoras" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-top-fijo"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-top-fijo scale-perf">PERFORADORAS</div>
+            <div class="borde-contenedor-titulo borde-p1-top"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
+            <div class="rotulo-titulo rotulo-p1-top">PERFORADORAS</div>
             
-            <div class="render-producto prod-fila-alta">
-                <a href="producto.html?ref=dl-200" class="enlace-producto"><img src="imagenes/productos/perforadora-dl-200.webp" alt="DL-200"></a>
-                <a href="producto.html?ref=dl-202" class="enlace-producto"><img src="imagenes/productos/perforadora-dl-202.webp" alt="DL-202"></a>
-                <a href="producto.html?ref=dl-203" class="enlace-producto"><img src="imagenes/productos/perforadora-dl-203.webp" alt="DL-203"></a>
-                <a href="producto.html?ref=dl-204" class="enlace-producto"><img src="imagenes/productos/perforadora-dl-204.webp" alt="DL-204"></a>
+            <div class="render-producto prod-p1-f1">
+                <img src="imagenes/productos/perforadora-dl-200.webp" alt="DL-200">
+                <img src="imagenes/productos/perforadora-dl-202.webp" alt="DL-202">
+                <img src="imagenes/productos/perforadora-dl-203.webp" alt="DL-203">
+                <img src="imagenes/productos/perforadora-dl-204.webp" alt="DL-204">
             </div>
-            <div class="separador-linea separador-mid-fijo"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
-            <div class="render-producto prod-fila-baja">
-                <a href="producto.html?ref=dl-205" class="enlace-producto"><img src="imagenes/productos/perforadora-dl-205.webp" alt="DL-205"></a>
-                <a href="producto.html?ref=dl-206" class="enlace-producto"><img src="imagenes/productos/perforadora-dl-206.webp" alt="DL-206"></a>
-                <a href="producto.html?ref=dl-207" class="enlace-producto"><img src="imagenes/productos/perforadora-dl-207.webp" alt="DL-207"></a>
-                <a href="producto.html?ref=dl-208" class="enlace-producto"><img src="imagenes/productos/perforadora-dl-208.webp" alt="DL-208"></a>
+            <div class="separador-linea separador-p1-mid"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
+            <div class="render-producto prod-p1-f2">
+                <img src="imagenes/productos/perforadora-dl-205.webp" alt="DL-205">
+                <img src="imagenes/productos/perforadora-dl-206.webp" alt="DL-206">
+                <img src="imagenes/productos/perforadora-dl-207.webp" alt="DL-207">
+                <img src="imagenes/productos/perforadora-dl-208.webp" alt="DL-208">
             </div>
         </section>
 
         <section id="cosedoras" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-top-fijo"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-top-fijo scale-cose">COSEDORAS Y SACAGANCHOS</div>
+            <div class="borde-contenedor-titulo borde-p2-top"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
+            <div class="rotulo-titulo rotulo-p2-top">COSEDORAS Y SACAGANCHOS</div>
             
-            <div class="render-producto prod-fila-alta">
-                <a href="producto.html?ref=dl-252" class="enlace-producto"><img src="imagenes/productos/cosedora-dl-252.webp" alt="DL-252"></a>
-                <a href="producto.html?ref=dl-251" class="enlace-producto"><img src="imagenes/productos/cosedora-dl-251.webp" alt="DL-251"></a>
-                <a href="producto.html?ref=dl-250" class="enlace-producto"><img src="imagenes/productos/cosedora-dl-250.webp" alt="DL-250"></a>
-                <a href="producto.html?ref=dl-256" class="enlace-producto"><img src="imagenes/productos/cosedora-dl-256.webp" alt="DL-256"></a>
+            <div class="render-producto prod-p2-f1">
+                <img src="imagenes/productos/cosedora-dl-252.webp" alt="DL-252">
+                <img src="imagenes/productos/cosedora-dl-251.webp" alt="DL-251">
+                <img src="imagenes/productos/cosedora-dl-250.webp" alt="DL-250">
+                <img src="imagenes/productos/cosedora-dl-256.webp" alt="DL-256">
             </div>
-            <div class="separador-linea separador-mid-fijo"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
-            <div class="render-producto prod-fila-baja">
-                <a href="producto.html?ref=dl-254" class="enlace-producto"><img src="imagenes/productos/cosedora-dl-254.webp" alt="DL-254"></a>
-                <a href="producto.html?ref=dl-255" class="enlace-producto"><img src="imagenes/productos/cosedora-dl-255.webp" alt="DL-255"></a>
-                <a href="producto.html?ref=dl-253" class="enlace-producto"><img src="imagenes/productos/cosedora-dl-253.webp" alt="DL-253"></a>
-                <a href="producto.html?ref=dl-257" class="enlace-producto"><img src="imagenes/productos/sacaganchos-dl-257.webp" alt="DL-257"></a>
-                <a href="producto.html?ref=dl-258" class="enlace-producto"><img src="imagenes/productos/sacaganchos-dl-258.webp" alt="DL-258"></a>
+            <div class="separador-linea separador-p2-mid"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
+            <div class="render-producto prod-p2-f2">
+                <img src="imagenes/productos/cosedora-dl-254.webp" alt="DL-254">
+                <img src="imagenes/productos/cosedora-dl-255.webp" alt="DL-255">
+                <img src="imagenes/productos/cosedora-dl-253.webp" alt="DL-253">
+                <img src="imagenes/productos/sacaganchos-dl-257.webp" alt="DL-257">
+                <img src="imagenes/productos/sacaganchos-dl-258.webp" alt="DL-258">
             </div>
         </section>
 
         <section id="grapas" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-top-fijo"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-top-fijo scale-grap">GRAPAS PARA COSEDORAS</div>
+            <div class="borde-contenedor-titulo borde-p3-top"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
+            <div class="rotulo-titulo rotulo-p3-top">GRAPAS PARA COSEDORAS</div>
             
-            <div class="render-producto prod-con-tabla">
-                <a href="producto.html?ref=grapas" class="enlace-producto"><img src="imagenes/productos/grapa-cosedoras.webp" alt="Grapas"></a>
+            <div class="render-producto prod-p3-img">
+                <img src="imagenes/productos/grapa-cosedoras.webp" alt="Grapas">
             </div>
-            <div class="tabla-posicion">
+            <div class="tabla-p3-pos">
                 <table class="tabla-tecnica">
                     <thead>
                         <tr><th>Ref.</th><th>Tipo</th><th>Capacidad</th><th>Contenido</th></tr>
@@ -353,59 +396,53 @@ html, body {
         </section>
 
         <section id="anilladoras" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-top-fijo"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-top-fijo scale-anil">ANILLADORA DE ALUMINIO</div>
-            <div class="render-producto prod-unico-centrado">
-                <a href="producto.html?ref=ze-400" class="enlace-producto"><img src="imagenes/productos/anilladoras-aluminioze-400.webp" alt="ZE-400"></a>
-            </div>
+            <div class="borde-contenedor-titulo borde-p4-top"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
+            <div class="rotulo-titulo rotulo-p4-top">ANILLADORA DE ALUMINIO</div>
+            <div class="render-producto prod-p4-unic"><img src="imagenes/productos/anilladoras-aluminioze-400.webp" alt="ZE-400"></div>
         </section>
 
         <section id="laminadora" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-top-fijo"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-top-fijo scale-lami">LAMINADORA ELÉCTRICA</div>
-            <div class="render-producto prod-unico-centrado">
-                <a href="producto.html?ref=ze-401" class="enlace-producto"><img src="imagenes/productos/laminadora-electrica-ze-401.webp" alt="ZE-401"></a>
-            </div>
+            <div class="borde-contenedor-titulo borde-p5-top"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
+            <div class="rotulo-titulo rotulo-p5-top">LAMINADORA ELÉCTRICA</div>
+            <div class="render-producto prod-p5-unic"><img src="imagenes/productos/laminadora-electrica-ze-401.webp" alt="ZE-401"></div>
         </section>
 
         <section id="papelera" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-top-fijo"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-top-fijo scale-pape">PAPELERA EN MALLA</div>
-            <div class="render-producto prod-unico-centrado">
-                <a href="producto.html?ref=ze-402" class="enlace-producto"><img src="imagenes/productos/porta-lapiz-ze-402.webp" alt="ZE-402"></a>
-                <a href="producto.html?ref=ze-403" class="enlace-producto"><img src="imagenes/productos/papelera-pequeña-ze-403.webp" alt="ZE-403"></a>
-                <a href="producto.html?ref=ze-404" class="enlace-producto"><img src="imagenes/productos/papelera-mediana-ze-404.webp" alt="ZE-404"></a>
+            <div class="borde-contenedor-titulo borde-p6-top"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
+            <div class="rotulo-titulo rotulo-p6-top">PAPELERA EN MALLA</div>
+            <div class="render-producto prod-p6-unic">
+                <img src="imagenes/productos/porta-lapiz-ze-402.webp" alt="ZE-402">
+                <img src="imagenes/productos/papelera-pequeña-ze-403.webp" alt="ZE-403">
+                <img src="imagenes/productos/papelera-mediana-ze-404.webp" alt="ZE-404">
             </div>
         </section>
 
         <section id="organizadores-malla" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-top-fijo"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-top-fijo scale-orga">ORGANIZADORES EN MALLA</div>
-            <div class="render-producto prod-unico-centrado">
-                <a href="producto.html?ref=ze-405" class="enlace-producto"><img src="imagenes/productos/organizador1-puesto-ze-405.webp" alt="ZE-405"></a>
-                <a href="producto.html?ref=ze-406" class="enlace-producto"><img src="imagenes/productos/organizador2-puestos-ze-406.webp" alt="ZE-406"></a>
-                <a href="producto.html?ref=ze-407" class="enlace-producto"><img src="imagenes/productos/organizador3-puestos-ze-407.webp" alt="ZE-407"></a>
+            <div class="borde-contenedor-titulo borde-p7-top"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
+            <div class="rotulo-titulo rotulo-p7-top">ORGANIZADORES EN MALLA</div>
+            <div class="render-producto prod-p7-unic">
+                <img src="imagenes/productos/organizador1-puesto-ze-405.webp" alt="ZE-405">
+                <img src="imagenes/productos/organizador2-puestos-ze-406.webp" alt="ZE-406">
+                <img src="imagenes/productos/organizador3-puestos-ze-407.webp" alt="ZE-407">
             </div>
         </section>
 
         <section id="bolsillos" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-top-fijo"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-top-fijo scale-bols">BOLSILLO PARA LAMINAR</div>
-            <div class="render-producto prod-unico-centrado">
-                <a href="producto.html?ref=ze-408" class="enlace-producto"><img src="imagenes/productos/bolsillo-carta.ofic-ze-408-ze-409.webp" alt="Bolsillos"></a>
-            </div>
+            <div class="borde-contenedor-titulo borde-p8-top"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
+            <div class="rotulo-titulo rotulo-p8-top">BOLSILLO PARA LAMINAR</div>
+            <div class="render-producto prod-p8-unic"><img src="imagenes/productos/bolsillo-carta.ofic-ze-408-ze-409.webp" alt="Bolsillos"></div>
         </section>
 
         <section id="llaves" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-top-fijo"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-top-fijo scale-llav">ORGANIZADOR DE LLAVES</div>
+            <div class="borde-contenedor-titulo borde-p9-top"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
+            <div class="rotulo-titulo rotulo-p9-top">ORGANIZADOR DE LLAVES</div>
             
-            <div class="render-producto prod-con-tabla">
-                <a href="producto.html?ref=ze-414" class="enlace-producto"><img src="imagenes/productos/organizador-llaves-ze-414-ze-415.webp" alt="ZE-414"></a>
-                <a href="producto.html?ref=ze-412" class="enlace-producto"><img src="imagenes/productos/organizador-llaves-chapa-ze-412-ze-413.webp" alt="ZE-412"></a>
-                <a href="producto.html?ref=ze-416" class="enlace-producto"><img src="imagenes/productos/llavero-past-ze-416.webp" alt="ZE-416"></a>
+            <div class="render-producto prod-p9-img">
+                <img src="imagenes/productos/organizador-llaves-ze-414-ze-415.webp" alt="ZE-414">
+                <img src="imagenes/productos/organizador-llaves-chapa-ze-412-ze-413.webp" alt="ZE-412">
+                <img src="imagenes/productos/llavero-past-ze-416.webp" alt="ZE-416">
             </div>
-            <div class="tabla-posicion">
+            <div class="tabla-p9-pos">
                 <table class="tabla-tecnica">
                     <thead>
                         <tr><th>Ref.</th><th>Descripción</th><th>Capacidad</th></tr>
@@ -420,13 +457,13 @@ html, body {
         </section>
 
         <section id="notas" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-top-fijo"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-top-fijo scale-nota">STICK NOTAS</div>
+            <div class="borde-contenedor-titulo borde-p10-top"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
+            <div class="rotulo-titulo rotulo-p10-top">STICK NOTAS</div>
             
-            <div class="render-producto prod-con-tabla">
-                <a href="producto.html?ref=notas" class="enlace-producto"><img src="imagenes/productos/stick-notas.webp" alt="Stick Notas"></a>
+            <div class="render-producto prod-p10-img">
+                <img src="imagenes/productos/stick-notas.webp" alt="Stick Notas">
             </div>
-            <div class="tabla-posicion">
+            <div class="tabla-p10-pos">
                 <table class="tabla-tecnica">
                     <thead>
                         <tr><th>Ref.</th><th>Hojas</th><th>Tamaño</th><th>Detalle</th></tr>
@@ -444,29 +481,25 @@ html, body {
         </section>
 
         <section id="tablas" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-top-fijo"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-top-fijo scale-tabl">TABLAS CON CLIP</div>
-            <div class="render-producto prod-unico-centrado">
-                <a href="producto.html?ref=ze-457" class="enlace-producto"><img src="imagenes/productos/tablas-con-clip-ze-457.webp" alt="ZE-457"></a>
-            </div>
+            <div class="borde-contenedor-titulo borde-p11-top"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
+            <div class="rotulo-titulo rotulo-p11-top">TABLAS CON CLIP</div>
+            <div class="render-producto prod-p11-unic"><img src="imagenes/productos/tablas-con-clip-ze-457.webp" alt="ZE-457"></div>
         </section>
 
         <section id="calculadora" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-top-fijo"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-top-fijo scale-calc">CALCULADORA</div>
-            <div class="render-producto prod-unico-centrado">
-                <a href="producto.html?ref=ze-458" class="enlace-producto"><img src="imagenes/productos/calculadora-ze-458.webp" alt="ZE-458"></a>
-            </div>
+            <div class="borde-contenedor-titulo borde-p12-top"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
+            <div class="rotulo-titulo rotulo-p12-top">CALCULADORA</div>
+            <div class="render-producto prod-p12-unic"><img src="imagenes/productos/calculadora-ze-458.webp" alt="ZE-458"></div>
         </section>
 
         <section id="manecillas" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-top-fijo"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-top-fijo scale-mane">CLIPS MANECILLAS</div>
+            <div class="borde-contenedor-titulo borde-p13-top"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
+            <div class="rotulo-titulo rotulo-p13-top">CLIPS MANECILLAS</div>
             
-            <div class="render-producto prod-con-tabla">
-                <a href="producto.html?ref=manecillas" class="enlace-producto"><img src="imagenes/productos/clip-manecillas.webp" alt="Manecillas"></a>
+            <div class="render-producto prod-p13-img">
+                <img src="imagenes/productos/clip-manecillas.webp" alt="Manecillas">
             </div>
-            <div class="tabla-posicion">
+            <div class="tabla-p13-pos">
                 <table class="tabla-tecnica">
                     <thead>
                         <tr><th>Ref.</th><th>Tamaño</th><th>Cantidad</th></tr>
@@ -484,11 +517,11 @@ html, body {
         </section>
 
         <section id="plastificados" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-top-fijo"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-top-fijo scale-plas">CLIPS PLASTIFICADOS</div>
-            <div class="render-producto prod-unico-centrado">
-                <a href="producto.html?ref=ze-507" class="enlace-producto"><img src="imagenes/productos/clip-yumbo-ze-507.webp" alt="ZE-507"></a>
-                <a href="producto.html?ref=ze-506" class="enlace-producto"><img src="imagenes/productos/clip-estandar-ze-506.webp" alt="ZE-506"></a>
+            <div class="borde-contenedor-titulo borde-p14-top"><img src="imagenes/fondos/borde-azul2.webp" alt="Marco"></div>
+            <div class="rotulo-titulo rotulo-p14-top">CLIPS PLASTIFICADOS</div>
+            <div class="render-producto prod-p14-unic">
+                <img src="imagenes/productos/clip-yumbo-ze-507.webp" alt="ZE-507">
+                <img src="imagenes/productos/clip-estandar-ze-506.webp" alt="ZE-506">
             </div>
         </section>
 
@@ -502,19 +535,5 @@ html, body {
         <a href="escolar.html" class="zona-activa zona-escolar" title="Escolar"></a>
     </div>
 </div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    if (window.location.hash) {
-        setTimeout(function() {
-            var target = document.querySelector(window.location.hash);
-            var container = document.querySelector('.visor-productos-scroll');
-            if (target && container) {
-                container.scrollTop = target.offsetTop;
-            }
-        }, 100);
-    }
-});
-</script>
 </body>
 </html>
