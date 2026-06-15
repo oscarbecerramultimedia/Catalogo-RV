@@ -3,512 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Productos Línea Oficina </title>
-
+<title>Línea Oficina</title>
 <style>
-/* ==========================================================================
-   1. CONFIGURACIÓN DEL ENTORNO GLOBAL
-   ========================================================================== */
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100dvh;
-    overflow: hidden;
-    background: #73A9E4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.contenedor {
-    position: relative;
-    width: 100vw;
-    height: 100dvh;
-    overflow: hidden;
-    container-type: size;
-}
-
-/* ==========================================================================
-   2. CAPAS FIJAS (Fondo y Botones Globales)
-   ========================================================================== */
-.fondo-estatico {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
-    z-index: 1; 
-}
-
-.btn-ver-lista { 
-    position: absolute;
-    top: 1.5%;
-    left: 2%;
-    width: 14%;
-    z-index: 10; 
-}
-
-.btn-ayuda { 
-    position: absolute;
-    top: 9.5%; 
-    right: 0.5%;
-    width: 4.5%;
-    z-index: 10;
-}
-
-.btn-whatsapp { 
-    position: absolute;
-    top: 50%; 
-    right: 0.5%;
-    width: 20%;
-    z-index: 10;
-}
-
-.btn-ver-lista img, .btn-ayuda img, .btn-whatsapp img {
-    width: 100%;
-    display: block;
-}
-
-/* ==========================================================================
-   3. VISOR DESLIZANTE CON ENCUADRE MAGNÉTICO
-   ========================================================================== */
-.visor-productos-scroll {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 83%; 
-    overflow-y: auto;
-    scroll-snap-type: y mandatory; 
-    scroll-behavior: smooth;
-    z-index: 5; 
-}
-
-.visor-productos-scroll::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
-}
-
-.bloque-seccion {
-    position: relative; 
-    width: 100%;
-    height: 100%; 
-    scroll-snap-align: start; 
-    flex-shrink: 0;
-    overflow: hidden; 
-}
-
-/* ==========================================================================
-   4. LIBRERÍA DE COMPONENTES GRÁFICOS (Moldes Base Absolutos)
-   ========================================================================== */
-.borde-contenedor-titulo {
-    position: absolute;
-    right: 0; 
-    width: 100%; 
-    height: auto;
-    z-index: 6;
-}
-
-.borde-contenedor-titulo img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: contain;
-    object-position: right top;
-}
-
-.separador-linea {
-    position: absolute;
-    left: 5%;
-    width: 90%;
-    height: auto;
-    z-index: 6;
-}
-
-.separador-linea img {
-    width: 100%;
-    display: block;
-}
-
-.render-producto {
-    position: absolute;
-    left: 5%;
-    width: 90%;
-    z-index: 7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.render-producto img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-}
-
-.rotulo-titulo {
-    position: absolute;
-    color: #1a4d8c;
-    font-family: sans-serif;
-    font-weight: bold;
-    font-size: 6.8cqw;
-    z-index: 8;
-    pointer-events: none;
-    text-align: right;
-    white-space: nowrap;
-    transform-origin: right center; 
-}
-
-/* Plaqueta de datos técnicos incrustados */
-.tabla-referencias-abs {
-    position: absolute;
-    left: 10%;
-    width: 80%;
-    background: rgba(255, 255, 255, 0.85);
-    border: 1px dashed #1a4d8c;
-    border-radius: 4px;
-    font-family: monospace;
-    font-size: 3.5cqw;
-    padding: 6px;
-    color: #222;
-    z-index: 8;
-}
-
-/* ==========================================================================
-   5. COORDENADAS ARTÍSTICAS DE PRECISIÓN (PÁGINA POR PÁGINA)
-   ========================================================================== */
-
-/* --- PERFORADORAS --- */
-.borde-perf-top { top: 0%; }
-.rotulo-perf-top { top: 1.5%; right: 0.5%; transform: scaleX(0.85); }
-.prod-perf-01 { top: 12%; height: 22%; }
-.separador-perf-01 { top: 35%; }
-.prod-perf-02 { top: 38%; height: 22%; }
-.separador-perf-02 { top: 61%; }
-.prod-perf-03 { top: 64%; height: 22%; }
-
-.prod-perf-04 { top: 10%; height: 24%; }
-.separador-perf-03 { top: 36%; }
-.prod-perf-05 { top: 40%; height: 24%; }
-.separador-perf-04 { top: 66%; }
-.prod-perf-06 { top: 70%; height: 24%; }
-
-.prod-perf-07 { top: 12%; height: 32%; }
-.borde-perf-mid { top: 48%; }
-.rotulo-perf-mid { top: 49.5%; right: 0.5%; transform: scaleX(0.85); }
-.prod-perf-08 { top: 62%; height: 32%; }
-
-/* --- COSEDORAS --- */
-.borde-cos-top { top: 0%; }
-.rotulo-cos-top { top: 1.5%; right: 0.5%; transform: scaleX(0.85); }
-.prod-cos-01 { top: 12%; height: 22%; }
-.separador-cos-01 { top: 35%; }
-.prod-cos-02 { top: 38%; height: 22%; }
-.separador-cos-02 { top: 61%; }
-.prod-cos-03 { top: 64%; height: 22%; }
-
-.prod-cos-04 { top: 10%; height: 24%; }
-.separador-cos-03 { top: 36%; }
-.prod-cos-05 { top: 40%; height: 24%; }
-.separador-cos-04 { top: 66%; }
-.prod-cos-06 { top: 70%; height: 24%; }
-
-.prod-cos-07 { top: 12%; height: 24%; }
-.separador-cos-05 { top: 38%; }
-.prod-cos-08 { top: 42%; height: 24%; }
-.separador-cos-06 { top: 68%; }
-.prod-cos-09 { top: 72%; height: 24%; }
-
-/* --- GRAPAS, ANILLADORAS Y LAMINADORAS --- */
-.borde-eq-top { top: 0%; }
-.rotulo-eq-top { top: 1.5%; right: 0.5%; transform: scaleX(0.8); }
-.prod-grapas { top: 12%; height: 20%; }
-.tabla-grapas { top: 34%; }
-.borde-eq-mid1 { top: 46%; }
-.rotulo-eq-mid1 { top: 47.5%; right: 0.5%; transform: scaleX(0.8); }
-.prod-anilla { top: 58%; height: 20%; }
-.borde-eq-mid2 { top: 80%; }
-
-.rotulo-eq-mid2 { top: 1.5%; right: 0.5%; transform: scaleX(0.8); }
-.prod-lamina { top: 15%; height: 40%; }
-
-/* --- PAPELERAS Y ORGANIZADORES --- */
-.borde-pap-top { top: 0%; }
-.rotulo-pap-top { top: 1.5%; right: 0.5%; transform: scaleX(0.85); }
-.prod-pap-01 { top: 12%; height: 22%; }
-.separador-pap-01 { top: 35%; }
-.prod-pap-02 { top: 38%; height: 22%; }
-.separador-pap-02 { top: 61%; }
-.prod-pap-03 { top: 64%; height: 22%; }
-
-.borde-org-top { top: 0%; }
-.rotulo-org-top { top: 1.5%; right: 0.5%; transform: scaleX(0.85); }
-.prod-org-01 { top: 12%; height: 22%; }
-.separador-org-01 { top: 35%; }
-.prod-org-02 { top: 38%; height: 22%; }
-.separador-org-02 { top: 61%; }
-.prod-org-03 { top: 64%; height: 22%; }
-
-/* --- BOLSILLOS Y LLAVEROS --- */
-.borde-bol-top { top: 0%; }
-.rotulo-bol-top { top: 1.5%; right: 0.5%; transform: scaleX(0.85); }
-.prod-bol-01 { top: 14%; height: 32%; }
-.separador-bol-01 { top: 48%; }
-.prod-bol-02 { top: 54%; height: 32%; }
-
-.borde-lla-top { top: 0%; }
-.rotulo-lla-top { top: 1.5%; right: 0.5%; transform: scaleX(0.85); }
-.prod-lla-01 { top: 12%; height: 22%; }
-.separador-lla-01 { top: 35%; }
-.prod-lla-02 { top: 38%; height: 22%; }
-.separador-lla-02 { top: 61%; }
-.prod-lla-03 { top: 64%; height: 22%; }
-
-/* --- ACCESORIOS (NOTAS, TABLAS, CALCULADORAS) --- */
-.borde-acc-top { top: 0%; }
-.rotulo-acc-top { top: 1.5%; right: 0.5%; transform: scaleX(0.85); }
-.prod-notas { top: 12%; height: 20%; }
-.tabla-notas { top: 34%; }
-.borde-acc-mid1 { top: 46%; }
-.rotulo-acc-mid1 { top: 47.5%; right: 0.5%; transform: scaleX(0.85); }
-.prod-tablas { top: 58%; height: 20%; }
-.borde-acc-mid2 { top: 80%; }
-
-.rotulo-acc-mid2 { top: 1.5%; right: 0.5%; transform: scaleX(0.85); }
-.prod-calcu { top: 14%; height: 32%; }
-
-/* --- CLIPS --- */
-.borde-cli-top { top: 0%; }
-.rotulo-cli-top { top: 1.5%; right: 0.5%; transform: scaleX(0.85); }
-.prod-manecillas { top: 12%; height: 20%; }
-.tabla-manecillas { top: 34%; }
-.borde-cli-mid1 { top: 46%; }
-.rotulo-cli-mid1 { top: 47.5%; right: 0.5%; transform: scaleX(0.85); }
-.prod-clip-yumbo { top: 58%; height: 20%; }
-.separador-cli-01 { top: 80%; }
-
-.prod-clip-est { top: 15%; height: 40%; }
-
-/* ==========================================================================
-   6. BARRA DE NAVEGACIÓN INFERIOR (TIRA DE PEGATINAS)
-   ========================================================================== */
-.barra-navegacion-unica {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 17%;
-    z-index: 15; 
-}
-
-.tira-pegatinas-img {
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
-    display: block;
-}
-
-.zona-activa {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    cursor: pointer;
-}
-
+html, body { margin: 0; padding: 0; width: 100%; height: 100dvh; overflow: hidden; background: #73A9E4; display: flex; justify-content: center; align-items: center; }
+.contenedor { position: relative; width: 100vw; height: 100dvh; overflow: hidden; container-type: size; }
+@media (min-width: 768px) { .contenedor { height: 100dvh; width: calc(100dvh * 540 / 1200); max-width: 100vw; box-shadow: 0 0 15px rgba(0,0,0,0.2); } .producto-enlace { font-size: 22px !important; } }
+.fondo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; z-index: 1; }
+.banner { position: absolute; top: 0; left: 0; width: 100%; height: 23%; object-fit: fill; z-index: 2; }
+.lista-productos { position: absolute; top: 23%; left: 10%; width: 80%; height: 60%; overflow-y: auto !important; z-index: 3; font-family: sans-serif; scrollbar-width: thin; scrollbar-color: rgba(255, 102, 0, 0.35) transparent; }
+.lista-productos::-webkit-scrollbar { width: 4px; display: block !important; }
+.lista-productos::-webkit-scrollbar-thumb { background-color: rgba(255, 102, 0, 0.35); border-radius: 4px; }
+.producto-enlace { display: block; padding: 6px 0; margin-bottom: 2px; color: #1a253c; text-decoration: none; font-size: 6.5cqw; font-weight: bold; border-bottom: 1px solid rgba(0, 0, 0, 0.08); -webkit-tap-highlight-color: rgba(255, 102, 0, 0.35); }
+.btn-volver { position: absolute; top: 14.5%; left: 2%; width: 14%; z-index: 4; }
+.btn-volver img { width: 100%; display: block; }
+.barra-navegacion-unica { position: absolute; bottom: 0; left: 0; width: 100%; height: 17%; z-index: 4; }
+.tira-pegatinas-img { width: 100%; height: 100%; object-fit: fill; display: block; }
+.zona-activa { position: absolute; top: 0; height: 100%; cursor: pointer; }
 .zona-inicio { left: 0%; width: 25%; }
 .zona-oficina { left: 25%; width: 25%; }
 .zona-marcaje { left: 50%; width: 25%; }
 .zona-escolar { left: 75%; width: 25%; }
-
-/* ==========================================================================
-   7. FILTRO MAESTRO PARA ESCRITORIO
-   ========================================================================== */
-@media (min-width: 768px) {
-    .contenedor {
-        height: 100dvh;
-        width: calc(100dvh * 540 / 1200);
-        max-width: 100vw;
-        box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    }
-}
 </style>
 </head>
 <body>
-
 <div class="contenedor">
-    <img class="fondo-estatico" src="imagenes/fondos/fondo-linea-oficina.webp" alt="Fondo">
-
-    <a href="oficina.html" class="btn-ver-lista" title="Ver Lista">
-        <img src="imagenes/botones/BtnVerLista-n.webp" alt="Ver Lista">
-    </a>
-
-    <a href="ImagInfoAyuda.html" class="btn-ayuda" title="Ayuda">
-        <img src="imagenes/botones/BtnAyuda-n.webp" alt="Ayuda">
-    </a>
-
-    <a href="https://wa.me/573124899581" class="btn-whatsapp" target="_blank" title="Contacto WhatsApp">
-        <img src="imagenes/botones/BtnWtsDerecha.webp" alt="WhatsApp">
-    </a>
-
-    <div class="visor-productos-scroll">
-        
-        <section id="perforadoras" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-perf-top"><img src="imagenes/fondos/cabecera-perforadoras.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-perf-top">PERFORADORAS 1-2-3 HJS</div>
-            <div class="render-producto prod-perf-01"><img src="imagenes/productos/perforadora-dl-200.webp" alt="DL-200"></div>
-            <div class="separador-linea separador-perf-01"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
-            <div class="render-producto prod-perf-02"><img src="imagenes/productos/perforadora-dl-202.webp" alt="DL-202"></div>
-            <div class="separador-linea separador-perf-02"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
-            <div class="render-producto prod-perf-03"><img src="imagenes/productos/perforadora-dl-203.webp" alt="DL-203"></div>
-        </section>
-
-        <section class="bloque-seccion">
-            <div class="render-producto prod-perf-04"><img src="imagenes/productos/perforadora-dl-204.webp" alt="DL-204"></div>
-            <div class="separador-linea separador-perf-03"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
-            <div class="render-producto prod-perf-05"><img src="imagenes/productos/perforadora-dl-205.webp" alt="DL-205"></div>
-            <div class="separador-linea separador-perf-04"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
-            <div class="render-producto prod-perf-06"><img src="imagenes/productos/perforadora-dl-206.webp" alt="DL-206"></div>
-        </section>
-
-        <section class="bloque-seccion">
-            <div class="render-producto prod-perf-07"><img src="imagenes/productos/perforadora-dl-207.webp" alt="DL-207"></div>
-            <div class="borde-contenedor-titulo borde-perf-mid"><img src="imagenes/fondos/cabecera-perforadoras.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-perf-mid">PERFORADORA INDUSTRIAL</div>
-            <div class="render-producto prod-perf-08"><img src="imagenes/productos/perforadora-dl-208.webp" alt="DL-208"></div>
-        </section>
-
-        <section id="cosedoras" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-cos-top"><img src="imagenes/fondos/cabecera-cosedoras.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-cos-top">COSEDORAS DE ESCRITORIO</div>
-            <div class="render-producto prod-cos-01"><img src="imagenes/productos/cosedora-dl-252.webp" alt="DL-252"></div>
-            <div class="separador-linea separador-cos-01"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
-            <div class="render-producto prod-cos-02"><img src="imagenes/productos/cosedora-dl-251.webp" alt="DL-251"></div>
-            <div class="separador-linea separador-cos-02"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
-            <div class="render-producto prod-cos-03"><img src="imagenes/productos/cosedora-dl-250.webp" alt="DL-250"></div>
-        </section>
-
-        <section class="bloque-seccion">
-            <div class="render-producto prod-cos-04"><img src="imagenes/productos/cosedora-dl-256.webp" alt="DL-256"></div>
-            <div class="separador-linea separador-cos-03"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
-            <div class="render-producto prod-cos-05"><img src="imagenes/productos/cosedora-dl-254.webp" alt="DL-254"></div>
-            <div class="separador-linea separador-cos-04"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
-            <div class="render-producto prod-cos-06"><img src="imagenes/productos/cosedora-dl-255.webp" alt="DL-255"></div>
-        </section>
-
-        <section class="bloque-seccion">
-            <div class="render-producto prod-cos-07"><img src="imagenes/productos/cosedora-dl-253.webp" alt="DL-253"></div>
-            <div class="separador-linea separador-cos-05"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
-            <div class="render-producto prod-cos-08"><img src="imagenes/productos/sacaganchos-dl-257.webp" alt="DL-257"></div>
-            <div class="separador-linea separador-cos-06"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
-            <div class="render-producto prod-cos-09"><img src="imagenes/productos/sacaganchos-dl-258.webp" alt="DL-258"></div>
-        </section>
-
-        <section id="grapas" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-eq-top"><img src="imagenes/fondos/cabecera-cosedoras.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-eq-top">GRAPAS PARA COSEDORA</div>
-            <div class="render-producto prod-grapas"><img src="imagenes/productos/grapas-caja.webp" alt="Grapas"></div>
-            <div class="tabla-referencias-abs tabla-grapas">
-                DL-300: 23/8 - 50 Hjs<br>DL-301: 23/10 - 70 Hjs<br>DL-302: 23/13 - 100 Hjs
-            </div>
-            <div id="anilladoras" class="borde-contenedor-titulo borde-eq-mid1"><img src="imagenes/fondos/cabecera-organizadores.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-eq-mid1">ANILLADORA DE ALUMINIO</div>
-            <div class="render-producto prod-anilla"><img src="imagenes/productos/anilladora-ze-400.webp" alt="ZE-400"></div>
-            <div id="laminadora" class="borde-contenedor-titulo borde-eq-mid2"></div>
-        </section>
-
-        <section class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-eq-top"><img src="imagenes/fondos/cabecera-organizadores.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-eq-mid2">LAMINADORA ELÉCTRICA</div>
-            <div class="render-producto prod-lamina"><img src="imagenes/productos/laminadora-ze-401.webp" alt="ZE-401"></div>
-        </section>
-
-        <section id="papelera" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-pap-top"><img src="imagenes/fondos/cabecera-papeleras.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-pap-top">PAPELERAS EN MALLA</div>
-            <div class="render-producto prod-pap-01"><img src="imagenes/productos/papelera-ze-402.webp" alt="ZE-402"></div>
-            <div class="separador-linea separador-pap-01"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
-            <div class="render-producto prod-pap-02"><img src="imagenes/productos/papelera-ze-403.webp" alt="ZE-403"></div>
-            <div class="separador-linea separador-pap-02"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
-            <div class="render-producto prod-pap-03"><img src="imagenes/productos/papelera-ze-404.webp" alt="ZE-404"></div>
-        </section>
-
-        <section id="organizadores" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-org-top"><img src="imagenes/fondos/cabecera-organizadores.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-org-top">ORGANIZADORES EN MALLA</div>
-            <div class="render-producto prod-org-01"><img src="imagenes/productos/organizador-ze-405.webp" alt="ZE-405"></div>
-            <div class="separador-linea separador-org-01"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
-            <div class="render-producto prod-org-02"><img src="imagenes/productos/organizador-ze-406.webp" alt="ZE-406"></div>
-            <div class="separador-linea separador-org-02"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
-            <div class="render-producto prod-org-03"><img src="imagenes/productos/organizador-ze-407.webp" alt="ZE-407"></div>
-        </section>
-
-        <section id="bolsillos" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-bol-top"><img src="imagenes/fondos/cabecera-bolsillos.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-bol-top">BOLSILLOS PARA LAMINAR</div>
-            <div class="render-producto prod-bol-01"><img src="imagenes/productos/bolsillo-carta.webp" alt="Carta/Oficio"></div>
-            <div class="separador-linea separador-bol-01"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
-            <div class="render-producto prod-bol-02"><img src="imagenes/productos/bolsillo-pequeño.webp" alt="Pequeño"></div>
-        </section>
-
-        <section id="llaves" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-lla-top"><img src="imagenes/fondos/cabecera-llaves.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-lla-top">ORGANIZADORES DE LLAVES</div>
-            <div class="render-producto prod-lla-01"><img src="imagenes/productos/llavero-ze-414.webp" alt="ZE-414"></div>
-            <div class="separador-linea separador-lla-01"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
-            <div class="render-producto prod-lla-02"><img src="imagenes/productos/llavero-ze-412.webp" alt="ZE-412"></div>
-            <div class="separador-linea separador-lla-02"><img src="imagenes/fondos/separador-azul.webp" alt="Separador"></div>
-            <div class="render-producto prod-lla-03"><img src="imagenes/productos/llaveros-plasticos.webp" alt="ZE-416"></div>
-        </section>
-
-        <section id="notas" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-acc-top"><img src="imagenes/fondos/cabecera-bolsillos.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-acc-top">STICK DE NOTAS</div>
-            <div class="render-producto prod-notas"><img src="imagenes/productos/stick-notas.webp" alt="Notas"></div>
-            <div class="tabla-referencias-abs tabla-notas">
-                DL-450: 100 Hjs / DL-451: 400 Hjs / Neon Variado
-            </div>
-            <div id="tablas" class="borde-contenedor-titulo borde-acc-mid1"><img src="imagenes/fondos/cabecera-llaves.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-acc-mid1">TABLAS CON CLIP</div>
-            <div class="render-producto prod-tablas"><img src="imagenes/productos/tabla-clip-ze-457.webp" alt="ZE-457"></div>
-            <div id="calculadora" class="borde-contenedor-titulo borde-acc-mid2"></div>
-        </section>
-
-        <section class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-acc-top"><img src="imagenes/fondos/cabecera-llaves.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-acc-mid2">CALCULADORA DE ESCRITORIO</div>
-            <div class="render-producto prod-calcu"><img src="imagenes/productos/calculadora-ze-458.webp" alt="ZE-458"></div>
-        </section>
-
-        <section id="manecillas" class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-cli-top"><img src="imagenes/fondos/cabecera-bolsillos.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-cli-top">CLIPS MANECILLAS</div>
-            <div class="render-producto prod-manecillas"><img src="imagenes/productos/clips-manecillas.webp" alt="Clips"></div>
-            <div class="tabla-referencias-abs tabla-manecillas">
-                CL-500: 51mm / CL-501: 41mm<br>CL-502: 32mm / CL-503: 25mm
-            </div>
-            <div id="plastificados" class="borde-contenedor-titulo borde-cli-mid1"><img src="imagenes/fondos/cabecera-bolsillos.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-cli-mid1">CLIP YUMBO PLASTIFICADO</div>
-            <div class="render-producto prod-clip-yumbo"><img src="imagenes/productos/clip-yumbo.webp" alt="ZE-507"></div>
-            <div class="separador-linea separador-cli-01"></div>
-        </section>
-
-        <section class="bloque-seccion">
-            <div class="borde-contenedor-titulo borde-cli-top"><img src="imagenes/fondos/cabecera-bolsillos.webp" alt="Marco"></div>
-            <div class="rotulo-titulo rotulo-cli-top">CLIP ESTÁNDAR</div>
-            <div class="render-producto prod-clip-est"><img src="imagenes/productos/clip-estandar.webp" alt="DL-508"></div>
-        </section>
-
+    <img class="fondo" src="imagenes/fondos/fondo-linea-oficina.webp" alt="Fondo">
+    <img class="banner" src="imagenes/banners/ImagBannerOficina.webp" alt="Línea Oficina">
+    
+    <div class="lista-productos">
+        <a href="oficina-perforadoras.html#perforadoras" class="producto-enlace">Perforadoras</a>
+        <a href="oficina-cosedoras.html#cosedoras" class="producto-enlace">Cosedoras - Sacaganchos</a>
+        <a href="oficina-equipos.html#grapas" class="producto-enlace">Grapas Para Cosedoras</a>
+        <a href="oficina-equipos.html#anilladoras" class="producto-enlace">Anilladoras De Aluminio</a>
+        <a href="oficina-equipos.html#laminadora" class="producto-enlace">Laminadora Eléctrica</a>
+        <a href="oficina-papelera.html#papelera" class="producto-enlace">Papelera En Malla</a>
+        <a href="oficina-organizadores-malla.html#organizadores-malla" class="producto-enlace">Organizadores En Malla</a>
+        <a href="oficina-bolsillos.html#bolsillos" class="producto-enlace">Bolsillos Para Laminar</a>
+        <a href="oficina-llaves.html#llaves" class="producto-enlace">Organizadores De Llaves</a>
+        <a href="oficina-accesorios.html#notas" class="producto-enlace">Stick De Notas</a>
+        <a href="oficina-accesorios.html#tablas" class="producto-enlace">Tablas Con Clip</a>
+        <a href="oficina-accesorios.html#calculadora" class="producto-enlace">Calculadora</a>
+        <a href="oficina-clips.html#manecillas" class="producto-enlace">Clip Manecillas</a>
+        <a href="oficina-clips.html#plastificados" class="producto-enlace">Clips Plastificados</a>
     </div>
 
+    <a href="categorias.html" class="btn-volver"><img src="imagenes/botones/Btn-indice-n.webp" alt="Volver"></a>
+    
     <div class="barra-navegacion-unica">
         <img src="imagenes/botones/TiraPegatinasCompleta.webp" class="tira-pegatinas-img" alt="Navegación">
-        <a href="seguridad.html" class="zona-activa zona-inicio" title="Seguridad"></a>
-        <a href="oficina.html" class="zona-activa zona-oficina" title="Oficina"></a>
-        <a href="marcaje.html" class="zona-activa zona-marcaje" title="Marcaje"></a>
-        <a href="escolar.html" class="zona-activa zona-escolar" title="Escolar"></a>
+        <a href="seguridad.html" class="zona-activa zona-inicio"></a>
+        <a href="oficina.html" class="zona-activa zona-oficina"></a>
+        <a href="marcaje.html" class="zona-activa zona-marcaje"></a>
+        <a href="escolar.html" class="zona-activa zona-escolar"></a>
     </div>
 </div>
-
 </body>
 </html>
