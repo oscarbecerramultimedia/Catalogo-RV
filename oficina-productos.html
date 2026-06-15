@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Línea Oficina y Papelería</title>
+<title>Línea Oficina</title>
 
 <style>
 /* ==========================================================================
@@ -273,7 +273,7 @@ html, body {
         <img src="imagenes/botones/BtnAyuda.webp" alt="Ayuda">
     </a>
 
-    <a href="https://wa.me/573153333333" class="btn-whatsapp" target="_blank" title="Contacto WhatsApp">
+    <a href="https://wa.me/573124899581" class="btn-whatsapp" target="_blank" title="Contacto WhatsApp">
         <img src="imagenes/botones/BtnWtsDerecha.webp" alt="WhatsApp">
     </a>
 
@@ -483,5 +483,18 @@ html, body {
     </div>
 </div>
 
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    if (window.location.hash) {
+        setTimeout(function() {
+            var target = document.querySelector(window.location.hash);
+            var container = document.querySelector('.visor-productos-scroll');
+            if (target && container) {
+                container.scrollTop = target.offsetTop;
+            }
+        }, 100);
+    }
+});
+</script>
 </body>
 </html>
